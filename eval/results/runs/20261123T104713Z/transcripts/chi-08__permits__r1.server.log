@@ -1,0 +1,2 @@
+{"ts": "2026-11-23T10:47:16.116+00:00", "level": "WARNING", "logger": "permits_mcp", "msg": "SOCRATA_APP_TOKEN is not set; Socrata throttles anonymous requests more aggressively"}
+{"ts": "2026-11-23T10:47:49.931+00:00", "level": "WARNING", "logger": "permits_mcp.socrata", "msg": "socrata request failed; retrying", "url": "https://data.cityofchicago.org/resource/ydr8-5enu.json", "status": null, "error": "ReadTimeout", "attempt": 1, "delay_s": 0.18}

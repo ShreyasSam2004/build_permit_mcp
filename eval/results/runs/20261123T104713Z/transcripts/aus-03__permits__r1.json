@@ -1,0 +1,231 @@
+{
+ "key": "aus-03__permits__r1",
+ "question_id": "aus-03",
+ "arm": "permits",
+ "rep": 1,
+ "question": "How many of the permits Austin issued in 2024 were later voided, withdrawn, cancelled, revoked, aborted, denied or rejected?",
+ "tools": {
+  "names": [
+   "list_cities",
+   "search_permits",
+   "get_permit",
+   "find_stale_permits",
+   "permit_stats"
+  ],
+  "sha256": "e85153c15d63247143e3db22780c2cdca32ddd58ce89e66f89d4859b60933c55"
+ },
+ "system": "You answer questions about building permits in US cities using only the tools provided. Look the data up with the tools; never answer from memory or estimate. Today's date is 2026-11-23.\n\nWhen you are done, end your reply with one line in exactly this form:\nFINAL ANSWER: <answer>\n\nWrite the answer as:\n- a count: an integer without commas, e.g. 1234\n- a dollar amount: a plain number without $ or commas, e.g. 1234567.89\n- a list of permit numbers: the numbers separated by commas\n- a month: YYYY-MM\n- a city: its name\nIf the data needed to answer is not published, write: FINAL ANSWER: UNAVAILABLE",
+ "turns": [
+  {
+   "role": "user",
+   "content": "How many of the permits Austin issued in 2024 were later voided, withdrawn, cancelled, revoked, aborted, denied or rejected?"
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 2.094,
+   "retries": 0,
+   "usage": {
+    "input": 4,
+    "output": 182,
+    "cache_write": 3979,
+    "cache_read": 0
+   },
+   "content": [
+    {
+     "signature": "CAQSvAUKEAgUGAI4AUIIdGhpbmtpbmcSDOUDToysZW52XkOyZxoMeiqHLGOB7JFaWvXTIjC3lxDWW2U8Zp2JaFRef6yGtQljLg0LNvN9vI3UPtgCMEbovLTi769FUZGxD1piJ5gq2QRn0FlkejdDZi02a75bEcsoViqAmQctMPfdQuxyBLvJPdnRV0Fb+G1+ywvmYzjnF6pxYBEiL3xOcG8DhhNFlQItl7OPpfHH76RSTNwLLWcnhLX9RXbV6+0scqeL24cLKIZue6Kof58JQb/85CZ9p5ipTjmE5SiXSFuhsOs+MUj7yz9vtXUrJaCTDqSG3fNvbACJ6EqNswvS8biI1Mob+TxUDB+IyQtRzQtxRV+nzlE6suVTLRyq/S7iQjWI1Uv7SR1XeIWvV7YsDT8VQVxO5OiNZK3nZh9L2RnwIC9f+cUBXGxoxZfJAwfQaHzS6TPhvoUamvqxVCZUTJbvbHe6es9/GZbOGXMM/YemPQpgCuIlrNvrcwaYVlgVq4+ygR6ytTiZSzApirv6gZ0xu0e9s6mm8/xyqGrw7Whkqo0m4bAoLmzjV07Ynuoy02S/jZQ2HIy5bcHGAjgEag50T62X3f83atUXmTK5cwBHBwdMsxHTyp6A3qxxZYGFQTou94suQ3f72R6yv/XWiJ6AJfQtCwauWiDSOtFbkKbF6K34J4bZgu5KUJ5m8U3kTKvgPCLpS09XpYfRZT9iGitz0b2TB62QDkZ7w7A3G4PT9BbNGTNyQiDH1IQ5HOVe3mFEoi4nbYMwLKbWDEpBtqwJuOBdZp0CK0NiZdDTSpC+Ua929wHwZo0aoVxQbL9e90iqO/xdG+l4JGzDUqSnX0NeaYwjRUMg2vdYQgY1D3cQ/f8qB+N5onmPbsRK8XDh3cxuQZR1BE+NaAIv4p2uFNcodvoHUtjbidR+foVGJ4f4GAE=",
+     "thinking": "I'll check list_cities first to see Austin's statuses, then pull the permit_stats.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01DohPj3vjiAaHC6mkeQ2HdB",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {},
+     "name": "list_cities",
+     "type": "tool_use"
+    },
+    {
+     "id": "toolu_01NCp1fcL6gEwuxeyMu8HXsd",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "austin",
+      "group_by": "status",
+      "date_from": "2024-01-01",
+      "date_to": "2024-12-31"
+     },
+     "name": "permit_stats",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "list_cities",
+     "input": {}
+    },
+    {
+     "name": "permit_stats",
+     "input": {
+      "city": "austin",
+      "group_by": "status",
+      "date_from": "2024-01-01",
+      "date_to": "2024-12-31"
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01DohPj3vjiAaHC6mkeQ2HdB",
+     "content": "{\n  \"cities\": [\n    {\n      \"id\": \"austin\",\n      \"name\": \"Austin, TX\",\n      \"portal_url\": \"https://data.austintexas.gov/d/3syk-w9eu\",\n      \"dataset_id\": \"3syk-w9eu\",\n      \"data_last_updated\": \"2026-11-22T13:13:21Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"1921-09-20\",\n        \"latest\": \"2026-11-21\"\n      },\n      \"statuses_available\": [\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"electrical\",\n        \"mechanical\",\n        \"plumbing\",\n        \"site_work\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [],\n      \"known_gaps\": [\n        \"Only issued permits are published; there are no 'applied' or 'in_review' records.\",\n        \"Includes electrical, mechanical, plumbing and driveway/sidewalk permits as well as building permits.\",\n        \"last_activity_date is when the status or expiry date last changed (source column 'statusdate').\",\n        \"Valuation is published for about half of permits; it is applicant-reported and includes obvious errors (e.g. $1 and $8,100,000,000); passed through as published.\",\n        \"A few small legacy statuses whose meaning conflicts with the record's dates (Pending, Pending Permit, Re Review, Closed, ...) normalize to 'unknown'.\",\n        \"About 5,500 building permits have no work class; their permit_type is 'unknown'.\",\n        \"Records go back to the 1970s, with a handful of odd earlier dates (e.g. 1921).\"\n      ]\n    },\n    {\n      \"id\": \"chicago\",\n      \"name\": \"Chicago, IL\",\n      \"portal_url\": \"https://data.cityofchicago.org/d/ydr8-5enu\",\n      \"dataset_id\": \"ydr8-5enu\",\n      \"data_last_updated\": \"2026-11-21T13:29:26Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"2006-01-03\",\n        \"latest\": \"2026-11-20\"\n      },\n      \"statuses_available\": [\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"sign\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [\n        \"last_activity_date\"\n      ],\n      \"known_gaps\": [\n        \"Only issued permits are published; there are no 'applied' or 'in_review' records.\",\n        \"permit_status is blank on ~35% of records (mostly issued before 2024); these normalize to 'unknown'.\",\n        \"No last-activity date is published; last_activity_date is always null.\",\n        \"Electrical, HVAC and plumbing work is filed under Express/Easy permits, which normalize to 'repair'; Chicago never reports 'electrical', 'mechanical' or 'plumbing'.\",\n        \"Valuations are applicant-reported and include obvious data-entry errors (e.g. $6,666,666,666 for a boiler replacement); they are passed through as published.\",\n        \"Issue dates start in 2006.\"\n      ]\n    },\n    {\n      \"id\": \"seattle\",\n      \"name\": \"Seattle, WA\",\n      \"portal_url\": \"https://data.seattle.gov/d/76t5-zqzr\",\n      \"dataset_id\": \"76t5-zqzr\",\n      \"data_last_updated\": \"2026-11-23T02:14:32Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"1986-07-03\",\n        \"latest\": \"2026-11-20\"\n      },\n      \"statuses_available\": [\n        \"applied\",\n        \"in_review\",\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"site_work\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [\n        \"last_activity_date\"\n      ],\n      \"known_gaps\": [\n        \"Covers the full lifecycle: applications ('applied'), plan review ('in_review'), issued and closed permits.\",\n        \"No last-activity date is published; last_activity_date is always null.\",\n        \"'Closed' means two things in the source data: mostly an application closed without a permit (-> cancelled), but for demolitions usually a completed permit (-> finaled). Check status_raw when it matters.\",\n        \"268 records with status 'Active' have no application, issue or completion date; their status is 'unknown'.\",\n        \"About 3,650 'Building' permits have no subtype; their permit_type is 'unknown'.\",\n        \"Electrical, mechanical and plumbing trade permits are in a separate Seattle dataset and are not included.\",\n        \"Environmental-critical-area and shoreline exemption requests are included and normalize to permit_type 'other'.\"\n      ]\n    }\n  ],\n  \"warnings\": []\n}",
+     "is_error": false
+    },
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01NCp1fcL6gEwuxeyMu8HXsd",
+     "content": "{\n  \"city\": \"austin\",\n  \"group_by\": \"status\",\n  \"date_field\": \"issued\",\n  \"date_from\": \"2024-01-01\",\n  \"date_to\": \"2024-12-31\",\n  \"total_count\": 55670,\n  \"groups\": [\n    {\n      \"key\": \"finaled\",\n      \"count\": 47964,\n      \"total_valuation_usd\": 4079259918.0\n    },\n    {\n      \"key\": \"expired\",\n      \"count\": 5864,\n      \"total_valuation_usd\": 569424093.0\n    },\n    {\n      \"key\": \"issued\",\n      \"count\": 1105,\n      \"total_valuation_usd\": 4669044747.0\n    },\n    {\n      \"key\": \"cancelled\",\n      \"count\": 692,\n      \"total_valuation_usd\": 682357.0\n    },\n    {\n      \"key\": \"unknown\",\n      \"count\": 45,\n      \"total_valuation_usd\": 20673.0\n    }\n  ],\n  \"warnings\": [\n    \"45 permits have status 'unknown' (blank or unrecognized in the source data).\"\n  ]\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 2.79,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 271,
+    "cache_write": 2336,
+    "cache_read": 3979
+   },
+   "content": [
+    {
+     "signature": "CAQS6wcKEAgUGAI4AUIIdGhpbmtpbmcSDCQD9t54fXaRxQ3W7RoM00n3LvUxd2H3saulIjC41Cvt8fVzQjZE3Ye5IpwVHqhLdQWBYUWkIzWRavdi93F1B2/FugnkNgflTGvi/7MqiAeDG9UXFtwGSdBBOTR9axUWbkxiMm4tAR1cqCmBzCtf0VWC+iueIZdzewzGrPSrYJ1E5Geq2L2DPLag5KvpdQ/YTj18wupfEjx6gBrStkYmLyUr1ilUx6XTNFRLsW00Jq1068eGiO48RQ4lfOC2ZUkRjFh6AeGXHy6oTFnXz9cZT1btAETapAvrizm5Hf+r0Bzf096GYFZQL1RBHemkAdksCWDHO5IwCdxhUBhCayXVYW14KaPqbbNxM7vokT/KqkniqK/Xi7FC0o30om82+kvoXuMSaE8YRrATsRZ+GIh4R6yHot6Tv2XnQeKQZ5yGAmpiFACqi3BkEwRJ4uWPDL+snJTCAbcvZOvJOA9qbgELu/zHYhJmltjoHoYFLL6g9m4PmeXBrQTG3PySl+1OZwzDdke51sgPvcjVcA+TPF/ybTbnB0mHKphFflXAsPcLIT7Vr0Cxrm0bleCbWUp+UkUkQypr/SJiQExv0WEWSCDRKgULfjS8g7Kyj81O1oAxpR0z8q4TBMG43/cQ0BUUpFqUYim8E0kip7Tn6QQEQrgz+uBI6lVTo72FD0sJG8kvEDVLswKooibibBx6ifNRnjyJEyXDQiwzAWWkgqhGkHmwOd5+p9iOXifzhoxh8KaokQD8IhMt2O7MxECh2s35idU3DSO8OIrcAOqmf92DiviqFjNEFjaMCoUMHQt6etZK9SvX7dJnlxAqHg+jQGikh6MokYGLhSIjhLwcPkPFtrCKGXdrnugJZNWd/ealCowXBF1RAvwEjMz0YAYvgMOuuefzWu1j8UyXzbAsfiTSk50g1Cyv60lUJV0D7w62jWR1trPAJw/vbGFdo4FPe9X83yV0XDqGrwx3lpAfUTCsy9EZljQc8pivr2LG7OuAHbpRB+t+IHsOwtauHi3mgB0VDtLpLn4nfY4VhPeaD4N0noB6TwyuEoI0VqLe6B0dnKhbMLt8bzqGq9AsmJtCyjnYFUauXJEt6tP1HgF0uSTpuJSSC/T4/yIKHYI1A4N6sKjKfLEM+JWRYXVKHA5FQtoq/Ibj8dH/E898d9+w9whcYZp9pSrpEiB/0BMWe0V/pm46m2OfrnDan6UfaV7uLG5GCDHedsD9pWrBDGMr3YxWChURwTH6Vjd+EVtcBtrFV1xhgX0ObAy1j7MTTV56oy0IcIf+IXWSPDhOpy/juM7XK9sGuRb0aqTd5OWyGAE=",
+     "thinking": "I'm checking whether \"cancelled\" also covers voided, withdrawn, revoked, aborted, denied, or rejected, which seems likely. I'm also noting the 45 unknown records, which may be legacy statuses like Pending or Closed, and I'm considering a quick spot check of the raw status values on a few cancelled permits.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01JJ3FHxA75muC2XXeHA4XZc",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "austin",
+      "status": [
+       "unknown"
+      ],
+      "date_from": "2024-01-01",
+      "date_to": "2024-12-31",
+      "limit": 50
+     },
+     "name": "search_permits",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "search_permits",
+     "input": {
+      "city": "austin",
+      "status": [
+       "unknown"
+      ],
+      "date_from": "2024-01-01",
+      "date_to": "2024-12-31",
+      "limit": 50
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01JJ3FHxA75muC2XXeHA4XZc",
+     "content": "{\n  \"total_count\": 45,\n  \"returned\": 45,\n  \"next_cursor\": null,\n  \"hint\": null,\n  \"warnings\": [],\n  \"city\": \"austin\",\n  \"permits\": [\n    {\n      \"permit_id\": \"2024-133076 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2500 ELLIE JANE LN\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-02\",\n      \"issued_date\": \"2024-12-20\",\n      \"last_activity_date\": \"2025-04-03\",\n      \"valuation_usd\": null,\n      \"description\": \"New ETJ Service for SFR AE\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13409618\"\n    },\n    {\n      \"permit_id\": \"2024-161290 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2612 TOTLEY RD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-12-10\",\n      \"issued_date\": \"2024-12-19\",\n      \"last_activity_date\": \"2025-01-28\",\n      \"valuation_usd\": null,\n      \"description\": \"Homebuilder Loop Austin 2 Mile ETJ Austin Energy\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13441612\"\n    },\n    {\n      \"permit_id\": \"2024-162551 BP\",\n      \"city\": \"austin\",\n      \"address\": \"4908 LOTT AVE\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"BP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-12-11\",\n      \"issued_date\": \"2024-12-17\",\n      \"last_activity_date\": \"2026-11-18\",\n      \"valuation_usd\": 19172.0,\n      \"description\": \"Install stone and mortar retaining walls.\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13443006\"\n    },\n    {\n      \"permit_id\": \"2024-155147 BP\",\n      \"city\": \"austin\",\n      \"address\": \"7001 DECKER LN\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"BP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-09-10\",\n      \"issued_date\": \"2024-12-03\",\n      \"last_activity_date\": \"2026-08-13\",\n      \"valuation_usd\": 1.0,\n      \"description\": \"NEW RETAINGIN WALLS - SUITE D\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13434577\"\n    },\n    {\n      \"permit_id\": \"2024-143135 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2602 TOTLEY RD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-24\",\n      \"issued_date\": \"2024-11-06\",\n      \"last_activity_date\": \"2024-12-02\",\n      \"valuation_usd\": null,\n      \"description\": \"Homebuilder Loop Austin 2 Mile ETJ Austin Energy\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13421109\"\n    },\n    {\n      \"permit_id\": \"2024-143638 PP\",\n      \"city\": \"austin\",\n      \"address\": \"4616 TEJAS TRL\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-25\",\n      \"issued_date\": \"2024-11-06\",\n      \"last_activity_date\": \"2026-04-30\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of an existing water heater\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13421669\"\n    },\n    {\n      \"permit_id\": \"2024-140733 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2610 PARAGON FOX DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-18\",\n      \"issued_date\": \"2024-10-25\",\n      \"last_activity_date\": \"2024-11-12\",\n      \"valuation_usd\": null,\n      \"description\": \"Homebuilder Loop Austin 2 Mile ETJ Austin Energy\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13418310\"\n    },\n    {\n      \"permit_id\": \"2024-137470 PP\",\n      \"city\": \"austin\",\n      \"address\": \"4419 SHOALWOOD AVE\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Irrigation\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-10\",\n      \"issued_date\": \"2024-10-15\",\n      \"last_activity_date\": \"2025-10-07\",\n      \"valuation_usd\": null,\n      \"description\": \"Irrigation Install -ML\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13414524\"\n    },\n    {\n      \"permit_id\": \"2024-132307 EP\",\n      \"city\": \"austin\",\n      \"address\": \"5710 LINK AVE\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-01\",\n      \"issued_date\": \"2024-10-08\",\n      \"last_activity_date\": \"2024-11-05\",\n      \"valuation_usd\": null,\n      \"description\": \"Install T pole reference 2024-135683 BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13408777\"\n    },\n    {\n      \"permit_id\": \"2024-134016 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2207 1/2 WILLKOMEN WAY\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-10-03\",\n      \"issued_date\": \"2024-10-07\",\n      \"last_activity_date\": \"2024-12-12\",\n      \"valuation_usd\": null,\n      \"description\": \"Electrical Service to Streetlights\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13410629\"\n    },\n    {\n      \"permit_id\": \"2024-125412 PP\",\n      \"city\": \"austin\",\n      \"address\": \"7101 E WILLIAM CANNON DR BLDG 2\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Repair\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-09-16\",\n      \"issued_date\": \"2024-09-18\",\n      \"last_activity_date\": \"2026-07-13\",\n      \"valuation_usd\": null,\n      \"description\": \"Connect City sewer to exterior of building\\nref 2024-109725 BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13401030\"\n    },\n    {\n      \"permit_id\": \"2024-126134 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2713 PARAGON FOX DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-09-17\",\n      \"issued_date\": \"2024-09-17\",\n      \"last_activity_date\": \"2024-12-04\",\n      \"valuation_usd\": null,\n      \"description\": \"NEW Service for SFR in ETJ\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13401860\"\n    },\n    {\n      \"permit_id\": \"2024-094860 EP\",\n      \"city\": \"austin\",\n      \"address\": \"4701 PELL RD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-07-29\",\n      \"issued_date\": \"2024-09-10\",\n      \"last_activity_date\": \"2024-10-07\",\n      \"valuation_usd\": null,\n      \"description\": \"Home builders loop\\nRef: 2024-090621 ep\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13367671\"\n    },\n    {\n      \"permit_id\": \"2024-089485 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2607 MARIA ANNA RD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Repair\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-07-18\",\n      \"issued_date\": \"2024-09-03\",\n      \"last_activity_date\": \"2026-10-19\",\n      \"valuation_usd\": null,\n      \"description\": \"We are connecting pool equipment for an existing pool. All lines are relocated and the electrical feeders moved over to the new location. There is no upgrade to the system. For questions please. call…\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13361786\"\n    },\n    {\n      \"permit_id\": \"2024-085845 EP\",\n      \"city\": \"austin\",\n      \"address\": \"9310 1/2 N LAMAR BLVD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-07-10\",\n      \"issued_date\": \"2024-08-26\",\n      \"last_activity_date\": \"2025-06-04\",\n      \"valuation_usd\": null,\n      \"description\": \"Install service for food truck\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13357619\"\n    },\n    {\n      \"permit_id\": \"2024-088146 EP\",\n      \"city\": \"austin\",\n      \"address\": \"13808 DAISY DOG PATH\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-07-16\",\n      \"issued_date\": \"2024-08-26\",\n      \"last_activity_date\": \"2024-09-24\",\n      \"valuation_usd\": null,\n      \"description\": \"temporary tpole for new construction in everton\\nETJ NO BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13360223\"\n    },\n    {\n      \"permit_id\": \"2024-106960 EP\",\n      \"city\": \"austin\",\n      \"address\": \"5800 JENNIFER PASTURE PATH\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-08-21\",\n      \"issued_date\": \"2024-08-23\",\n      \"last_activity_date\": \"2024-11-27\",\n      \"valuation_usd\": null,\n      \"description\": \"New Electrical Service for a New SFR in ETJ\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13381217\"\n    },\n    {\n      \"permit_id\": \"2024-105214 MP\",\n      \"city\": \"austin\",\n      \"address\": \"6100 RAIN CREEK PKWY\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-08-19\",\n      \"issued_date\": \"2024-08-22\",\n      \"last_activity_date\": \"2025-04-07\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13379277\"\n    },\n    {\n      \"permit_id\": \"2024-104899 MP\",\n      \"city\": \"austin\",\n      \"address\": \"11129 PINEHURST DR\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-08-16\",\n      \"issued_date\": \"2024-08-21\",\n      \"last_activity_date\": \"2026-01-05\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13378848\"\n    },\n    {\n      \"permit_id\": \"2024-080641 EP\",\n      \"city\": \"austin\",\n      \"address\": \"7517 GROVER AVE\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-08-12\",\n      \"issued_date\": \"2024-06-28\",\n      \"last_activity_date\": \"2026-11-10\",\n      \"valuation_usd\": null,\n      \"description\": \"Upgrade of main service and meter to 200a. Upgrade of all wiring to copper from aluminum (like for like no changed walls or anything else).\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13351641\"\n    },\n    {\n      \"permit_id\": \"2024-063350 EP\",\n      \"city\": \"austin\",\n      \"address\": \"11901 1/2 BURNET RD UNIT B\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Temporary  Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-05-20\",\n      \"issued_date\": \"2024-06-20\",\n      \"last_activity_date\": \"2026-07-13\",\n      \"valuation_usd\": null,\n      \"description\": \"This temporary permit for permit 2023-59124 BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13332185\"\n    },\n    {\n      \"permit_id\": \"2024-074113 EP\",\n      \"city\": \"austin\",\n      \"address\": \"511 RIVER RD BLDG A\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Repair\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-06-12\",\n      \"issued_date\": \"2024-06-19\",\n      \"last_activity_date\": \"2026-07-13\",\n      \"valuation_usd\": null,\n      \"description\": \"Installing 48Kw generator backup\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13344193\"\n    },\n    {\n      \"permit_id\": \"2024-067611 MP\",\n      \"city\": \"austin\",\n      \"address\": \"4813 BELVEDERE ST UNIT 1\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-05-29\",\n      \"issued_date\": \"2024-06-14\",\n      \"last_activity_date\": \"2026-11-11\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13336904\"\n    },\n    {\n      \"permit_id\": \"2024-072571 BP\",\n      \"city\": \"austin\",\n      \"address\": \"1402 DWYCE DR\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"BP / New\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-05-17\",\n      \"issued_date\": \"2024-06-12\",\n      \"last_activity_date\": \"2025-11-13\",\n      \"valuation_usd\": 0.0,\n      \"description\": \"New construction in-ground pool.\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13342421\"\n    },\n    {\n      \"permit_id\": \"1986-008932 BP\",\n      \"city\": \"austin\",\n      \"address\": \"5006 BUFFALO PASS\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"BP / Addition\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"1986-01-21\",\n      \"issued_date\": \"2024-06-10\",\n      \"last_activity_date\": \"2024-06-10\",\n      \"valuation_usd\": 1500.0,\n      \"description\": \"Addn. To Exist. Res. (Storage)\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=561410\"\n    },\n    {\n      \"permit_id\": \"2024-056026 EP\",\n      \"city\": \"austin\",\n      \"address\": \"5505 HONEY DEW TER\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-05-03\",\n      \"issued_date\": \"2024-05-14\",\n      \"last_activity_date\": \"2024-12-10\",\n      \"valuation_usd\": null,\n      \"description\": \"Shutdown and Complete service upgrade.\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13323980\"\n    },\n    {\n      \"permit_id\": \"2024-057940 PP\",\n      \"city\": \"austin\",\n      \"address\": \"4610 CHIAPPERO TRL\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Repair\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-05-08\",\n      \"issued_date\": \"2024-05-08\",\n      \"last_activity_date\": \"2026-05-20\",\n      \"valuation_usd\": null,\n      \"description\": \"Replace existing Tankless water heater with the same one.\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13326088\"\n    },\n    {\n      \"permit_id\": \"2024-056399 MP\",\n      \"city\": \"austin\",\n      \"address\": \"9001 LANTANA WAY\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-05-06\",\n      \"issued_date\": \"2024-05-07\",\n      \"last_activity_date\": \"2025-04-03\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13324388\"\n    },\n    {\n      \"permit_id\": \"2024-050433 EP\",\n      \"city\": \"austin\",\n      \"address\": \"5904 COMANCHE MOON TRL\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-04-23\",\n      \"issued_date\": \"2024-05-02\",\n      \"last_activity_date\": \"2024-07-24\",\n      \"valuation_usd\": null,\n      \"description\": \"Home builders loop\\nRef: 2024-044422 BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13317630\"\n    },\n    {\n      \"permit_id\": \"2024-055175 PP\",\n      \"city\": \"austin\",\n      \"address\": \"7103 SPURLOCK DR\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-05-02\",\n      \"issued_date\": \"2024-05-02\",\n      \"last_activity_date\": \"2025-05-27\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of an existing water heater\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13322961\"\n    },\n    {\n      \"permit_id\": \"2024-046513 EP\",\n      \"city\": \"austin\",\n      \"address\": \"1301 BENTWOOD RD\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Closed\",\n      \"applied_date\": \"2024-04-15\",\n      \"issued_date\": \"2024-05-01\",\n      \"last_activity_date\": \"2024-05-02\",\n      \"valuation_usd\": null,\n      \"description\": \"EMERGENCY DISCONNECT WORK PERFORMED 4/12/24 REPLACED ALL DAMAGED PARTS\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13313285\"\n    },\n    {\n      \"permit_id\": \"2024-048570 PP\",\n      \"city\": \"austin\",\n      \"address\": \"8316 GREENSLOPE DR BLDG B\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-04-18\",\n      \"issued_date\": \"2024-04-19\",\n      \"last_activity_date\": \"2026-07-13\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of an existing water heater\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13315584\"\n    },\n    {\n      \"permit_id\": \"2024-045807 MP\",\n      \"city\": \"austin\",\n      \"address\": \"7004 JESTER BLVD\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-04-12\",\n      \"issued_date\": \"2024-04-17\",\n      \"last_activity_date\": \"2025-03-06\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13312463\"\n    },\n    {\n      \"permit_id\": \"2024-046320 PP\",\n      \"city\": \"austin\",\n      \"address\": \"2401 CORAL RIDGE CIR\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-04-12\",\n      \"issued_date\": \"2024-04-15\",\n      \"last_activity_date\": \"2025-05-27\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of an existing water heater\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13313092\"\n    },\n    {\n      \"permit_id\": \"2024-043516 MP\",\n      \"city\": \"austin\",\n      \"address\": \"2608 SHERWOOD LN\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-04-08\",\n      \"issued_date\": \"2024-04-09\",\n      \"last_activity_date\": \"2026-10-27\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13309837\"\n    },\n    {\n      \"permit_id\": \"2024-034361 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2004 NIGHTVIEW DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Upgrade\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-03-19\",\n      \"issued_date\": \"2024-03-25\",\n      \"last_activity_date\": \"2025-03-25\",\n      \"valuation_usd\": null,\n      \"description\": \"replace meter loop for mobile home.  Like for like\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13299230\"\n    },\n    {\n      \"permit_id\": \"2024-034570 EP\",\n      \"city\": \"austin\",\n      \"address\": \"13920 MATTEROD DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-03-19\",\n      \"issued_date\": \"2024-03-21\",\n      \"last_activity_date\": \"2024-05-01\",\n      \"valuation_usd\": null,\n      \"description\": \"HBL ETJ NO BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13299446\"\n    },\n    {\n      \"permit_id\": \"2024-032603 EP\",\n      \"city\": \"austin\",\n      \"address\": \"2900 BRONX DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-03-15\",\n      \"issued_date\": \"2024-03-18\",\n      \"last_activity_date\": \"2024-04-02\",\n      \"valuation_usd\": null,\n      \"description\": \"homebuilder loop refer to 2024 - 013193 BP\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13297174\"\n    },\n    {\n      \"permit_id\": \"2024-029690 MP\",\n      \"city\": \"austin\",\n      \"address\": \"1207 RIDGEHAVEN DR\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-03-08\",\n      \"issued_date\": \"2024-03-13\",\n      \"last_activity_date\": \"2025-01-21\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13293862\"\n    },\n    {\n      \"permit_id\": \"2019-233652 PP\",\n      \"city\": \"austin\",\n      \"address\": \"2202 TRAILSIDE DR BLDG B\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Addition and Remodel\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2019-10-22\",\n      \"issued_date\": \"2024-01-31\",\n      \"last_activity_date\": \"2026-09-25\",\n      \"valuation_usd\": null,\n      \"description\": \"*Partial demo* Interior remodel converting existing basement to office and converting carport to garage.   Adding roof top deck.\\nChanging few windows and doors\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12376164\"\n    },\n    {\n      \"permit_id\": \"2024-010644 EP\",\n      \"city\": \"austin\",\n      \"address\": \"11409 COMANO DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Homebuilder Loop\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-01-27\",\n      \"issued_date\": \"2024-01-29\",\n      \"last_activity_date\": \"2024-02-20\",\n      \"valuation_usd\": null,\n      \"description\": \"T-Pole for SFR IN ETJ\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13272301\"\n    },\n    {\n      \"permit_id\": \"2024-004909 MP\",\n      \"city\": \"austin\",\n      \"address\": \"1615 TAYLOR GAINES ST\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-01-15\",\n      \"issued_date\": \"2024-01-18\",\n      \"last_activity_date\": \"2025-04-11\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13265839\"\n    },\n    {\n      \"permit_id\": \"2024-004925 MP\",\n      \"city\": \"austin\",\n      \"address\": \"3800 MC NEIL DR\",\n      \"permit_type\": \"mechanical\",\n      \"permit_type_raw\": \"MP / Change Out\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2024-01-15\",\n      \"issued_date\": \"2024-01-18\",\n      \"last_activity_date\": \"2025-04-11\",\n      \"valuation_usd\": null,\n      \"description\": \"Replacement of complete existing central heat and air system with or without duct work\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13265855\"\n    },\n    {\n      \"permit_id\": \"2024-002492 PP\",\n      \"city\": \"austin\",\n      \"address\": \"1107 RUTH AVE\",\n      \"permit_type\": \"plumbing\",\n      \"permit_type_raw\": \"PP / Repair\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending\",\n      \"applied_date\": \"2024-01-08\",\n      \"issued_date\": \"2024-01-10\",\n      \"last_activity_date\": \"2025-01-22\",\n      \"valuation_usd\": null,\n      \"description\": \"upgrade tank WH to tankless WH\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13263080\"\n    },\n    {\n      \"permit_id\": \"2023-149375 EP\",\n      \"city\": \"austin\",\n      \"address\": \"1845 CHASEWOOD DR\",\n      \"permit_type\": \"electrical\",\n      \"permit_type_raw\": \"EP / Addition and Remodel\",\n      \"status\": \"unknown\",\n      \"status_raw\": \"Pending Permit\",\n      \"applied_date\": \"2023-10-04\",\n      \"issued_date\": \"2024-01-09\",\n      \"last_activity_date\": \"2025-08-04\",\n      \"valuation_usd\": null,\n      \"description\": \"New construction rear screened porch w/ storage beneath covered patio and uncovered wood deck w/ exterior stairs.\",\n      \"source_url\": \"https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13243042\"\n    }\n  ]\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "end_turn",
+   "latency_s": 3.779,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 320,
+    "cache_write": 11839,
+    "cache_read": 6315
+   },
+   "content": [
+    {
+     "signature": "CAQSuAYKEAgUGAI4AUIIdGhpbmtpbmcSDF5EiWbZyZNL53Gq8xoMkYvOFkfea/rvqGdAIjCY9QQ8YVht/3gM/TnGcDoyJSakk2IHsyFWhqFiNq2STVX5aq24KqcKtzHLAbJFHdgq1QXzHSnYSxUqUxNYn4fqmS8+42itzszqJUDdt9+bZnd6EmWJSefDVzdIvMIQq6Kllk+kKMkvNIMitTCxEegRm0BJGDMUcE+ArMlbC5XDDIp3Gg0xTu/oEUoWVrsrJLc+saU70X1PIEiPe4MRF6qVL9+vR8x1wUJ5RritHV7uT0rudIjZcHscGpdM8COiPPnLzpJ0LWfhe24rEm8SX72DklBQTZcJfxSgcNJCWXfdVXcyvhWLpJ/Hecqx92pC0u9GwJrEbLMUZfYTejO3sdRY82AEPnJmDdp2UBNKsTBCzrmrbsQwCJ3xI3jpcCGa4mJ1toTtffiqwlDCqfhG5FFKRnlBbs7TdSibwfMzjyUGrbh9hc9XMOoqyoN7Yfjc446CPmWWRkLc7z/wJD6wLfi2AELwa4R38zN4lcFRHUuuYg1eZxLf2jgWxQwFzr5+Ph1xCfN9woYvvW03EAVi31it+CebQADViITKMTFv+GDL3DW99WWb3WVxB8mf/jQvQC0speab4yc7wtkJzI6fYmW+DqZFl4zN+gT7uqSRxBiLVn5/IVnyvoH/3GRf3FDt05CjzYo1w8qEUWKnkUrpmkjhxZe6YAVzhkpP1zdBB9hwNqeOVuwLnM6ftPFJGrCsoz58D2a4g7IbL+AOeRxQ2AnbwLLGyJ321PeBMW/Ioy6xposChOsZzxJPvdWBSZArCFXXgjo/sWC2kNWCYYUEks57sPW91vyJhI3ri9bIngqQQOYgIYrI7odbymRZD+T1vxzpZE7d/cavIaTrYiSg1NUPyFGbplrmKZfeFG+dQEPVlVuubqN2aLft1Pt2a1+PfTIenUR/8Q5JlAiynPvPI3wnYXXbTtPQjr2rFJQ7FDIJ6EhIjYP2Lbt8Yjcyv96ExJUkZzb1MnpPwERv5rBUe/nqLozgsRM5ul9PtYDh687G832amj9P+Hnw2Im3npgUNVVvS0EELNWAnhgB",
+     "thinking": "None of the unknowns turn out to be void or withdrawn types, so the answer comes to 692. I could also check the cancelled raw statuses, but I think it's fine as it is.\n\n",
+     "type": "thinking"
+    },
+    {
+     "text": "Austin issued 55,670 permits in 2024. Of those, **692** are now marked as cancelled.\n\nThis count assumes something I didn't check. The data source sorts each permit's original status into a few standard groups. One of these groups is \"cancelled,\" and I'm assuming it holds all the statuses you listed (voided, withdrawn, cancelled, revoked, aborted, denied and rejected). I didn't look at the cancelled records to see their original wording.\n\nThe other 2024 permits don't fit your question:\n- **Finished:** 47,964\n- **Expired:** 5,864\n- **Still issued and active:** 1,105\n- **Status not recognised:** 45. I checked all of these. Most are \"Pending\" or \"Pending Permit,\" and one is \"Closed.\" None of them are cancellations, so I left them out.\n\nFINAL ANSWER: 692",
+     "type": "text"
+    }
+   ]
+  }
+ ],
+ "outcome": {
+  "key": "aus-03__permits__r1",
+  "question_id": "aus-03",
+  "arm": "permits",
+  "rep": 1,
+  "started_at": "2026-11-23T10:47:29+00:00",
+  "status": "answered",
+  "final_answer": "692",
+  "budget_exhausted": false,
+  "tool_calls": 3,
+  "tool_errors": 0,
+  "tool_results_truncated": 0,
+  "api_calls": 3,
+  "api_retries": 0,
+  "usage": {
+   "input": 8,
+   "output": 773,
+   "cache_write": 18154,
+   "cache_read": 10294
+  },
+  "cost_usd": 0.108321,
+  "model_latency_s": 8.66,
+  "tool_latency_s": 7.53,
+  "wall_s": 16.69,
+  "transcript": "transcripts/aus-03__permits__r1.json"
+ },
+ "tool_stats": [
+  {
+   "name": "permit_stats",
+   "latency_s": 1.209,
+   "is_error": false,
+   "chars": 763,
+   "truncated": false
+  },
+  {
+   "name": "list_cities",
+   "latency_s": 5.067,
+   "is_error": false,
+   "chars": 4693,
+   "truncated": false
+  },
+  {
+   "name": "search_permits",
+   "latency_s": 1.25,
+   "is_error": false,
+   "chars": 27110,
+   "truncated": false
+  }
+ ]
+}

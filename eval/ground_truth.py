@@ -22,7 +22,7 @@ from zoneinfo import ZoneInfo
 
 import httpx
 
-from .common import CITIES, GROUND_TRUTH_DIR, Query, Question, load_questions, write_json
+from .common import CITIES, GROUND_TRUTH_DIR, Query, Question, load_questions, snapshot_path, write_json
 
 CUTOFF = re.compile(r"\{cutoff:(\d+)\}")
 ARGMAX_MIN_MARGIN = 1.10  # the winner must beat the runner-up by 10%, so boundary judgment calls can't flip it
@@ -152,8 +152,7 @@ def main(argv: list[str] | None = None) -> int:
             parser.error(f"unknown question ids: {sorted(unknown)}")
         questions = [q for q in questions if q.id in wanted]
     snapshot = compute(questions)
-    stamp = snapshot["computed_at"].replace(":", "").replace("+0000", "Z")
-    path = GROUND_TRUTH_DIR / f"{stamp}.json"
+    path = snapshot_path(snapshot["computed_at"])
     write_json(path, snapshot)
     write_json(GROUND_TRUTH_DIR / "latest.json", snapshot)
     print(f"\nWrote {path.relative_to(GROUND_TRUTH_DIR.parent.parent)} ({len(snapshot['questions'])} questions)")

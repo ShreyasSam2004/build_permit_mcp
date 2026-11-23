@@ -1,8 +1,8 @@
 {
- "computed_at": "2026-11-23T07:37:08+00:00",
+ "computed_at": "2026-11-23T10:46:11+00:00",
  "city_dates": {
   "chicago": "2026-11-23",
-  "seattle": "2026-11-22",
+  "seattle": "2026-11-23",
   "austin": "2026-11-23"
  },
  "questions": {
@@ -304,16 +304,16 @@
      "city": "seattle",
      "params": {
       "$select": "count(*) as n",
-      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-22T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-22T00:00:00'))"
+      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-23T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-23T00:00:00'))"
      },
      "rows": [
       {
-       "n": "4998"
+       "n": "5003"
       }
      ]
     }
    ],
-   "expected": 4998
+   "expected": 5003
   },
   "sea-08": {
    "answer_type": "integer",

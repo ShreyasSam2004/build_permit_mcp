@@ -105,6 +105,11 @@ def load_questions(path: Path = QUESTIONS_FILE) -> list[Question]:
     return questions
 
 
+def snapshot_path(computed_at: str) -> Path:
+    """The immutable file for a snapshot ('2026-11-23T10:46:11+00:00' -> 2026-11-23T104611Z.json)."""
+    return GROUND_TRUTH_DIR / f"{computed_at.replace(':', '').replace('+0000', 'Z')}.json"
+
+
 def latest_ground_truth() -> Path:
     path = GROUND_TRUTH_DIR / "latest.json"
     if not path.exists():

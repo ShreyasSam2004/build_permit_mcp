@@ -50,6 +50,7 @@ from .common import (
     latest_ground_truth,
     load_questions,
     read_json,
+    snapshot_path,
     write_json,
 )
 
@@ -486,6 +487,9 @@ def main(argv: list[str] | None = None) -> int:
 
     gt_path = (args.ground_truth or latest_ground_truth()).resolve()
     snapshot = read_json(gt_path)
+    gt_path = snapshot_path(snapshot["computed_at"])  # record the immutable file, never the moving latest.json
+    if not gt_path.exists():
+        raise SystemExit(f"Snapshot file {gt_path.name} is missing; rerun eval.ground_truth.")
     missing = [q.id for q in questions if "expected" not in snapshot["questions"].get(q.id, {})]
     if missing:
         raise SystemExit(f"Ground truth {gt_path.name} has no answer for {missing}; rerun eval.ground_truth.")

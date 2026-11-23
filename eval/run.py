@@ -21,13 +21,9 @@ def main(argv: list[str] | None = None) -> int:
     if "-h" in argv or "--help" in argv:
         print(__doc__)
         return harness.main(["--help"])
-    selection: list[str] = []
-    if "--pilot" in argv:
-        selection = ["--questions", ",".join(harness.PILOT)]
-    elif "--questions" in argv:
-        selection = ["--questions", argv[argv.index("--questions") + 1]]
+    # Always the full answer key (about a minute): latest.json stays complete even after a pilot.
     resuming = "--run-id" in argv and (harness.RUNS_DIR / argv[argv.index("--run-id") + 1] / "meta.json").exists()
-    if not resuming and ground_truth.main(selection) != 0:
+    if not resuming and ground_truth.main([]) != 0:
         print("Ground truth failed; not running the eval against a broken answer key.", file=sys.stderr)
         return 1
     if grade.main(["--selfcheck"]) != 0:

@@ -405,6 +405,8 @@ def main(argv: list[str] | None = None) -> int:
         latest = report.replace("](transcripts/", f"](runs/{run_dir.name}/transcripts/")
         (RESULTS_DIR / "results.md").write_text(latest, encoding="utf-8")
     (run_dir / "graded.jsonl").write_text("".join(json.dumps(g, default=str) + "\n" for g in graded), encoding="utf-8")
+    if hasattr(sys.stdout, "reconfigure"):
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")  # type: ignore[union-attr]  # Windows consoles
     print(report)
     return 0
 
