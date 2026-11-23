@@ -7,6 +7,7 @@ the SDK delivers it as an ``is_error`` result the model can read.
 from __future__ import annotations
 
 import asyncio
+import logging
 from collections.abc import Callable, Mapping, Sequence
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
@@ -38,6 +39,9 @@ from .schema import (
 from .socrata import SocrataClient, SocrataError, SocrataUnavailable
 
 GROUP_LIMIT = "50000"
+DUPLICATE_LIMIT = 10  # rows fetched per get_permit; more than one means the city republished an ID
+
+log = logging.getLogger(__name__)
 
 
 def _today_in(config: CityConfig) -> date:
@@ -267,13 +271,28 @@ class PermitService:
         candidates = list(dict.fromkeys([pid, pid.upper()]))
         id_col = cfg.fields.permit_id
         where = f"{id_col} IN ({', '.join(soql.quote(c) for c in candidates)})"
-        rows = await self._query(adapter, {"$where": where, "$limit": "2"})
+        rows = await self._query(adapter, {"$where": where, "$limit": str(DUPLICATE_LIMIT)})
         if not rows:
             raise ToolError(
                 f"No permit '{pid}' in {cfg.name}. {cfg.name} permit IDs look like '{cfg.permit_id_example}'. "
                 "To find a permit by location, call search_permits with address=..."
             )
-        return adapter.to_detail(rows[0])
+        # IDs were unique in all three datasets on 2026-11-23 (the daily drift check re-verifies).
+        # If a city ever republishes an ID (e.g. a reinstatement), return the latest record and say so.
+        details = sorted((adapter.to_detail(r) for r in rows), key=_recency, reverse=True)
+        latest = details[0]
+        if len(details) > 1:
+            more = "+" if len(rows) == DUPLICATE_LIMIT else ""
+            others = "; ".join(
+                f"issued {d.issued_date or 'n/a'}, applied {d.applied_date or 'n/a'}, status {d.status_raw or 'n/a'}"
+                for d in details[1:]
+            )
+            latest.warnings.append(
+                f"{cfg.name} publishes {len(details)}{more} records with permit_id '{latest.permit_id}'. "
+                f"This is the most recently issued one. The others: {others}."
+            )
+            log.warning("duplicate_permit_id", extra={"city": cfg.id, "permit_id": latest.permit_id, "n": len(rows)})
+        return latest
 
     # ---- find_stale_permits -----------------------------------------------------------
 
@@ -464,6 +483,11 @@ async def _none() -> list[dict[str, Any]]:
 
 async def _empty_count() -> list[dict[str, Any]]:
     return [{"n": "0"}]
+
+
+def _recency(p: PermitDetail) -> tuple[date, date, str]:
+    """Sort key for duplicate records: latest issue date, then application date, then a stable tiebreak."""
+    return (p.issued_date or date.min, p.applied_date or date.min, p.status_raw or "")
 
 
 def _round(value: float | None) -> float | None:

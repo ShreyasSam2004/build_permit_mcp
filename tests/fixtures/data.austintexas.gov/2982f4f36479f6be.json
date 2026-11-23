@@ -1,5 +1,5 @@
 {
- "request": "/resource/3syk-w9eu.json?%24limit=2&%24where=permit_number+IN+%28%272026-142501+bp%27%2C+%272026-142501+BP%27%29",
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24where=permit_number+IN+%28%272026-142501+bp%27%2C+%272026-142501+BP%27%29",
  "status": 200,
  "body": [
   {

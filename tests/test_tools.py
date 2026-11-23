@@ -230,6 +230,23 @@ async def test_get_permit_other_cities(mcp_client: Client, city: str, permit_id:
     assert out["source_url"].startswith("https://")
 
 
+async def test_get_permit_duplicate_id_returns_latest_and_warns(cities: dict[str, CityConfig]) -> None:
+    # No city republishes an ID today (checked daily by tests/live); this pins the behavior if one does.
+    base = {"permit_": "B100", "permit_type": "PERMIT - SIGNS", "street_number": "1", "street_name": "MAIN ST"}
+    rows = [
+        {**base, "permit_status": "REVOKED", "issue_date": "2019-03-01T00:00:00.000"},
+        {**base, "permit_status": "ACTIVE", "issue_date": "2024-05-02T00:00:00.000"},
+        {**base, "permit_status": "EXPIRED"},
+    ]
+    socrata = SocrataClient(transport=httpx.MockTransport(lambda _: httpx.Response(200, json=rows)))
+    async with Client(build_server(cities, socrata)) as client:
+        out = await call(client, "get_permit", city="chicago", permit_id="B100")
+    await socrata.aclose()
+    assert out["issued_date"] == "2024-05-02" and out["status"] == "issued"
+    [warning] = out["warnings"]
+    assert "3 records" in warning and "issued 2019-03-01" in warning and "status EXPIRED" in warning
+
+
 async def test_get_permit_not_found_explains_format(mcp_client: Client) -> None:
     message = await call_error(mcp_client, "get_permit", city="chicago", permit_id="NOPE-123")
     assert "No permit 'NOPE-123'" in message and "B200520605" in message and "search_permits" in message

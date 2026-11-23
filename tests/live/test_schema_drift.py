@@ -6,6 +6,8 @@
   server outright (or worse, silently: a date column turning into text breaks date math).
 * WARNS if raw status/type values appear that no rule covers. Those already degrade safely
   to "unknown" and get logged; the warning (plus a GitHub job-summary table) says which rule to add.
+* WARNS if a permit ID appears on more than one record. get_permit then returns the most
+  recently issued record with a warning, so this is degraded, not broken.
 """
 
 from __future__ import annotations
@@ -115,3 +117,22 @@ async def test_no_unmapped_raw_values(socrata: SocrataClient, city: str, kind: s
             f"Add a rule in `cities/{city}.toml`.\n\n| raw value ({' / '.join(columns)}) | rows |\n|---|---|\n{lines}"
         )
         warnings.warn(f"{config.name}: unmapped {kind} values: {unmapped[:10]}", stacklevel=1)
+
+
+@pytest.mark.parametrize("city", list(CITIES))
+async def test_permit_ids_are_unique(socrata: SocrataClient, city: str) -> None:
+    config = CITIES[city]
+    id_col = config.fields.permit_id
+    rows = await socrata.query(
+        config.domain,
+        config.dataset_id,
+        {"$select": f"{id_col}, count(*) as n", "$group": id_col, "$having": "n > 1", "$limit": "20"},
+    )
+    if rows:
+        lines = "\n".join(f"| `{r.get(id_col)}` | {r['n']} |" for r in rows)
+        _summary(
+            f"### ⚠️ {config.name}: permit IDs on more than one record\n"
+            f"get_permit returns the most recently issued one with a warning.\n\n| {id_col} | records |\n|---|---|\n"
+            + lines
+        )
+        warnings.warn(f"{config.name}: duplicate permit IDs: {rows[:10]}", stacklevel=1)

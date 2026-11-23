@@ -1,5 +1,5 @@
 {
- "request": "/resource/76t5-zqzr.json?%24limit=2&%24where=permitnum+IN+%28%277148658-cn%27%2C+%277148658-CN%27%29",
+ "request": "/resource/76t5-zqzr.json?%24limit=10&%24where=permitnum+IN+%28%277148658-cn%27%2C+%277148658-CN%27%29",
  "status": 200,
  "body": [
   {

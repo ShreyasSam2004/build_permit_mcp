@@ -62,6 +62,7 @@ class Permit(BaseModel):
 
 class PermitDetail(Permit):
     raw: dict[str, Any] = Field(description="Every non-null column exactly as the city publishes it.")
+    warnings: list[str] = Field(default_factory=list)
 
 
 class StalePermit(Permit):
