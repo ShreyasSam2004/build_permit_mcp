@@ -123,3 +123,25 @@ runs daily against the live portals:
 
 To add a city, see [docs/adding-a-city.md](docs/adding-a-city.md). It means adding one config
 file; no Python code is needed.
+
+## Eval (in progress)
+
+The eval asks Claude 30 permit questions twice: once with this server, once with the generic
+Socrata server [`opengov-mcp-server`](https://www.npmjs.com/package/opengov-mcp-server) (pinned
+to 0.1.1). The model, prompt and tool-call cap are the same for both. Answers are graded against
+hand-written SoQL run on the live portals right before each run. The questions and their
+interpretations are in [`eval/questions.toml`](eval/questions.toml).
+
+```bash
+uv sync --group eval
+(cd eval/baseline && npm ci --ignore-scripts)        # once: install the pinned baseline
+echo "ANTHROPIC_API_KEY=..." >> .env                 # the eval calls claude-opus-5-5; .env is gitignored
+uv run --env-file .env python -m eval.run --pilot    # 3 questions x 2 arms; reports measured and projected cost
+uv run --env-file .env python -m eval.run            # all 30 questions
+```
+
+The key stays with the harness: each MCP server is started with only `PATH` and its own settings.
+
+Each run writes `eval/results/runs/<id>/` with `results.md`, per-trial transcripts and an
+`errors.jsonl` for unscored infrastructure failures. `uv run python -m eval.grade --selfcheck`
+confirms the grader accepts every reference answer and rejects near misses.

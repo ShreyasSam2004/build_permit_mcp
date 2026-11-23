@@ -28,6 +28,9 @@ dev = [
     "pytest>=9.2.0",
     "ruff>=0.17.6",
 ]
+eval = [
+    "anthropic>=1,<2",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
@@ -49,6 +52,6 @@ ignore = [
 exclude = ["docs/**"]
 
 [tool.pyright]
-include = ["src", "tests"]
+include = ["src", "tests", "eval"]
 pythonVersion = "3.12"
 typeCheckingMode = "standard"

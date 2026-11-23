@@ -1,0 +1,662 @@
+{
+ "computed_at": "2026-11-23T07:37:08+00:00",
+ "city_dates": {
+  "chicago": "2026-11-23",
+  "seattle": "2026-11-22",
+  "austin": "2026-11-23"
+ },
+ "questions": {
+  "chi-01": {
+   "answer_type": "integer",
+   "category": "aggregation",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "33439"
+      }
+     ]
+    }
+   ],
+   "expected": 33439
+  },
+  "chi-02": {
+   "answer_type": "integer",
+   "category": "date_field",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "application_start_date >= '2025-03-01T00:00:00' AND application_start_date < '2025-04-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "2600"
+      }
+     ]
+    }
+   ],
+   "expected": 2600
+  },
+  "chi-03": {
+   "answer_type": "integer",
+   "category": "permit_type",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permit_type = 'PERMIT - NEW CONSTRUCTION' AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-07-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "666"
+      }
+     ]
+    }
+   ],
+   "expected": 666
+  },
+  "chi-04": {
+   "answer_type": "integer",
+   "category": "valuation",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "reported_cost >= 1000000 AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2026-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "997"
+      }
+     ]
+    }
+   ],
+   "expected": 997
+  },
+  "chi-05": {
+   "answer_type": "ids",
+   "category": "valuation",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "permit_ as id",
+      "$where": "reported_cost >= 150000000 AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2026-01-01T00:00:00'",
+      "$limit": "1000"
+     },
+     "rows": [
+      {
+       "id": "101050206"
+      },
+      {
+       "id": "101059401"
+      },
+      {
+       "id": "101060198"
+      },
+      {
+       "id": "101073691"
+      },
+      {
+       "id": "101068175"
+      }
+     ]
+    }
+   ],
+   "expected": [
+    "101050206",
+    "101059401",
+    "101060198",
+    "101068175",
+    "101073691"
+   ]
+  },
+  "chi-06": {
+   "answer_type": "integer",
+   "category": "status",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permit_status = 'SUSPENDED' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "5924"
+      }
+     ]
+    }
+   ],
+   "expected": 5924
+  },
+  "chi-07": {
+   "answer_type": "integer",
+   "category": "stale",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '2024-11-23T00:00:00') OR (application_start_date IS NULL AND issue_date < '2024-11-23T00:00:00'))"
+     },
+     "rows": [
+      {
+       "n": "774"
+      }
+     ]
+    }
+   ],
+   "expected": 774
+  },
+  "chi-08": {
+   "answer_type": "integer",
+   "category": "lookup",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "street_number = '121' AND street_direction = 'N' AND street_name = 'LA SALLE ST' AND issue_date >= '2015-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "52"
+      }
+     ]
+    }
+   ],
+   "expected": 52
+  },
+  "chi-09": {
+   "answer_type": "unavailable",
+   "category": "gap",
+   "expected": "UNAVAILABLE"
+  },
+  "sea-01": {
+   "answer_type": "integer",
+   "category": "date_field",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "applieddate >= '2025-06-01T00:00:00' AND applieddate < '2025-07-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "516"
+      }
+     ]
+    }
+   ],
+   "expected": 516
+  },
+  "sea-02": {
+   "answer_type": "integer",
+   "category": "date_field",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "issueddate >= '2025-06-01T00:00:00' AND issueddate < '2025-07-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "617"
+      }
+     ]
+    }
+   ],
+   "expected": 617
+  },
+  "sea-03": {
+   "answer_type": "integer",
+   "category": "status",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "statuscurrent IN ('Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance')"
+     },
+     "rows": [
+      {
+       "n": "5154"
+      }
+     ]
+    }
+   ],
+   "expected": 5154
+  },
+  "sea-04": {
+   "answer_type": "integer",
+   "category": "permit_type",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "1031"
+      }
+     ]
+    }
+   ],
+   "expected": 1031
+  },
+  "sea-05": {
+   "answer_type": "number",
+   "category": "valuation",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "sum(estprojectcost) as v",
+      "$where": "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "v": "1323118235.7400"
+      }
+     ]
+    }
+   ],
+   "expected": 1323118235.74
+  },
+  "sea-06": {
+   "answer_type": "number",
+   "category": "lookup",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "estprojectcost as v",
+      "$where": "permitnum = '6890591-CN'"
+     },
+     "rows": [
+      {
+       "v": "2319525.0000"
+      }
+     ]
+    }
+   ],
+   "expected": 2319525.0
+  },
+  "sea-07": {
+   "answer_type": "integer",
+   "category": "stale",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-22T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-22T00:00:00'))"
+     },
+     "rows": [
+      {
+       "n": "4998"
+      }
+     ]
+    }
+   ],
+   "expected": 4998
+  },
+  "sea-08": {
+   "answer_type": "integer",
+   "category": "lookup",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "originaladdress1 = '400 BROAD ST'"
+     },
+     "rows": [
+      {
+       "n": "11"
+      }
+     ]
+    }
+   ],
+   "expected": 11
+  },
+  "sea-09": {
+   "answer_type": "label",
+   "category": "aggregation",
+   "queries": [
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "date_trunc_ym(applieddate) as label, count(*) as n",
+      "$where": "applieddate >= '2024-01-01T00:00:00' AND applieddate < '2025-01-01T00:00:00'",
+      "$group": "label",
+      "$order": "n DESC",
+      "$limit": "2"
+     },
+     "rows": [
+      {
+       "label": "2024-10-01T00:00:00.000",
+       "n": "619"
+      },
+      {
+       "label": "2024-03-01T00:00:00.000",
+       "n": "552"
+      }
+     ]
+    }
+   ],
+   "expected": "2024-10"
+  },
+  "aus-01": {
+   "answer_type": "integer",
+   "category": "permit_type",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittype = 'EP' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "17104"
+      }
+     ]
+    }
+   ],
+   "expected": 17104
+  },
+  "aus-02": {
+   "answer_type": "integer",
+   "category": "permit_type",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-04-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "1147"
+      }
+     ]
+    }
+   ],
+   "expected": 1147
+  },
+  "aus-03": {
+   "answer_type": "integer",
+   "category": "status",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "status_current IN ('VOID', 'Withdrawn', 'Cancelled', 'Cancelled - Contractor Required', 'Cancelled - New Permit Required', 'Aborted', 'Revoked', 'Denied but Closed', 'Rejected') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "692"
+      }
+     ]
+    }
+   ],
+   "expected": 692
+  },
+  "aus-04": {
+   "answer_type": "number",
+   "category": "valuation",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "sum(total_job_valuation) as v",
+      "$where": "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "v": "9109039060"
+      }
+     ]
+    }
+   ],
+   "expected": 9109039060.0
+  },
+  "aus-05": {
+   "answer_type": "integer",
+   "category": "stale",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '2023-11-24T00:00:00') OR (applieddate IS NULL AND issue_date < '2023-11-24T00:00:00'))"
+     },
+     "rows": [
+      {
+       "n": "464"
+      }
+     ]
+    }
+   ],
+   "expected": 464
+  },
+  "aus-06": {
+   "answer_type": "label",
+   "category": "aggregation",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "date_trunc_ym(issue_date) as label, count(*) as n",
+      "$where": "permittype = 'PP' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'",
+      "$group": "label",
+      "$order": "n DESC",
+      "$limit": "2"
+     },
+     "rows": [
+      {
+       "label": "2024-04-01T00:00:00.000",
+       "n": "1514"
+      },
+      {
+       "label": "2024-05-01T00:00:00.000",
+       "n": "1490"
+      }
+     ]
+    }
+   ],
+   "expected": "2024-04"
+  },
+  "aus-07": {
+   "answer_type": "number",
+   "category": "lookup",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "total_job_valuation as v",
+      "$where": "permit_number = '2023-107026 BP'"
+     },
+     "rows": [
+      {
+       "v": "2000000"
+      }
+     ]
+    }
+   ],
+   "expected": 2000000.0
+  },
+  "aus-08": {
+   "answer_type": "integer",
+   "category": "date_field",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "applieddate >= '2025-01-01T00:00:00' AND applieddate < '2025-02-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "4248"
+      }
+     ]
+    }
+   ],
+   "expected": 4248
+  },
+  "aus-09": {
+   "answer_type": "integer",
+   "category": "lookup",
+   "queries": [
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "original_address1 like '301 W 2ND ST%' AND issue_date >= '2015-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "32"
+      }
+     ]
+    }
+   ],
+   "expected": 32
+  },
+  "x-01": {
+   "answer_type": "integer",
+   "category": "cross_city",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permit_type = 'PERMIT - NEW CONSTRUCTION' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "1244"
+      }
+     ]
+    },
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "1031"
+      }
+     ]
+    },
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "3956"
+      }
+     ]
+    }
+   ],
+   "expected": 6231
+  },
+  "x-02": {
+   "answer_type": "label",
+   "category": "cross_city",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permit_type = 'PERMIT - WRECKING/DEMOLITION' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "635"
+      }
+     ]
+    },
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittypemapped = 'Demolition' AND (permittypedesc IS NULL OR permittypedesc != 'Relocation') AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "502"
+      }
+     ]
+    },
+    {
+     "city": "austin",
+     "params": {
+      "$select": "count(*) as n",
+      "$where": "permittype = 'BP' AND work_class IN ('Demolition', 'Interior Demo Non-Structural') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "n": "888"
+      }
+     ]
+    }
+   ],
+   "expected": "austin"
+  },
+  "x-03": {
+   "answer_type": "number",
+   "category": "cross_city",
+   "queries": [
+    {
+     "city": "chicago",
+     "params": {
+      "$select": "sum(reported_cost) as v",
+      "$where": "issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-02-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "v": "365556575.57"
+      }
+     ]
+    },
+    {
+     "city": "seattle",
+     "params": {
+      "$select": "sum(estprojectcost) as v",
+      "$where": "issueddate >= '2025-01-01T00:00:00' AND issueddate < '2025-02-01T00:00:00'"
+     },
+     "rows": [
+      {
+       "v": "189417563.0800"
+      }
+     ]
+    }
+   ],
+   "expected": 554974138.65
+  }
+ },
+ "failures": []
+}

@@ -11,3 +11,6 @@ wheels/
 
 # Local secrets
 .env
+
+# Eval baseline install (pinned by eval/baseline/package-lock.json)
+eval/baseline/node_modules/

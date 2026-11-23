@@ -2,7 +2,16 @@
 
 A read-only MCP server that gives agents one normalized building-permit schema across US cities' Socrata portals. It exposes five task-shaped tools, and an eval measures whether agents answer more accurately with it than with a generic Socrata MCP server.
 
-Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done; Phase 4 (eval) next.** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
+Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done. Phase 4: questions, ground truth, harness and grader built; the 3-question pilot is next (it needs `ANTHROPIC_API_KEY` and the pinned baseline installed).** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
+
+Phase 4 notes (2026-11-23):
+- **30 questions with ground truth for all of them** (`eval/questions.toml`); `eval/ground_truth.py` fails the snapshot on tied labels, a cross-city winner within 10%, or empty id lists. Grader self-check: all 30 reference answers pass; empty, non-answers and near misses (±1, ×1.01, a dropped id, the next month) all fail.
+- **The ground truth was cross-checked against the server's own tools on 11 questions; 9 match exactly.** The two differences are server weaknesses, not ground-truth errors:
+  - `permit_stats` requires a date range, so it silently drops records with no date. Seattle has 5,154 applications in review, but 510 of them have no application date, so `permit_stats` reports 4,644. `search_permits` without dates gets 5,154. The server instructions ("use permit_stats for any count") steer agents to the wrong number.
+  - Address normalization turns "LaSalle" into `LASALLE`; Chicago spells it `LA SALLE ST`, so the search returns 0 (52 expected). The no-match hint tells the agent to retry with the street name only.
+- **Seattle `Closed` demolitions are mixed:** of 895, 561 have a completion date but 314 were never issued. The config maps all of them to `finaled`; the questions avoid this case.
+- **Gap questions were checked against each portal's whole catalog**, because the baseline can search it. Seattle publishes electrical and trade permits separately and Austin publishes plan-review cases, so only Chicago's "applications in review" is a true gap.
+- **Baseline pinned with a lockfile** (`eval/baseline/package-lock.json`, `opengov-mcp-server@0.1.1` and its 109 dependencies). Its source was read before use: one `get_data` tool passing SoQL to Socrata, no app token, and it loads a `.env` from its working directory, so the harness runs it from `eval/baseline` with only `PATH` and the portal URL in its environment.
 
 Phase 3 notes:
 - **Seattle and Austin were added with zero Python changes.** All 12 `src/**/*.py` files hashed identically before and after; only `cities/*.toml`, tests and fixtures changed.
@@ -80,11 +89,14 @@ permits-mcp/
 │   ├── test_http_app.py        # token gate, open /healthz, real MCP call over HTTP through the gate
 │   └── live/test_schema_drift.py   # pytest -m live; used by the daily workflow
 └── eval/                       # Phase 4
-    ├── questions.toml          # 30 questions, each with its ground-truth SoQL
+    ├── questions.toml          # 30 questions, each with its ground-truth SoQL and interpretation
+    ├── common.py               # city map + question loader (independent of permits_mcp)
     ├── ground_truth.py         # runs the SoQL, writes a timestamped snapshot
-    ├── harness.py              # same model, same loop, either server
-    ├── grade.py                # deterministic graders
-    └── results/                # transcripts + results.md
+    ├── harness.py              # same model, same loop, either server; fresh server per trial
+    ├── grade.py                # deterministic graders + self-check + results.md
+    ├── run.py                  # one command: ground truth -> self-check -> arms -> report
+    ├── baseline/               # package.json + lockfile pinning opengov-mcp-server@0.1.1
+    └── results/                # ground_truth/ snapshots, runs/<id>/ (results, errors, transcripts), results.md
 ```
 
 **Why one generic adapter instead of an adapter class per city?** The requirement is "adding a city means adding one file." With per-city classes, every new city is new code to review and test. With one adapter driven by a validated config, a new city is data: a schema check and a drift check cover it.
@@ -243,7 +255,7 @@ Returns the full record plus `raw`.
 > **Use when:** you have a `permit_id` from a search result or the user. **Don't use** to discover permits.
 
 Not found → `ToolError: "No permit 'X' in chicago. Chicago IDs look like 'B200520605'. To find it by location, call search_permits with address=…"`.
-*Phase 2 check:* confirm whether `permit_` is unique. The `count(distinct)` probe hit a Socrata 503 today. If duplicates exist (e.g. reinstatements), return the latest and list the other IDs in `warnings`.
+*Checked 2026-11-23:* permit IDs are unique in all three datasets (a `$group … $having n > 1` over every row found none). `get_permit` still fetches up to 10 matches; if a city ever republishes an ID (e.g. a reinstatement), it returns the most recently issued record and describes the others in `warnings`. The daily drift job re-checks uniqueness and warns.
 
 ### 4. `find_stale_permits(...) -> StaleResult`
 ```python

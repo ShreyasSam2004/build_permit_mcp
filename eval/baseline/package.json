@@ -1,0 +1,8 @@
+{
+  "name": "permits-mcp-eval-baseline",
+  "private": true,
+  "description": "The eval's baseline arm: the generic Socrata MCP server, pinned. Install with: npm ci --ignore-scripts",
+  "dependencies": {
+    "opengov-mcp-server": "0.1.1"
+  }
+}

@@ -1,0 +1,309 @@
+# Eval questions. Each has hand-written ground-truth SoQL against the RAW Socrata columns.
+# The ground truth never imports permits_mcp: using the server under test to grade itself would
+# be circular. eval/ground_truth.py runs these queries and writes a timestamped snapshot.
+#
+# Fields
+#   id, cities, category, answer_type, question, interpretation
+#   answer_type: integer (exact) | number (within 0.5%) | ids (exact set) | label | unavailable
+#   query:       one or more {city, select, where, group?, order?, limit?}
+#                integer -> column `n`, number -> column `v`, ids -> column `id`, label -> column `label`
+#   combine:     single (default) | sum (add each query's n or v) | argmax_city (label = city with the largest n)
+#   label_format: month (YYYY-MM) | city
+# Placeholders: {cutoff:N} = midnight N days before today in the query city's timezone.
+#
+# Interpretation notes record the judgment calls. Questions use closed historical windows
+# wherever possible; the few "currently" questions are recomputed right before each run.
+
+# ---------------------------------------------------------------------------------- Chicago
+
+[[question]]
+id = "chi-01"
+cities = ["chicago"]
+category = "aggregation"
+answer_type = "integer"
+question = "How many building permits did Chicago issue in 2024?"
+interpretation = "All records in the Building Permits dataset with an issue date in calendar 2024."
+query = [{ city = "chicago", select = "count(*) as n", where = "issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "chi-02"
+cities = ["chicago"]
+category = "date_field"
+answer_type = "integer"
+question = "How many of Chicago's published building permits had their application started in March 2025?"
+interpretation = "Counts by application_start_date, not issue_date. Chicago publishes issued permits only, so this is permits issued so far whose application started in March 2025."
+query = [{ city = "chicago", select = "count(*) as n", where = "application_start_date >= '2025-03-01T00:00:00' AND application_start_date < '2025-04-01T00:00:00'" }]
+
+[[question]]
+id = "chi-03"
+cities = ["chicago"]
+category = "permit_type"
+answer_type = "integer"
+question = "How many new-construction permits did Chicago issue from January through June 2025?"
+interpretation = "permit_type 'PERMIT - NEW CONSTRUCTION', issued 2025-01-01 to 2025-06-30."
+query = [{ city = "chicago", select = "count(*) as n", where = "permit_type = 'PERMIT - NEW CONSTRUCTION' AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-07-01T00:00:00'" }]
+
+[[question]]
+id = "chi-04"
+cities = ["chicago"]
+category = "valuation"
+answer_type = "integer"
+question = "How many Chicago permits issued in 2025 had a reported cost of $1,000,000 or more?"
+interpretation = "reported_cost >= 1000000, issued in calendar 2025. Costs are applicant-reported and used as published."
+query = [{ city = "chicago", select = "count(*) as n", where = "reported_cost >= 1000000 AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2026-01-01T00:00:00'" }]
+
+[[question]]
+id = "chi-05"
+cities = ["chicago"]
+category = "valuation"
+answer_type = "ids"
+question = "List the permit numbers of every Chicago permit issued in 2025 with a reported cost of at least $150 million."
+interpretation = "reported_cost >= 150000000, issued in calendar 2025. (Phrased as a threshold because four permits tie at exactly $155M, so 'top N' would be ambiguous.)"
+query = [{ city = "chicago", select = "permit_ as id", where = "reported_cost >= 150000000 AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2026-01-01T00:00:00'", limit = "1000" }]
+
+[[question]]
+id = "chi-06"
+cities = ["chicago"]
+category = "status"
+answer_type = "integer"
+question = "How many of the permits Chicago issued in 2024 are currently suspended?"
+interpretation = "permit_status = 'SUSPENDED' (any milestone), issued in calendar 2024. A raw-status question: the normalized schema folds SUSPENDED into 'issued', so this tests whether the agent can still reach the source value."
+query = [{ city = "chicago", select = "count(*) as n", where = "permit_status = 'SUSPENDED' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "chi-07"
+cities = ["chicago"]
+category = "stale"
+answer_type = "integer"
+question = "How many Chicago permits with a reported cost of at least $1 million are still open more than 730 days after their application started?"
+interpretation = "Open = permit_status ACTIVE, PHASED PERMITTING or SUSPENDED, excluding records whose milestone is CANCELLED, DENIED or EXPIRED; blank statuses are excluded. Age from application_start_date, or issue_date when the application date is missing, counted to today in Chicago."
+query = [{ city = "chicago", select = "count(*) as n", where = "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '{cutoff:730}') OR (application_start_date IS NULL AND issue_date < '{cutoff:730}'))" }]
+
+[[question]]
+id = "chi-08"
+cities = ["chicago"]
+category = "lookup"
+answer_type = "integer"
+question = "How many building permits has Chicago issued for 121 N LaSalle St (City Hall) since January 1, 2015?"
+interpretation = "street_number '121', street_direction 'N', street_name 'LA SALLE ST' (the dataset spells it as two words), issued on or after 2015-01-01."
+query = [{ city = "chicago", select = "count(*) as n", where = "street_number = '121' AND street_direction = 'N' AND street_name = 'LA SALLE ST' AND issue_date >= '2015-01-01T00:00:00'" }]
+
+[[question]]
+id = "chi-09"
+cities = ["chicago"]
+category = "gap"
+answer_type = "unavailable"
+question = "How many Chicago building permit applications are currently under plan review?"
+interpretation = "Chicago's portal publishes issued permits only; no dataset covers building permit applications in review (checked against the portal catalog on 2026-11-23). The correct answer is UNAVAILABLE."
+
+# ---------------------------------------------------------------------------------- Seattle
+
+[[question]]
+id = "sea-01"
+cities = ["seattle"]
+category = "date_field"
+answer_type = "integer"
+question = "How many Seattle building permit applications were submitted in June 2025?"
+interpretation = "applieddate in June 2025, whatever the permit's current status."
+query = [{ city = "seattle", select = "count(*) as n", where = "applieddate >= '2025-06-01T00:00:00' AND applieddate < '2025-07-01T00:00:00'" }]
+
+[[question]]
+id = "sea-02"
+cities = ["seattle"]
+category = "date_field"
+answer_type = "integer"
+question = "How many Seattle building permits were issued in June 2025?"
+interpretation = "issueddate in June 2025."
+query = [{ city = "seattle", select = "count(*) as n", where = "issueddate >= '2025-06-01T00:00:00' AND issueddate < '2025-07-01T00:00:00'" }]
+
+[[question]]
+id = "sea-03"
+cities = ["seattle"]
+category = "status"
+answer_type = "integer"
+question = "How many Seattle permit applications are currently in plan review: past intake, but not yet issued, withdrawn, cancelled, denied or closed?"
+interpretation = "statuscurrent in Application Completed, Reviews In Process, Corrections Required, Corrections Submitted, Awaiting Information, Reviews Completed, Ready for Issuance. Intake statuses (Initiated, Ready for Intake, Scheduled, Pending, Additional Info Requested, ...) are excluded."
+query = [{ city = "seattle", select = "count(*) as n", where = "statuscurrent IN ('Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance')" }]
+
+[[question]]
+id = "sea-04"
+cities = ["seattle"]
+category = "permit_type"
+answer_type = "integer"
+question = "How many new-construction building permits did Seattle issue in 2024?"
+interpretation = "permittypemapped 'Building' with permittypedesc 'New', issued in calendar 2024."
+query = [{ city = "seattle", select = "count(*) as n", where = "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "sea-05"
+cities = ["seattle"]
+category = "valuation"
+answer_type = "number"
+question = "What was the total estimated project cost of the new-construction building permits Seattle issued in 2024?"
+interpretation = "Sum of estprojectcost over permittypemapped 'Building' / permittypedesc 'New', issued in calendar 2024; blank costs contribute nothing."
+query = [{ city = "seattle", select = "sum(estprojectcost) as v", where = "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "sea-06"
+cities = ["seattle"]
+category = "lookup"
+answer_type = "number"
+question = "What is the estimated project cost of Seattle permit 6890591-CN?"
+interpretation = "estprojectcost of permitnum '6890591-CN' (a completed 2024 permit)."
+query = [{ city = "seattle", select = "estprojectcost as v", where = "permitnum = '6890591-CN'" }]
+
+[[question]]
+id = "sea-07"
+cities = ["seattle"]
+category = "stale"
+answer_type = "integer"
+question = "How many Seattle permits are still open (applied for, in review, or issued but not yet completed) more than 730 days after their application date?"
+interpretation = "Open = intake, review or issued statuses (Initiated ... Ready for Issuance, Issued, Phase Issued); 'Active', 'Closed', completed, expired and cancelled statuses are excluded. Age from applieddate, or issueddate when the application date is missing; 1900-01-01 placeholder dates count as missing. Counted to today in Seattle."
+query = [{ city = "seattle", select = "count(*) as n", where = "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '{cutoff:730}') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '{cutoff:730}'))" }]
+
+[[question]]
+id = "sea-08"
+cities = ["seattle"]
+category = "lookup"
+answer_type = "integer"
+question = "How many Seattle building permits have been filed for 400 Broad St (the Space Needle)?"
+interpretation = "originaladdress1 exactly '400 BROAD ST' (not '400 BROADWAY'), any date or status."
+query = [{ city = "seattle", select = "count(*) as n", where = "originaladdress1 = '400 BROAD ST'" }]
+
+[[question]]
+id = "sea-09"
+cities = ["seattle"]
+category = "aggregation"
+answer_type = "label"
+label_format = "month"
+question = "In 2024, which month had the most Seattle building permit applications submitted? Answer as YYYY-MM."
+interpretation = "Group by month of applieddate within calendar 2024; the month with the highest count."
+query = [{ city = "seattle", select = "date_trunc_ym(applieddate) as label, count(*) as n", where = "applieddate >= '2024-01-01T00:00:00' AND applieddate < '2025-01-01T00:00:00'", group = "label", order = "n DESC", limit = "2" }]
+
+# ---------------------------------------------------------------------------------- Austin
+
+[[question]]
+id = "aus-01"
+cities = ["austin"]
+category = "permit_type"
+answer_type = "integer"
+question = "How many electrical permits did Austin issue in 2024?"
+interpretation = "permittype 'EP', issued in calendar 2024."
+query = [{ city = "austin", select = "count(*) as n", where = "permittype = 'EP' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "aus-02"
+cities = ["austin"]
+category = "permit_type"
+answer_type = "integer"
+question = "How many new-construction building permits did Austin issue in the first quarter of 2025? Count new buildings and new building shells."
+interpretation = "permittype 'BP' with work_class 'New' or 'Shell', issued 2025-01-01 to 2025-03-31."
+query = [{ city = "austin", select = "count(*) as n", where = "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-04-01T00:00:00'" }]
+
+[[question]]
+id = "aus-03"
+cities = ["austin"]
+category = "status"
+answer_type = "integer"
+question = "How many of the permits Austin issued in 2024 were later voided, withdrawn, cancelled, revoked, aborted, denied or rejected?"
+interpretation = "status_current in VOID, Withdrawn, Cancelled, Cancelled - Contractor Required, Cancelled - New Permit Required, Aborted, Revoked, Denied but Closed, Rejected; issued in calendar 2024."
+query = [{ city = "austin", select = "count(*) as n", where = "status_current IN ('VOID', 'Withdrawn', 'Cancelled', 'Cancelled - Contractor Required', 'Cancelled - New Permit Required', 'Aborted', 'Revoked', 'Denied but Closed', 'Rejected') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "aus-04"
+cities = ["austin"]
+category = "valuation"
+answer_type = "number"
+question = "What was the total job valuation of Austin's new-construction building permits (new buildings and shells) issued in 2024?"
+interpretation = "Sum of total_job_valuation over permittype 'BP' with work_class 'New' or 'Shell', issued in calendar 2024; blank valuations contribute nothing; outliers are kept as published."
+query = [{ city = "austin", select = "sum(total_job_valuation) as v", where = "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" }]
+
+[[question]]
+id = "aus-05"
+cities = ["austin"]
+category = "stale"
+answer_type = "integer"
+question = "How many Austin permits with a total job valuation of at least $1,000,000 are still open (status Active, On Hold, Suspended or Inactive) more than 1,095 days after their application date?"
+interpretation = "status_current in Active, On Hold, Suspended, Inactive Pending Revision, Inactive Contractor; total_job_valuation >= 1000000. Age from applieddate, or issue_date when the application date is missing, counted to today in Austin."
+query = [{ city = "austin", select = "count(*) as n", where = "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '{cutoff:1095}') OR (applieddate IS NULL AND issue_date < '{cutoff:1095}'))" }]
+
+[[question]]
+id = "aus-06"
+cities = ["austin"]
+category = "aggregation"
+answer_type = "label"
+label_format = "month"
+question = "In 2024, which month did Austin issue the most plumbing permits? Answer as YYYY-MM."
+interpretation = "permittype 'PP', grouped by month of issue_date within calendar 2024; the month with the highest count."
+query = [{ city = "austin", select = "date_trunc_ym(issue_date) as label, count(*) as n", where = "permittype = 'PP' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'", group = "label", order = "n DESC", limit = "2" }]
+
+[[question]]
+id = "aus-07"
+cities = ["austin"]
+category = "lookup"
+answer_type = "number"
+question = "What is the total job valuation of Austin permit 2023-107026 BP?"
+interpretation = "total_job_valuation of permit_number '2023-107026 BP' (a finaled 2024 permit)."
+query = [{ city = "austin", select = "total_job_valuation as v", where = "permit_number = '2023-107026 BP'" }]
+
+[[question]]
+id = "aus-08"
+cities = ["austin"]
+category = "date_field"
+answer_type = "integer"
+question = "How many of Austin's issued permits had their application submitted in January 2025?"
+interpretation = "applieddate in January 2025 (not issue_date). Austin publishes issued permits only."
+query = [{ city = "austin", select = "count(*) as n", where = "applieddate >= '2025-01-01T00:00:00' AND applieddate < '2025-02-01T00:00:00'" }]
+
+[[question]]
+id = "aus-09"
+cities = ["austin"]
+category = "lookup"
+answer_type = "integer"
+question = "How many permits has Austin issued for 301 W 2nd St (City Hall), including its units, since January 1, 2015?"
+interpretation = "original_address1 starting '301 W 2ND ST' (includes 'UNIT ...' suffixes), issued on or after 2015-01-01."
+query = [{ city = "austin", select = "count(*) as n", where = "original_address1 like '301 W 2ND ST%' AND issue_date >= '2015-01-01T00:00:00'" }]
+
+# ---------------------------------------------------------------------------------- Cross-city
+
+[[question]]
+id = "x-01"
+cities = ["chicago", "seattle", "austin"]
+category = "cross_city"
+answer_type = "integer"
+combine = "sum"
+question = "Across Chicago, Seattle and Austin combined, how many new-construction building permits were issued in 2024? For Austin, count new buildings and new building shells."
+interpretation = "Chicago 'PERMIT - NEW CONSTRUCTION' + Seattle Building/New + Austin BP New or Shell, each issued in calendar 2024."
+query = [
+  { city = "chicago", select = "count(*) as n", where = "permit_type = 'PERMIT - NEW CONSTRUCTION' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" },
+  { city = "seattle", select = "count(*) as n", where = "permittypemapped = 'Building' AND permittypedesc = 'New' AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'" },
+  { city = "austin", select = "count(*) as n", where = "permittype = 'BP' AND work_class IN ('New', 'Shell') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" },
+]
+
+[[question]]
+id = "x-02"
+cities = ["chicago", "seattle", "austin"]
+category = "cross_city"
+answer_type = "label"
+label_format = "city"
+combine = "argmax_city"
+question = "Which city (Chicago, Seattle or Austin) issued the most demolition permits in 2024?"
+interpretation = "Chicago 'PERMIT - WRECKING/DEMOLITION'; Seattle Demolition excluding 'Relocation' (house moves); Austin BP with work_class Demolition or Interior Demo Non-Structural. Issued in calendar 2024. ground_truth.py checks the margin is wide enough that these boundary choices can't flip the answer."
+query = [
+  { city = "chicago", select = "count(*) as n", where = "permit_type = 'PERMIT - WRECKING/DEMOLITION' AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" },
+  { city = "seattle", select = "count(*) as n", where = "permittypemapped = 'Demolition' AND (permittypedesc IS NULL OR permittypedesc != 'Relocation') AND issueddate >= '2024-01-01T00:00:00' AND issueddate < '2025-01-01T00:00:00'" },
+  { city = "austin", select = "count(*) as n", where = "permittype = 'BP' AND work_class IN ('Demolition', 'Interior Demo Non-Structural') AND issue_date >= '2024-01-01T00:00:00' AND issue_date < '2025-01-01T00:00:00'" },
+]
+
+[[question]]
+id = "x-03"
+cities = ["chicago", "seattle"]
+category = "cross_city"
+answer_type = "number"
+combine = "sum"
+question = "What was the combined total reported or estimated project cost of all permits issued in Chicago and Seattle in January 2025?"
+interpretation = "Chicago sum(reported_cost) + Seattle sum(estprojectcost), issued in January 2025; blank costs contribute nothing."
+query = [
+  { city = "chicago", select = "sum(reported_cost) as v", where = "issue_date >= '2025-01-01T00:00:00' AND issue_date < '2025-02-01T00:00:00'" },
+  { city = "seattle", select = "sum(estprojectcost) as v", where = "issueddate >= '2025-01-01T00:00:00' AND issueddate < '2025-02-01T00:00:00'" },
+]
