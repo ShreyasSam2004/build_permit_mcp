@@ -1,0 +1,60 @@
+# Austin — Issued Construction Permits (https://data.austintexas.gov/d/3syk-w9eu)
+# Every raw value below was copied from the live API on 2026-11-23, not typed from docs.
+# Principle: map a status by its meaning; where the meaning contradicts the city's own dates
+# (e.g. "Pending" permits that were issued and often completed), map to "unknown" explicitly.
+
+id = "austin"
+name = "Austin, TX"
+domain = "data.austintexas.gov"
+dataset_id = "3syk-w9eu"
+timezone = "America/Chicago"
+permit_id_example = "2026-142501 BP"
+known_gaps = [
+  "Only issued permits are published; there are no 'applied' or 'in_review' records.",
+  "Includes electrical, mechanical, plumbing and driveway/sidewalk permits as well as building permits.",
+  "last_activity_date is when the status or expiry date last changed (source column 'statusdate').",
+  "Valuation is published for about half of permits; it is applicant-reported and includes obvious errors (e.g. $1 and $8,100,000,000); passed through as published.",
+  "A few small legacy statuses whose meaning conflicts with the record's dates (Pending, Pending Permit, Re Review, Closed, ...) normalize to 'unknown'.",
+  "About 5,500 building permits have no work class; their permit_type is 'unknown'.",
+  "Records go back to the 1970s, with a handful of odd earlier dates (e.g. 1921).",
+]
+
+[fields]
+permit_id = "permit_number"
+address = "original_address1"
+applied_date = "applieddate"
+issued_date = "issue_date"
+last_activity_date = "statusdate"
+valuation_usd = "total_job_valuation"
+description = "description"
+source_url = "link"
+
+# First match wins. No match -> "unknown" (and a WARNING log if the raw value is non-blank).
+[status]
+rules = [
+  { when = { status_current = ["Final"] }, then = "finaled" },
+  { when = { status_current = ["Active", "On Hold", "Suspended", "Inactive Pending Revision", "Inactive Contractor"] }, then = "issued" },
+  { when = { status_current = ["Expired", "Expired - License"] }, then = "expired" },
+  { when = { status_current = [
+      "VOID", "Withdrawn", "Cancelled", "Cancelled - Contractor Required", "Cancelled - New Permit Required",
+      "Aborted", "Revoked", "Denied but Closed", "Rejected",
+  ] }, then = "cancelled" },
+  { when = { status_current = [
+      "Pending", "Pending Permit", "Re Review", "Closed", "New Permit Required", "Application Incomplete",
+      "Awaiting Upload",
+  ] }, then = "unknown" },
+]
+
+[permit_type]
+rules = [
+  { when = { permittype = ["EP"] }, then = "electrical" },
+  { when = { permittype = ["MP"] }, then = "mechanical" },
+  { when = { permittype = ["PP"] }, then = "plumbing" },
+  { when = { permittype = ["DS"] }, then = "site_work" },  # driveway / sidewalk
+  { when = { permittype = ["BP"], work_class = ["New", "Shell"] }, then = "new_construction" },
+  { when = { permittype = ["BP"], work_class = ["Remodel", "Addition", "Addition and Remodel", "Remodel Mobile Home"] }, then = "addition_alteration" },
+  { when = { permittype = ["BP"], work_class = ["Repair"] }, then = "repair" },
+  { when = { permittype = ["BP"], work_class = ["Demolition", "Interior Demo Non-Structural"] }, then = "demolition" },
+  { when = { permittype = ["BP"], work_class = ["Life Safety", "Relocation", "Fireline"] }, then = "other" },
+  { when = { permittype = ["BP"] }, then = "unknown" },  # no work class
+]

@@ -1,0 +1,146 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=10&%24offset=0&%24order=case%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27%2C+applieddate%2C+true%2C+issueddate%29+ASC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29+OR+%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29+OR+%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Issued%27%2C+%27Phase+Issued%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29%29+AND+%28%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-11-22T00%3A00%3A00%27%29+OR+%28NOT+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27%29+AND+issueddate+IS+NOT+NULL+AND+issueddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+issueddate+%3C+%272025-11-22T00%3A00%3A00%27%29%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "6118168-CN",
+   "originaladdress1": "1811 S LANE ST",
+   "applieddate": "1990-09-21T00:00:00.000",
+   "issueddate": "2005-05-02T00:00:00.000",
+   "estprojectcost": "49401.0000",
+   "description": "ESTABLISH USE AS SINGLE FAMILY RESIDENCE CONSTRUCT SINGLE FAMILY DWELLING  PER PLANS",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6118168-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6103866-CN",
+   "originaladdress1": "117 N 48TH ST",
+   "applieddate": "1998-10-05T00:00:00.000",
+   "issueddate": "2004-12-23T00:00:00.000",
+   "estprojectcost": "196963.0000",
+   "description": "Construct 2nd and 3rd story addition to single family residence. Add roof deck and seismic upgrade  all per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6103866-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6075460-CN",
+   "originaladdress1": "115 N 47TH ST",
+   "applieddate": "1999-10-19T00:00:00.000",
+   "issueddate": "2004-04-09T00:00:00.000",
+   "estprojectcost": "45000.0000",
+   "description": "INTERIOR NON STRUCTURAL ALTERATIONS TO EXISTING  SINGLE FAMILY RESIDENCE  SUBJECT TO FIELD INSPECTION (STFI)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075460-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6125390-CN",
+   "originaladdress1": "7940 10TH AVE SW",
+   "applieddate": "2002-05-28T00:00:00.000",
+   "issueddate": "2005-07-12T00:00:00.000",
+   "estprojectcost": "26393.0000",
+   "description": "CONSTRUCT ADDITION AND PERFORM ALTERATIONS AND CONSTRUCT AND ESTABLISH USE AS ADU ALL PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6125390-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6079388-CN",
+   "originaladdress1": "9708 RENTON AVE S",
+   "applieddate": "2003-06-24T00:00:00.000",
+   "issueddate": "2004-05-19T00:00:00.000",
+   "estprojectcost": "225642.0000",
+   "description": "ESTABLISH USE AND OCCUPY AS SINGLE FAMILY RESIDENC NEW CONSTRUCTION OF A 3-STORY + BSMT SINGLE FAMILY WITH ATTACHED GARAGE PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079388-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6079627-CN",
+   "originaladdress1": "3731 SUNNYSIDE AVE N",
+   "applieddate": "2003-08-08T00:00:00.000",
+   "issueddate": "2004-05-19T00:00:00.000",
+   "estprojectcost": "350443.0000",
+   "description": "CONSTRUCT 2nd & 3rd  FLOORS  ALTER EXISTING MAIN FLOOR  BASEMENT  & FOUNDATION TO COMPLETE WORK  ESTABLISH ACCESSORY DWELLING UNIT & CLEAR CASE #232062 PER PLAN.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079627-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6070631-CN",
+   "originaladdress1": "9504 PHINNEY AVE N",
+   "applieddate": "2003-11-07T00:00:00.000",
+   "issueddate": "2005-08-26T00:00:00.000",
+   "estprojectcost": "198744.0000",
+   "description": "Demolish existing single family residence. Establish use as single family residence. Construct a one family dwelling with attached garage per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6070631-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6075453-CN",
+   "originaladdress1": "3416 45TH AVE SW",
+   "applieddate": "2003-11-25T00:00:00.000",
+   "issueddate": "2003-11-25T00:00:00.000",
+   "estprojectcost": "100000.0000",
+   "description": "CONSTRUCT DECKS ADDITIONS AND REPLACE ROOF AND ALTER INTERIOR OF SINGLE FAMILY RESIDENCE  PER PLOT PLAN & SUBJECT TO FIELD INSPECTION",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075453-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6076533-CN",
+   "originaladdress1": "3751 SW 100TH ST",
+   "applieddate": "2004-01-12T00:00:00.000",
+   "issueddate": "2005-10-20T00:00:00.000",
+   "estprojectcost": "101000.0000",
+   "description": "DEMOLISH EXISTING GARAGE  ESTABLISH USE AS SINGLE FAMILY RESIDENCE  CONSTRUCT NEW ONE FAMILY DWELLING  PER PLANS",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6076533-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6089958-CN",
+   "originaladdress1": "726 N 66TH ST",
+   "applieddate": "2004-06-30T00:00:00.000",
+   "issueddate": "2004-08-24T00:00:00.000",
+   "estprojectcost": "175000.0000",
+   "description": "CONSTRUCT 2 STORY ADDITION & INTERIOR ALTERATIONS TO AN EXISTING SINGLE FAMILY RESIDENCE AND CREATE AN ATTACHED ACESSORY DWELLING UNIT  PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089958-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  }
+ ]
+}

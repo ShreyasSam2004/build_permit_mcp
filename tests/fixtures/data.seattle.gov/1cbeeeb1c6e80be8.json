@@ -1,0 +1,9 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24select=count%28%2A%29+as+n&%24where=upper%28originaladdress1%29+like+%27%251420+5TH+AVE%25%27",
+ "status": 200,
+ "body": [
+  {
+   "n": "233"
+  }
+ ]
+}

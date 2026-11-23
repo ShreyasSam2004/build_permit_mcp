@@ -1,0 +1,77 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Remodel%27%2C+%27Addition%27%2C+%27Addition+and+Remodel%27%2C+%27Remodel+Mobile+Home%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27DS%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27New%27%2C+%27Shell%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2025-059630 BP",
+   "original_address1": "607 W 3RD ST UNIT 1600",
+   "applieddate": "2025-04-18T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Remodel existing admin office Units 1600",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13517506"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-059632 BP",
+   "original_address1": "607 W 3RD ST UNIT 1700",
+   "applieddate": "2025-04-18T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Remodel existing admin office Unit 1700",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13517508"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-059634 BP",
+   "original_address1": "607 W 3RD ST UNIT 1900",
+   "applieddate": "2025-04-18T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Remodel existing admin office Unit 1900",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13517510"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-065495 BP",
+   "original_address1": "5800 COVENTRY LN",
+   "applieddate": "2025-05-07T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-03-18T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Interior Remodel - 1 full bathroom and 1 half bath - turning into 2 full bathrooms by adding tub 1/2 bath. Primary full bath: Remove existing tile from walls floors and tub surround tub vanity; saving existing toilet and existing corner cabinet. Guest half bath: Remove existing tile from walls floor cabinet vanity sink; saving existing toilet. Primary bath: install glass fronted walk-in shower in Lieu of tub reset toilet reuse existing cabinet install new sink and vanity. Guest: Add drain install new tub tile surround and pedestal sink; reset toilet.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13524293"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2025-070307 BP",
+   "original_address1": "1303 SAN ANTONIO ST UNIT 500",
+   "applieddate": "2025-05-23T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Partial Floor Interior Remodel for Full Floor Tenant - Suite 500",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13529794"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  }
+ ]
+}

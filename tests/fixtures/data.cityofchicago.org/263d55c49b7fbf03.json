@@ -1,0 +1,61 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+SIGNS%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+RENOVATION%2FALTERATION%27%2C+%27PERMIT+-+PORCH+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+%E2%80%93+EXPRESS+PERMIT+PROGRAM%27%2C+%27PERMIT+-+EASY+PERMIT+PROCESS%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+WRECKING%2FDEMOLITION%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101066251",
+   "street_number": "8652",
+   "street_direction": "S",
+   "street_name": "LAFAYETTE AVE",
+   "application_start_date": "2025-03-06T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "reported_cost": "1000",
+   "work_description": "CONSTRUCTION OF 20' X 38' 2-FACED MULTI-TENANT PYLON SIGN TO BE LOCATED ON SOUTH SIDE OF LOT. BEING RELOCATED TO DIFFERENT LOCATION ON SAME SITE.",
+   "permit_type": "PERMIT - SIGNS"
+  },
+  {
+   "permit_": "101068112",
+   "street_number": "4021",
+   "street_direction": "N",
+   "street_name": "BROADWAY",
+   "application_start_date": "2025-04-19T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "reported_cost": "9000",
+   "work_description": "WE ARE PROPOSING TO ADD A SIGN FOR OUR BUSINESS TO THE FRONT OF THE BUILDING. WE WILL AFFIX OUR LOGO AND TAGLINE (\"LE VILLAGE\" AND \"COMMUNITY COWORKING CHILDCARE\") TO THE FRONT OF THE BUILDING, AND WE WILL ALSO ADD VINYL WINDOW DECALS TO THE WINDOWS TO ADD COLOR AND CHARACTER.",
+   "permit_type": "PERMIT - SIGNS"
+  },
+  {
+   "permit_": "101070338",
+   "street_number": "545",
+   "street_direction": "W",
+   "street_name": "MADISON ST",
+   "application_start_date": "2025-06-10T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "reported_cost": "11000",
+   "work_description": "INSTALLATION OF INTERNALLY ILLUMINATED WALL SIGN TO READ \"POTBELLY SANDWICH WORKS\" ON NORTH EAST ELEVATION, CONNECTING TO ALREADY EXISTING LEADS. - SIGN #1",
+   "permit_type": "PERMIT - SIGNS"
+  },
+  {
+   "permit_": "101070552",
+   "street_number": "30",
+   "street_direction": "W",
+   "street_name": "HURON ST",
+   "application_start_date": "2025-06-13T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "reported_cost": "1500",
+   "work_description": "INSTALLATION OF ONE 4' BY 16' DOUBLE-SIDED TEMPORARY SIGN ON THE WEST ELEVATION READING \"(LOGO) COMING SOON!\" ON ONE SIDE AND \"(LOGO) NOW OPEN!\" ON THE OTHER.SIGN",
+   "permit_type": "PERMIT - SIGNS"
+  },
+  {
+   "permit_": "101070694",
+   "street_number": "7507",
+   "street_direction": "N",
+   "street_name": "CLARK ST",
+   "application_start_date": "2025-06-17T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "reported_cost": "3500",
+   "work_description": "ILLUMINATED PROJECTING BLADE WALL SIGN.  BURLINGTON; 10 SQ/FT; WEST ELEVATION",
+   "permit_type": "PERMIT - SIGNS"
+  }
+ ]
+}

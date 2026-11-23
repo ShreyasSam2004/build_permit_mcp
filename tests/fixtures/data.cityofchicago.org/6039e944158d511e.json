@@ -1,0 +1,61 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+ELEVATOR+EQUIPMENT%27%2C+%27PERMIT+-+SCAFFOLDING%27%2C+%27PERMIT+-+REINSTATE+REVOKED+PMT%27%2C+%27PERMIT+-+FOR+EXTENSION+OF+PMT%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+RENOVATION%2FALTERATION%27%2C+%27PERMIT+-+PORCH+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+%E2%80%93+EXPRESS+PERMIT+PROGRAM%27%2C+%27PERMIT+-+EASY+PERMIT+PROCESS%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+WRECKING%2FDEMOLITION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+SIGNS%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101071137",
+   "street_number": "525",
+   "street_direction": "N",
+   "street_name": "AUSTIN BLVD",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "0",
+   "work_description": "REINSTATE PERMIT NO 101042977, MUST BEGIN WORK AND OR REQUEST INSPECTIONS NO LATER THAN DECEMBER 2025",
+   "permit_type": "PERMIT - REINSTATE REVOKED PMT"
+  },
+  {
+   "permit_": "101071141",
+   "street_number": "2844",
+   "street_direction": "N",
+   "street_name": "SAYRE AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "0",
+   "work_description": "REINSTATE PERMIT NO 100979765 MUST BEGIN WORK AND OR REQUEST INSPECTIONS NO LATER THAN ***FEBRUARY 2026*** ON PERMIT NO 100979765",
+   "permit_type": "PERMIT - REINSTATE REVOKED PMT"
+  },
+  {
+   "permit_": "101071143",
+   "street_number": "2846",
+   "street_direction": "N",
+   "street_name": "SAYRE AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "0",
+   "work_description": "REINSTATE PERMIT NO 100991194 MUST BEGIN WORK AND OR REQUEST INSPECTIONS NO LATER THAN ***FEBRUARY 2026** ON PERMIT NO 100991194",
+   "permit_type": "PERMIT - REINSTATE REVOKED PMT"
+  },
+  {
+   "permit_": "101071147",
+   "street_number": "2026",
+   "street_direction": "W",
+   "street_name": "HURON ST",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "0",
+   "work_description": "REINSTATE PERMIT NO 100956929, MUST BEGIN WORK AND OR REQUEST INSPECTIONS NO LATER THAN SEPTEMBER 2025",
+   "permit_type": "PERMIT - REINSTATE REVOKED PMT"
+  },
+  {
+   "permit_": "101071148",
+   "street_number": "4157",
+   "street_direction": "S",
+   "street_name": "MAPLEWOOD AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "0",
+   "work_description": "REINSTATE PERMIT NO 101026106, MUST BEGIN WORK AND OR REQUEST INSPECTIONS NO LATER THAN NOVEMBER 2025 ON PERMIT NO 101026106",
+   "permit_type": "PERMIT - REINSTATE REVOKED PMT"
+  }
+ ]
+}

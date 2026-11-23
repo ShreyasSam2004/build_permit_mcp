@@ -1,0 +1,74 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27New%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Addition%2FAlteration%27%2C+%27Tenant+Improvment%27%2C+%27Tenant+Improvement+Pre-Approval%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Curb+Cut%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Temporary%27%2C+%27Change+of+Use+Only+-+No+Construction%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Relocation%27%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7036066-DM",
+   "originaladdress1": "5444 21ST AVE SW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-08-27T00:00:00.000",
+   "estprojectcost": "5000.0000",
+   "description": "Demolish existing one family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7036066-DM"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "7051993-DM",
+   "originaladdress1": "4110 SW ELMGROVE ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2026-01-09T00:00:00.000",
+   "estprojectcost": "1000000.0000",
+   "description": "Demolish existing building  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7051993-DM"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "7064692-DM",
+   "originaladdress1": "11240 DAYTON AVE N",
+   "applieddate": "2025-06-26T00:00:00.000",
+   "issueddate": "2026-07-01T00:00:00.000",
+   "estprojectcost": "600000.0000",
+   "description": "Demolish existing one family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7064692-DM"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "6915037-DM",
+   "originaladdress1": "1809 5TH AVE N",
+   "applieddate": "2025-06-25T00:00:00.000",
+   "estprojectcost": "1885000.0000",
+   "description": "Demolish multifamily structure  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6915037-DM"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "7079243-DM",
+   "originaladdress1": "25 W DRAVUS ST",
+   "applieddate": "2025-06-25T00:00:00.000",
+   "issueddate": "2025-11-10T00:00:00.000",
+   "estprojectcost": "1000000.0000",
+   "description": "Demolition of existing single-family residence  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7079243-DM"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition"
+  }
+ ]
+}

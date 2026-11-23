@@ -1,0 +1,68 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+%E2%80%93+EXPRESS+PERMIT+PROGRAM%27%2C+%27PERMIT+-+EASY+PERMIT+PROCESS%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+RENOVATION%2FALTERATION%27%2C+%27PERMIT+-+PORCH+CONSTRUCTION%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "B200418556",
+   "street_number": "2611",
+   "street_direction": "N",
+   "street_name": "SAWYER AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "work_description": "FIRE ALARM: REPAIR EXISTING SYSTEM. AFFECTS: 0 DWELLING UNITS; 1 NON-RESIDENTIAL UNITS. HIGH-RISE BUILDING: NO. VOICE COMMUNICATION: NO. SPECIAL LOCKING: NO. MONITORING TYPE: SUPERVISING STATION . SPECIFIC LOCATION: BASEMENT MECHANICAL ROOM.",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200419573",
+   "street_number": "8716",
+   "street_direction": "S",
+   "street_name": "WALLACE ST",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "work_description": "APPROVAL OF NEW PLAN FOR STORMWATER MANAGEMENT. PROJECT TYPE: SCHOOL (K-12). PROJECT AREA: 1.51 ACRES. THIS APPROVAL DOES NOT AUTHORIZE ANY CONSTRUCTION WORK. CONSTRUCTION WORK MAY REQUIRE SEPARATE PERMIT(S).",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "POST CONSTRUCTION FILING",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200423099",
+   "street_number": "7736",
+   "street_direction": "S",
+   "street_name": "BURNHAM AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "work_description": "APPROVAL OF NEW PLAN FOR STORMWATER MANAGEMENT. PROJECT TYPE: SCHOOL (K-12). PROJECT AREA: 2.27 ACRES. THIS APPROVAL DOES NOT AUTHORIZE ANY CONSTRUCTION WORK. CONSTRUCTION WORK MAY REQUIRE SEPARATE PERMIT(S).",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "POST CONSTRUCTION FILING",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200423245",
+   "street_number": "2105",
+   "street_direction": "N",
+   "street_name": "KIMBALL AVE",
+   "application_start_date": "2025-04-28T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "15000",
+   "work_description": "FULL REBUILD (SAME AS EXISTING) FOR WOOD PORCH (OPEN) (QUANTITY: 1, LOCATION: REAR OF BUILDING).",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200425542",
+   "street_number": "2932",
+   "street_direction": "N",
+   "street_name": "CLARK ST",
+   "application_start_date": "2025-05-13T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "12400",
+   "work_description": "TUCKPOINTING AND UNIT MASONRY REPAIR / REPLACEMENT: 200 SQ. FT., LINTEL QTY. 0, MAX. LENGTH 0. LOCATION: EAST FACADE.",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  }
+ ]
+}

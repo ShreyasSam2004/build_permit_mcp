@@ -1,0 +1,154 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2025-000064 EP",
+   "original_address1": "2310 RIDGEVIEW ST",
+   "applieddate": "2024-08-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-10-28T00:00:00.000",
+   "description": "Addition and Remodel\n\nRemodel and addition to existing unit and pool cabana Existing pool removal and new pool proposed New detached guest house\nGreater than 50% of the exterior will be demolished (2630 sq. ft.)",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13449223"
+   },
+   "status_current": "Active",
+   "permittype": "EP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2025-000460 BP",
+   "original_address1": "6607 BREEZY PASS",
+   "applieddate": "2024-02-08T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-06-09T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "New 2-story SFR w/ pool",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13449686"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-058576 MP",
+   "original_address1": "4507 E MARTIN LUTHER KING JR BLVD BLDG 1 UNIT D",
+   "applieddate": "2023-01-26T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-12T00:00:00.000",
+   "description": "Remodel retail space to living space",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13516256"
+   },
+   "status_current": "Active",
+   "permittype": "MP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-069613 BP",
+   "original_address1": "2208 MONTCLAIRE ST",
+   "applieddate": "2025-06-04T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-09-09T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Exploratory non structural demo\n\nREVISION: Add MEP Permits",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13528959"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-079527 BP",
+   "original_address1": "4206 BAMFORD DR",
+   "applieddate": "2025-04-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-08-13T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "ePlan: Residential Expedited Review - New construction of a 2-Story Single Family Res. [4bed 4bath] Attached Garage.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540150"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-079528 BP",
+   "original_address1": "4206 BAMFORD DR",
+   "applieddate": "2025-04-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-08-13T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "ePlan: Residential Expedited Review - New Autofill Pool.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540151"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-079730 BP",
+   "original_address1": "17224 RADIANT DR",
+   "applieddate": "2025-04-16T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-21T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "*SMART Housing* *Green Building* New 1-story 3 bedroom 2 bathroom single family residence with covered front porch and rear covered patio.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540374"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-079980 BP",
+   "original_address1": "17236 RADIANT DR",
+   "applieddate": "2025-04-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-21T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "*SMART Housing* *Green Building* New 1-story 3 bedroom 2 bathroom single family residence with covered front porch and rear covered patio.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540679"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2024-004437 BP",
+   "original_address1": "1703 E 21ST ST",
+   "applieddate": "2023-01-04T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "statusdate": "2026-09-08T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "New 2-Story Duplex 4 Bed/5 Bath with attached porches",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13265333"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2024-123504 BP",
+   "original_address1": "2836 MARY HELEN LOPEZ ST",
+   "applieddate": "2024-07-12T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "statusdate": "2026-11-19T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "*SMART HOUSING-CONDO*Construction of a detached single family residence - two story with 4 bedrooms and 2.5 bathrooms and covered patio",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13398879"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  }
+ ]
+}

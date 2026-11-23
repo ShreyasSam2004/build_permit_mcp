@@ -1,0 +1,146 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=10&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Issued%27%2C+%27Phase+Issued%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "6999884-CN",
+   "originaladdress1": "710 W CREMONA ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-10-28T00:00:00.000",
+   "estprojectcost": "655516.0000",
+   "description": "Establish use as single family residence per land use code. Construct new one family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6999884-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7037409-CN",
+   "originaladdress1": "1000 8TH AVE",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-07-09T00:00:00.000",
+   "estprojectcost": "30000.0000",
+   "description": "Construct alterations to minor telecommunications facility (AT&T) at the roof level of multifamily building  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7037409-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7064573-CN",
+   "originaladdress1": "3612 NE 110TH ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-12-03T00:00:00.000",
+   "estprojectcost": "641008.0000",
+   "description": "Construct new two family dwelling  per plan. (Establish use as single family residence with attached and detached accessory dwelling units per land use code.   Construct new two family dwelling and convert existing single family residence into detached accessory dwelling unit  per plan.  Review and processing for two records under 7064573-CN).",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7064573-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7082868-CN",
+   "originaladdress1": "700 5TH AVE",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-10-07T00:00:00.000",
+   "estprojectcost": "231726.0000",
+   "description": "Establish standard plan to construct new one family dwelling (Detached Accessory Dwelling Unit )  (no site review)  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7082868-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7085365-CN",
+   "originaladdress1": "500 MERCER ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-09-09T00:00:00.000",
+   "estprojectcost": "100000.0000",
+   "description": "Install new exterior fence  doors and gates for existing mixued use building  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7085365-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7089279-CN",
+   "originaladdress1": "211 S DAWSON ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-09-04T00:00:00.000",
+   "estprojectcost": "25000.0000",
+   "description": "Construct alterations to minor telecommunications facility (Verizon) on grade of existing one-family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7089279-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7093014-CN",
+   "originaladdress1": "13518 C 1ST AVE NW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-12-30T00:00:00.000",
+   "estprojectcost": "201079.0000",
+   "description": "Construct new one-family dwelling  per plan. (Establish use as single family residence with attached and detached accessory dwelling units per land use code. Construct new one- and two-family dwellings  per plan. Review and processing for two records under 7077060-CN)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093014-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7093148-CN",
+   "originaladdress1": "13516 A 1ST AVE NW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2026-01-02T00:00:00.000",
+   "estprojectcost": "209943.0000",
+   "description": "Construct new one family dwelling  per plan. (Establish use as single family residence with attached and detached accessory dwelling units per land use code.  Construct new one and two family dwellings  per plan. Review and processing for two records under 7075172-CN)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093148-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7093879-CN",
+   "originaladdress1": "7945 30TH AVE SW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-10-17T00:00:00.000",
+   "estprojectcost": "20000.0000",
+   "description": "Construct enclosed unconditioned deck addition at the east of existing single-family residence  per STFI",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093879-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7093901-BK",
+   "originaladdress1": "155 NE 100TH ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-08-12T00:00:00.000",
+   "estprojectcost": "129000.0000",
+   "description": "Construct blanket permit tenant improvements to Ohana Fiduciary on the second floor of existing commercial building  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093901-BK"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  }
+ ]
+}

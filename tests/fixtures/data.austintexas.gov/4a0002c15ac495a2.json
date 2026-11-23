@@ -1,0 +1,76 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2024-106865 MP",
+   "original_address1": "4911 WESTFIELD DR",
+   "applieddate": "2024-05-03T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-17T00:00:00.000",
+   "description": "New single-story addition to existing single-story residence. Convert existing garage into conditioned space.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13381209"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2024-159525 MP",
+   "original_address1": "2201 AIRPORT BLVD",
+   "applieddate": "2024-04-02T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-05T00:00:00.000",
+   "description": "ePlan: Commercial Expedited Review - New Construction of a 2-Story Mixed Use Bldg. (21421 SF)",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13439548"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-030087 MP",
+   "original_address1": "2705 WARREN ST",
+   "applieddate": "2024-12-27T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-02T00:00:00.000",
+   "description": "ePlan: Residential Expedited Review - New construction of a 3-Story Single Family Res. [5bed 5bath] with attached Carport.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13483296"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-041627 MP",
+   "original_address1": "9400 TEXAS OAKS DR",
+   "applieddate": "2025-02-10T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-09-23T00:00:00.000",
+   "description": "Complete Removal of Existing Membrane Roofing; Selective Demolition of HVAC Units Admin Area and Associated HRUs. Selective Demolition of Classroom Water Source Heat Pumps. New Work Structural Steel Framing as required for HRU Replacement. Membrane roofing EIFS (as required for repair work). Interior Finishes patch and repair with like materials as required for any materials disturbed during classroom HVAC Replacement for Casey Elementary School",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13496757"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-050138 MP",
+   "original_address1": "4416 BELLVUE AVE UNIT B",
+   "applieddate": "2024-10-17T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "*Change of Use* Addition/remodel. Retroactively permitting addition of a sink to 2nd floor conditioned area to create an additional attached dwelling unit resulting in a duplex residential use. Addition of a conditioned stairwell accessing 2nd floor dwelling unit. Some framing and roofing to be included as part of tie-in with the existing structures. New electrical service and panel to be installed at 2nd unit/garage. \n\n10/10/25 SM - No mechanical changes to the space Permit not needed",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13506399"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "Addition and Remodel"
+  }
+ ]
+}

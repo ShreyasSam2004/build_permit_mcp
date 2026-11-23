@@ -1,0 +1,10 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24select=min%28issue_date%29+as+earliest%2C+max%28issue_date%29+as+latest&%24where=issue_date+IS+NOT+NULL",
+ "status": 200,
+ "body": [
+  {
+   "earliest": "1921-09-20T00:00:00.000",
+   "latest": "2026-11-21T00:00:00.000"
+  }
+ ]
+}

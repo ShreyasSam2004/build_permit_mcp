@@ -1,0 +1,148 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27VOID%27%2C+%27Withdrawn%27%2C+%27Cancelled%27%2C+%27Cancelled+-+Contractor+Required%27%2C+%27Cancelled+-+New+Permit+Required%27%2C+%27Aborted%27%2C+%27Revoked%27%2C+%27Denied+but+Closed%27%2C+%27Rejected%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Expired%27%2C+%27Expired+-+License%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2025-080563 MP",
+   "original_address1": "4100 EDWARDS MOUNTAIN DR",
+   "applieddate": "2025-06-27T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-09-19T00:00:00.000",
+   "description": "Replacement of complete existing central heat and air system with or without duct work LIKE FOR LIKE: 3 ton horizontal gas system (upstairs)",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13541366"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "MP",
+   "work_class": "Change Out"
+  },
+  {
+   "permit_number": "2025-079530 MP",
+   "original_address1": "7309 INSPIRATION DR",
+   "applieddate": "2025-06-26T00:00:00.000",
+   "issue_date": "2025-06-27T00:00:00.000",
+   "statusdate": "2025-07-16T00:00:00.000",
+   "description": "Replacement of complete existing central heat and air system with or without duct work",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13540154"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "MP",
+   "work_class": "Change Out"
+  },
+  {
+   "permit_number": "2025-051766 EP",
+   "original_address1": "4711 BANDERA RD",
+   "applieddate": "2025-04-28T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2026-02-09T00:00:00.000",
+   "description": "Express - replace bath tub; replace toilet; replace sinks; replace faucets; replace sheetrock; replace windows; replace doors; replace floor; add insulation; replace some siding",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13508330"
+   },
+   "status_current": "VOID",
+   "permittype": "EP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-054247 BP",
+   "original_address1": "1008 W 25TH HALF ST BLDG 1 UNIT FLR3",
+   "applieddate": "2024-05-18T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2026-10-06T00:00:00.000",
+   "description": "ePlan: Expedited Review - First Time Finish-Out (11402 SF).",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511151"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-065567 BP",
+   "original_address1": "1141 SHADY LN UNIT 100",
+   "applieddate": "2024-09-05T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2026-11-19T00:00:00.000",
+   "description": "Level 3 alterations to an existing abandoned +/-2000 sqft single story structure to reposition the building for a future tenant.  This will not seek a Certificate of Occupancy for Suite 100",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13524370"
+   },
+   "status_current": "Cancelled - Contractor Required",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-073613 MP",
+   "original_address1": "1910 CROOKED LN",
+   "applieddate": "2025-06-12T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2025-08-26T00:00:00.000",
+   "description": "Express - Replace title replace existing vanities add backsplash in kitchen replace vent hood replace sink and replace fixtures.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13533532"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "MP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-075789 BP",
+   "original_address1": "1602 PALMA PLZ",
+   "applieddate": "2025-06-17T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2025-12-04T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "express - handicap ramp",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13536029"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-079026 MP",
+   "original_address1": "4600 EDGE CREEK DR",
+   "applieddate": "2025-06-25T00:00:00.000",
+   "issue_date": "2025-06-26T00:00:00.000",
+   "statusdate": "2025-07-01T00:00:00.000",
+   "description": "Replacement of complete existing central heat and air system with or without duct work Replacement of HVAC system: Jamie Gamez Herrera",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13539602"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "MP",
+   "work_class": "Change Out"
+  },
+  {
+   "permit_number": "2025-076084 BP",
+   "original_address1": "1748 OHLEN RD UNIT 7",
+   "applieddate": "2025-06-18T00:00:00.000",
+   "issue_date": "2025-06-25T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Bathroom remodel (replace 1 tub and valve like for like) Wants separate from 2025-011260 BP",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13536353"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-076084 PP",
+   "original_address1": "1748 OHLEN RD UNIT 7",
+   "applieddate": "2025-06-18T00:00:00.000",
+   "issue_date": "2025-06-25T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Express: Bathroom remodel (replace 1 tub and valve like for like) Wants separate from 2025-011260 BP",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13536354"
+   },
+   "status_current": "Withdrawn",
+   "permittype": "PP",
+   "work_class": "Repair"
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101059373",
+   "street_number": "2206",
+   "street_direction": "W",
+   "street_name": "LAWRENCE AVE",
+   "application_start_date": "2024-09-06T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "2000000",
+   "work_description": "SPR 2019 CBC: NEW CONSTRUCTION FULL BUILDING PERMIT (5) FIVE STORY, (10) TEN RESIDENTIAL DWELLING UNIT BUILDING WITH (2) ROOFTOP STAIR PENTHOUSE/ENCLOSURE AND PRIVATE OCCUPIABLE ROOF DECK, FRONT DECKS, 3 ENCLOSED PARKING SPACES, 5 UNENCLOSED PARKING SPACES W/CARPORT (FOR 8 TOTAL) OCCUPANCY CLASS R-2,  RESIDENTIAL USE, CONSTRUCTION TYPE 3-A WITH FULL SPRINKLER AS PER NFPA PER PLANS (ELEVATOR UNDER SEPARATE PERMIT) **CERTIFIED PLANS CORRECTIONS: CONDITIONAL PERMIT SUBJECT TO FIELD INSPECTIONS **",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101064081",
+   "street_number": "5036",
+   "street_direction": "S",
+   "street_name": "ELIZABETH ST",
+   "application_start_date": "2025-01-21T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "300000",
+   "work_description": "SC 2019 CBC: AFFORDABLE - FULL BUILDING PERMIT FOR THE NEW CONSTRUCTION OF A TWO-STORY SINGLE-FAMILY HOME WITHOUT BASEMENT. (OCCUPANCY GROUP R-5, TYPE VA CONSTRUCTION)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101064088",
+   "street_number": "5007",
+   "street_direction": "S",
+   "street_name": "THROOP ST",
+   "application_start_date": "2025-01-21T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "300000",
+   "work_description": "SC 2019 CBC: AFFORDABLE - FULL BUILDING PERMIT FOR THE NEW CONSTRUCTION OF A TWO-STORY SINGLE-FAMILY HOME WITHOUT BASEMENT. (OCCUPANCY GROUP R-5, TYPE VA CONSTRUCTION)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101070192",
+   "street_number": "337",
+   "street_direction": "E",
+   "street_name": "RANDOLPH ST",
+   "application_start_date": "2025-06-05T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "20000",
+   "work_description": "PERMIT EXPIRES ON 08/30/2025 ERECTION STARTS: 7/3/2025, ERECTION ENDS: 7/8/2025.  NASCAR CSR 2025- ENTRYWAY STRUCTURE- PEER REVIEW, SELF-CERT- 2 DAY EVENT (7/5/2025-7/6/2025)ERECT ONE (1) ONE TRUSS/CONTAINER STRUCTURE 54X8X21.5.SETUP 7/3/2025- REMOVE 7/8/2025ASSEMBLY",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101070279",
+   "street_number": "948",
+   "street_direction": "N",
+   "street_name": "HOMAN AVE",
+   "application_start_date": "2025-06-10T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "380000",
+   "work_description": "RS-3 - SPR 2019 CBC: AFFORDABLE CCLBA HOUSING APPLICATION OF APPROVED PROTOTYPE PLANS SPR PERMIT # 101062147 FOR PROPOSED SELF CERT 2 STORY PREFAB MODULAR SFR W/CRAWL SPACE. FRONT STEEL PORCH, AND REAR 2 SPACE PARKING PAD",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY ISSUED",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  }
+ ]
+}

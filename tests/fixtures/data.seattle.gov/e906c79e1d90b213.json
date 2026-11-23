@@ -1,0 +1,71 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272026-01-01T00%3A00%3A00%27+AND+applieddate+%3C+%272026-11-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7148168-CN",
+   "originaladdress1": "519 S HENDERSON ST",
+   "applieddate": "2026-10-31T00:00:00.000",
+   "estprojectcost": "258198.0000",
+   "description": "Construct South One-family Dwelling  this permit [Allow housing for two (2) new detached dwelling unit  per land use code. Existing detached dwelling to remain  with alterations.  Construct as south and middle one-family dwellings; review and process for three records  under 7148168-CN].",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7148168-CN"
+   },
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7169252-CN",
+   "originaladdress1": "8305 DUNCAN AVE S",
+   "applieddate": "2026-10-31T00:00:00.000",
+   "estprojectcost": "35000.0000",
+   "description": "Construct alterations and additions and convert upper unit of two-family dwelling to adult family home  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7169252-CN"
+   },
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7169453-CN",
+   "originaladdress1": "519 S HENDERSON ST",
+   "applieddate": "2026-10-31T00:00:00.000",
+   "estprojectcost": "280287.0000",
+   "description": "Construct Middle One-family Dwelling  this permit [Allow housing for two (2) new detached dwelling unit  per land use code. Existing detached dwelling to remain with south deck removed.  Construct as north and south one-family dwellings; review and process for three records  under 7148168-CN].",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7169453-CN"
+   },
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7089408-CN",
+   "originaladdress1": "914 4TH AVE N",
+   "applieddate": "2026-10-30T00:00:00.000",
+   "estprojectcost": "430000.0000",
+   "description": "Allow use as housing for (4) stacked dwelling units  per Land Use Code. Existing detached dwelling to remain. Construct multi-family building  occupy per plan. Shoring included.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7089408-CN"
+   },
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7143153-CN",
+   "originaladdress1": "3408 W BERTONA ST",
+   "applieddate": "2026-10-30T00:00:00.000",
+   "estprojectcost": "473176.0000",
+   "description": "Allow housing for one new attached dwelling unit within an existing structure  per land use code. Construct substantial alterations for a two-family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7143153-CN"
+   },
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  }
+ ]
+}

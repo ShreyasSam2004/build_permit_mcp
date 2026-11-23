@@ -1,0 +1,54 @@
+# Chicago — Building Permits (https://data.cityofchicago.org/d/ydr8-5enu)
+# Every raw value below was copied from the live API on 2026-11-23, not typed from docs.
+# Note "PERMIT – EXPRESS PERMIT PROGRAM" uses an en dash (U+2013); the other types use "-".
+
+id = "chicago"
+name = "Chicago, IL"
+domain = "data.cityofchicago.org"
+dataset_id = "ydr8-5enu"
+timezone = "America/Chicago"
+permit_id_example = "B200520605"
+known_gaps = [
+  "Only issued permits are published; there are no 'applied' or 'in_review' records.",
+  "permit_status is blank on ~35% of records (mostly issued before 2024); these normalize to 'unknown'.",
+  "No last-activity date is published; last_activity_date is always null.",
+  "Electrical, HVAC and plumbing work is filed under Express/Easy permits, which normalize to 'repair'; Chicago never reports 'electrical', 'mechanical' or 'plumbing'.",
+  "Valuations are applicant-reported and include obvious data-entry errors (e.g. $6,666,666,666 for a boiler replacement); they are passed through as published.",
+  "Issue dates start in 2006.",
+]
+
+[fields]
+permit_id = "permit_"
+address = { concat = ["street_number", "street_direction", "street_name"] }
+applied_date = "application_start_date"
+issued_date = "issue_date"
+# last_activity_date: not published -> always null
+valuation_usd = "reported_cost"
+description = "work_description"
+source_url = { template = "https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_={permit_id}" }
+
+# First match wins. No match -> "unknown" (and a WARNING log if the raw value is non-null).
+[status]
+rules = [
+  { when = { permit_status = ["CANCELLED", "REVOKED"] }, then = "cancelled" },
+  { when = { permit_milestone = ["CANCELLED", "DENIED"] }, then = "cancelled" },
+  { when = { permit_status = ["EXPIRED"] }, then = "expired" },
+  { when = { permit_milestone = ["EXPIRED"] }, then = "expired" },
+  { when = { permit_status = ["COMPLETE"] }, then = "finaled" },
+  { when = { permit_status = ["ACTIVE", "PHASED PERMITTING", "SUSPENDED"] }, then = "issued" },
+]
+
+[permit_type]
+rules = [
+  { when = { permit_type = ["PERMIT - NEW CONSTRUCTION"] }, then = "new_construction" },
+  { when = { permit_type = ["PERMIT - RENOVATION/ALTERATION", "PERMIT - PORCH CONSTRUCTION"] }, then = "addition_alteration" },
+  { when = { permit_type = ["PERMIT – EXPRESS PERMIT PROGRAM", "PERMIT - EASY PERMIT PROCESS"] }, then = "repair" },
+  { when = { permit_type = ["PERMIT - WRECKING/DEMOLITION"] }, then = "demolition" },
+  { when = { permit_type = ["PERMIT - SIGNS"] }, then = "sign" },
+  { when = { permit_type = [
+      "PERMIT - ELEVATOR EQUIPMENT",
+      "PERMIT - SCAFFOLDING",
+      "PERMIT - REINSTATE REVOKED PMT",
+      "PERMIT - FOR EXTENSION OF PMT",
+  ] }, then = "other" },
+]

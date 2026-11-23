@@ -1,0 +1,76 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27DS%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2024-114178 DS",
+   "original_address1": "4104 PAINT ROCK DR",
+   "applieddate": "2025-04-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-08-14T00:00:00.000",
+   "description": "Construct new driveway approach of 19.25 FT",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13389199"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-002620 DS",
+   "original_address1": "4527 PACK SADDLE PASS",
+   "applieddate": "2024-09-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-15T00:00:00.000",
+   "description": "Construct new driveway approach of 18 FT and new walkway connecting from sidewalk to residence of 3.5 FT",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13452187"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-054294 DS",
+   "original_address1": "4503 HIGHLAND TER",
+   "applieddate": "2025-04-18T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-08-01T00:00:00.000",
+   "description": "Construct new driveway approach of 16 FT and curb & gutter of 18 FT.   No sidewalk inspection per plan review.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511231"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-071392 DS",
+   "original_address1": "8424 RED WILLOW DR",
+   "applieddate": "2025-06-09T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-01-15T00:00:00.000",
+   "description": "Construct new driveway approach of 16 FT and sidewalk of 8 LF",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13531017"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-072152 DS",
+   "original_address1": "6100 BAYTHORNE DR",
+   "applieddate": "2025-06-10T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-06-30T00:00:00.000",
+   "description": "Construct 2 new driveway approaches of 40 FT (20 Ft each) and sidewalk of 485 LF .  \n\n*** Worked in ROW without a permit for 1 week. invoiced accordingly.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13531861"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  }
+ ]
+}

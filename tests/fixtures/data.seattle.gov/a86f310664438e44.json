@@ -1,0 +1,126 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=10&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29%29+OR+%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Withdrawn%27%2C+%27Canceled%27%2C+%27Denied%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Issued%27%2C+%27Phase+Issued%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Completed%27%2C+%27Inspections+Completed%27%2C+%27Approved+to+Occupy%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Expired%27%29%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7089444-CN",
+   "originaladdress1": "610 N 46TH ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "estprojectcost": "20000.0000",
+   "description": "Construct a roof-top pergola on an existing two-family dwelling  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7089444-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7093824-CN",
+   "originaladdress1": "633 B N 138TH ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-06-30T00:00:00.000",
+   "estprojectcost": "22000.0000",
+   "description": "Construct detached garage at existing single family residence  subject to field inspection (STFI)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093824-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7027675-CN",
+   "originaladdress1": "4622 25TH AVE NE",
+   "applieddate": "2025-06-23T00:00:00.000",
+   "issueddate": "2025-07-10T00:00:00.000",
+   "estprojectcost": "57000.0000",
+   "description": "Construct alterations and additions at exterior of commercial building (Bank of America)  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7027675-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7085420-GR",
+   "originaladdress1": "4533 22ND AVE SW",
+   "applieddate": "2025-06-19T00:00:00.000",
+   "estprojectcost": "30000.0000",
+   "description": "WITHDRAWN by staff on 06/30/25  Site improvements for access driveway  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7085420-GR"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Grading"
+  },
+  {
+   "permitnum": "7091799-CN",
+   "originaladdress1": "252 NE 43RD ST",
+   "applieddate": "2025-06-18T00:00:00.000",
+   "issueddate": "2025-06-18T00:00:00.000",
+   "estprojectcost": "5000.0000",
+   "description": "WITHDRAWN AT APPLICANTS REQUESTConstruct new accessory structure  per STFI",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7091799-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7065882-CN",
+   "originaladdress1": "1413 E ALOHA ST",
+   "applieddate": "2025-06-16T00:00:00.000",
+   "estprojectcost": "1000000.0000",
+   "description": "Construct substantial alterations and additions to existing one-family dwelling  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7065882-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7091041-CN",
+   "originaladdress1": "1212 N ALLEN PL",
+   "applieddate": "2025-06-13T00:00:00.000",
+   "estprojectcost": "630403.0000",
+   "description": "Construct SOUTH Townhouse  per plan (Establish use as townhomes  per land use code.  Construct as north multifamily and south two-family dwelling and occupy  review and process for two records under 7065470-CN).",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7091041-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7090940-CN",
+   "originaladdress1": "4556 34TH AVE S",
+   "applieddate": "2025-06-12T00:00:00.000",
+   "issueddate": "2025-06-16T00:00:00.000",
+   "estprojectcost": "27737.0000",
+   "description": "Replace 19 windows in SFR like for like  subject to field inspection  STFI.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7090940-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7075426-CN",
+   "originaladdress1": "1008 S TRENTON ST",
+   "applieddate": "2025-06-11T00:00:00.000",
+   "estprojectcost": "30000.0000",
+   "description": "Allow new attached accessory dwelling unit to existing single family use per land use code.  Construct alterations for a two family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7075426-CN"
+   },
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  }
+ ]
+}

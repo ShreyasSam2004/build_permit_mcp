@@ -1,0 +1,58 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27EXPIRED%27%29%29%29+AND+NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27CANCELLED%27%2C+%27REVOKED%27%29%29%29+AND+NOT+%28%28permit_milestone+IS+NOT+NULL+AND+permit_milestone+IN+%28%27CANCELLED%27%2C+%27DENIED%27%29%29%29%29+OR+%28%28%28permit_milestone+IS+NOT+NULL+AND+permit_milestone+IN+%28%27EXPIRED%27%29%29%29+AND+NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27CANCELLED%27%2C+%27REVOKED%27%29%29%29+AND+NOT+%28%28permit_milestone+IS+NOT+NULL+AND+permit_milestone+IN+%28%27CANCELLED%27%2C+%27DENIED%27%29%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "B101067442",
+   "street_number": "3644",
+   "street_direction": "W",
+   "street_name": "CORNELIA AVE",
+   "application_start_date": "2025-06-25T00:00:00.000",
+   "issue_date": "2025-06-25T00:00:00.000",
+   "reported_cost": "20000",
+   "work_description": "WRECK AND REMOVE A 3 STORY MASONRY MULTI UNIT RESIDENCE AND A DETACHED FRAME GARAGE",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101067495",
+   "street_number": "1149",
+   "street_direction": "W",
+   "street_name": "WEBSTER AVE",
+   "application_start_date": "2025-06-25T00:00:00.000",
+   "issue_date": "2025-06-25T00:00:00.000",
+   "reported_cost": "30500",
+   "work_description": "WRECK AND REMOVE A 2 STORY MASONRY RESIDENCE (GARAGE TO REMAIN)",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101065384",
+   "street_number": "3302",
+   "street_direction": "W",
+   "street_name": "CUYLER AVE",
+   "application_start_date": "2025-06-18T00:00:00.000",
+   "issue_date": "2025-06-18T00:00:00.000",
+   "reported_cost": "10000",
+   "work_description": "WRECK AND REMOVE A 2 STORY FRAME RESIDENCE AND A DETACHED FRAME GARAGE",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101067130",
+   "street_number": "1736",
+   "street_direction": "N",
+   "street_name": "WOLCOTT AVE",
+   "application_start_date": "2025-06-05T00:00:00.000",
+   "issue_date": "2025-06-05T00:00:00.000",
+   "reported_cost": "26000",
+   "work_description": "WRECK AND REMOVE A 3 STORY MASONRY MULIT UNIT RESIDENCE AND A DETACHED FRAME GARAGE",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  }
+ ]
+}

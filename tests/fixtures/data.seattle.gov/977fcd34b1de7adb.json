@@ -1,0 +1,45 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=2&%24where=permitnum+IN+%28%277148658-cn%27%2C+%277148658-CN%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7148658-CN",
+   "permitclass": "Single Family/Duplex",
+   "permitclassmapped": "Residential",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration",
+   "description": "Construct alterations to garage attached to one-family dwelling  per plan",
+   "housingunits": "0.0",
+   "housingunitsremoved": "0.0",
+   "housingunitsadded": "0.0",
+   "estprojectcost": "10000.0000",
+   "applieddate": "2026-10-13T00:00:00.000",
+   "issueddate": "2026-11-20T00:00:00.000",
+   "expiresdate": "2028-05-20T00:00:00.000",
+   "statuscurrent": "Issued",
+   "originaladdress1": "1878 24TH AVE E",
+   "originalcity": "SEATTLE",
+   "originalstate": "WA",
+   "originalzip": "98112",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7148658-CN"
+   },
+   "latitude": "47.63746205",
+   "longitude": "-122.30119485",
+   "location1": {
+    "latitude": "47.63746205",
+    "longitude": "-122.30119485"
+   },
+   "totaldaysplanreview": "23",
+   "daysinitialplanreview": "15",
+   "daysplanreviewcity": "23",
+   "daysoutcorrections": "0",
+   "numberreviewcycles": "2",
+   "initialreviewcompletedate": "2026-10-28T00:00:00.000",
+   "planreviewcompletedate": "2026-11-06T00:00:00.000",
+   "readytoissuedate": "2026-11-20T00:00:00.000",
+   "dependentbuilding": "0",
+   "housingcategory": "Single-Family Add/Alt"
+  }
+ ]
+}

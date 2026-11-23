@@ -1,0 +1,102 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24group=statuscurrent%2C+permittypemapped&%24limit=50000&%24select=statuscurrent%2C+permittypemapped%2C+count%28%2A%29+as+n%2C+sum%28case%28estprojectcost+%3E%3D+0%2C+estprojectcost%29%29+as+v&%24where=applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "n": "8",
+   "v": "2710510.0000"
+  },
+  {
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Grading",
+   "n": "1",
+   "v": "30000.0000"
+  },
+  {
+   "statuscurrent": "Inspections Completed",
+   "permittypemapped": "Building",
+   "n": "6",
+   "v": "314655.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "n": "17",
+   "v": "19764551.0000"
+  },
+  {
+   "statuscurrent": "Awaiting Information",
+   "permittypemapped": "Building",
+   "n": "2",
+   "v": "202200.0000"
+  },
+  {
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Building",
+   "n": "2",
+   "v": "651857.0000"
+  },
+  {
+   "statuscurrent": "Issued",
+   "permittypemapped": "Demolition",
+   "n": "13",
+   "v": "5334300.0000"
+  },
+  {
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "n": "8",
+   "v": "1792140.0000"
+  },
+  {
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "n": "206",
+   "v": "76542198.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition",
+   "n": "1",
+   "v": "0.0000"
+  },
+  {
+   "statuscurrent": "Phase Issued",
+   "permittypemapped": "Building",
+   "n": "1",
+   "v": "30706296.0000"
+  },
+  {
+   "statuscurrent": "Approved to Occupy",
+   "permittypemapped": "Building",
+   "n": "1",
+   "v": "115818.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Demolition",
+   "n": "1",
+   "v": "1885000.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Building",
+   "n": "7",
+   "v": "3927534.0000"
+  },
+  {
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition",
+   "n": "21",
+   "v": "7868000.0000"
+  },
+  {
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "n": "221",
+   "v": "36342646.0000"
+  }
+ ]
+}

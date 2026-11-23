@@ -1,0 +1,110 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=10&%24offset=10&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29+AND+%28reported_cost+%3E%3D+1000000%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101065828",
+   "street_number": "705",
+   "street_direction": "W",
+   "street_name": "CHICAGO AVE",
+   "application_start_date": "2025-02-25T00:00:00.000",
+   "issue_date": "2025-06-16T00:00:00.000",
+   "reported_cost": "30000000",
+   "work_description": "DDS 2019 CBC: CONCRETE SUPERSTRUCTURE ONLY FROM GRADE THROUGH ROOF FOR THE NEW CONSTRUCTION OF A PROPOSED 36-STORY HOTEL HIGH RISE TOWER. ADJACENT STEEL SUPERSTRUCTURE TO BE PERMITTED SEPARATELY. CAISSONS AND PILES ONLY PERMITTED UNDER 101064196. EX/ERS, GRADE BEAMS, SLAB ON GRADE, TOWER CORE SUBSTRUCTURE PERMITTED UNDER 101064733.  (OCC GROUPS A-1. A-2, B, R-1, S-2; CONST TYPE I-B) CONSULTANT REVIEWER: GLOBETROTTERS ENGINEERING",
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101054069",
+   "street_number": "3952",
+   "street_direction": "N",
+   "street_name": "SEELEY AVE",
+   "application_start_date": "2024-06-28T00:00:00.000",
+   "issue_date": "2025-06-11T00:00:00.000",
+   "reported_cost": "6500000",
+   "work_description": "DIRECT DEVELOPER SERVICES 2019 CBC - ERECT 5 STORY 37 DU RESIDENTIAL BUILDING WITH GROUND FLOOR PARKING AND RETAIL SPACE FOR BUILDOUT UNDER SEPARATE PERMIT (CONSTRUCTION TYPE IIIA, OCCUPANCY GROUOP R2 M S2) CONSULTANT REVIEWER: V3 COMPANIES OF IL",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101068111",
+   "street_number": "741",
+   "street_direction": "W",
+   "street_name": "MELROSE ST",
+   "application_start_date": "2025-05-02T00:00:00.000",
+   "issue_date": "2025-06-11T00:00:00.000",
+   "reported_cost": "1728960",
+   "work_description": "PROPOSED 4 STORY/3 UNIT RESIDENCE W/BASEMENT AND ROOF DECK W/PERGOLA AND ROOF ENCLOSURE, 1ST/3RD FLOOR REAR TERRACE, 2ND FLOOR REAR PORCH, REAR 4 STORY STAIRS, AND 3 CAR GARAGE W/ROOF DECK, PER PLANS.(OCCUPANCY GROUP R-5, TYPE IIIA CONSTRUCTION).",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101055006",
+   "street_number": "513",
+   "street_direction": "W",
+   "street_name": "FULLERTON PKWY",
+   "application_start_date": "2024-07-09T00:00:00.000",
+   "issue_date": "2025-06-09T00:00:00.000",
+   "reported_cost": "2000000",
+   "work_description": "SELF-CERT: NEW CONSTRUCTION 8 RESIDENTIAL UNIT, 4-STORY BUILDING WITH BASEMENT AND 2 PRIVATE ROOF DECKS. FULLY SPRINKLERED WITH ELEVATOR PER PLANS. 2 PRIVATE ROOF DECKS WITH PERGOLAS ABOVE 8 CAR DETACHED GARAGE. 1 EXTERIOR REAR STAIR, FRONT BALCONIES ON FLOORS 1-3, & REAR DECKS ON FLOOR  (OCC. R-2; CONST TYPE IIIA.ELEVATOR INSTALLATION IS A SEPARATE SUBMISSION AND APPROVAL BY THE ELEVATOR BUREAU.",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101068815",
+   "street_number": "1849",
+   "street_direction": "N",
+   "street_name": "MOHAWK ST",
+   "application_start_date": "2025-05-06T00:00:00.000",
+   "issue_date": "2025-06-09T00:00:00.000",
+   "reported_cost": "1300000",
+   "work_description": "SC 2019 CBC ERECT A 4 STORY MASONRY BUILDING CONTAINING 3 DWELLING UNITS WITH A BASEMENT, ROOF DECK, STAIR ENCLOSURE AND PERGOLA. TO INCLUDE A 5' HIGH WROUGHT IRON FENCE, DETACHED 3 CAR MASONRY GARAGE, A ROOF DECK, PERGOLA AND ACCESS STAIR, AS PER PLANS. STRUCTURAL PEER REVIEW PROVIDED.",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101064854",
+   "street_number": "201",
+   "street_direction": "N",
+   "street_name": "SANGAMON ST",
+   "application_start_date": "2025-03-03T00:00:00.000",
+   "issue_date": "2025-06-05T00:00:00.000",
+   "reported_cost": "1550000",
+   "work_description": "DDS 2019 CBC: INITIAL TENANT BUILDOUT OF 31,000 SF COMMERCIAL GYM WITH ACCESSORY CAFE, RETAIL, AND SPA WITH MASSAGE SERVICES ON LEVELS 1 AND 2 OF 11 STORY BUILDING. INCLUDES ELECTRICAL, PLUMBING, AND MECHANICAL WORK AND NEW PARTITIONS, WALLS, AND FINISHES. (OCCUPANCY GROUPS A2, A3, B; TYPE IA CONSTRUCTION) CONSULTANT REVIEWER: V3 COMPANIES OF IL",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY ISSUED",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101067901",
+   "street_number": "1435",
+   "street_direction": "W",
+   "street_name": "FLETCHER ST",
+   "application_start_date": "2025-04-25T00:00:00.000",
+   "issue_date": "2025-06-04T00:00:00.000",
+   "reported_cost": "1500000",
+   "work_description": "PROPOSED 3 STORY SFR W/BASEMENT AND GREEN ROOF, PER PLANS. NOTE: EXISTING COACH HOUSE W/2 SPACE GARAGE EXISTING IN REAR LOT. PROPOSED SCOPE OF WORK IS NONCOFORMING BUT PERMITTED BY DEPARTMENT OF PLANNING AND DEVELOPMENT PER 17-15-0404-B.",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "101065244",
+   "street_number": "1073",
+   "street_direction": "W",
+   "street_name": "POLK ST",
+   "application_start_date": "2025-03-05T00:00:00.000",
+   "issue_date": "2025-06-03T00:00:00.000",
+   "reported_cost": "1093350",
+   "work_description": "SELF-CERT 2019 CBC: FULL BUILDING PERMIT FOR 3 STORY 3 D.U. BUILDING WITH BASEMENT, FRONT BALCONY AT 2ND/3RD STORY, REAR STAIR AT 1ST/2ND/3RD STORY , 2 EXTERIOR PARKING SPACES ON CONCRETE PAD AS PER PLAN (OCCUPANCY GROUP R-5, TYPE VA CONSTRUCTION).",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  }
+ ]
+}

@@ -1,0 +1,5 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=25&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=upper%28coalesce%28street_number+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_direction+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_name%2C+%27%27%29%29+like+%27%25121+N+LASALLE+ST%25%27",
+ "status": 200,
+ "body": []
+}

@@ -1,0 +1,71 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=upper%28coalesce%28street_number+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_direction+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_name%2C+%27%27%29%29+like+%27%25121+N+LA+SALLE+ST%25%27",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101075873",
+   "street_number": "121",
+   "street_direction": "N",
+   "street_name": "LA SALLE ST",
+   "application_start_date": "2025-12-03T00:00:00.000",
+   "issue_date": "2026-02-19T00:00:00.000",
+   "reported_cost": "25000",
+   "work_description": "SPR 2019 CBRC: STRUCTURAL REPAIRS TO THE EXISTING SUB-BASEMENT FLOOR STRUCTURE AT CITY HALL (121 N LASALLE ST) TO RESTORE STRUCTURAL CAPACITY OF AN EXISTING STEEL BEAM AS PER PLANS. WORK INCLUDES INSTALLATION OF A W12X35 REINFORCING BEAM BENEATH THE EXISTING BEAM WITH LOCALIZED CLEANING AND REPAIR OF EXISTING CONNECTIONS, REPLACEMENT OF DAMAGED BOLTS, INSTALLATION OF STIFFENER AND END PLATES, AND INSTALLATION OF ADHESIVE ANCHORS AS REQUIRED TO SECURE THE REINFORCING BEAM. NO CHANGE TO EXISTING USE, OCCUPANCY, EGRESS, OR FIRE/LIFE SAFETY SYSTEMS. (CONSTRUCTION TYPE: IA; OCCUPANCY: GROUP B/A-3)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "101004851",
+   "street_number": "121",
+   "street_direction": "N",
+   "street_name": "LA SALLE ST",
+   "application_start_date": "2023-02-15T00:00:00.000",
+   "issue_date": "2023-02-15T00:00:00.000",
+   "reported_cost": "200000",
+   "work_description": "SELF-CERT 2019 CBRC: NONSTRUCTRUAL INTERIOR DEMOLITION, INCLUDING REMOVAL OF ELECTRICAL SYSTEMS ON THE 1ST FLOOR SPACE 103. NO CHANGE TO DEMISING WALLS. (OCCUPANCY GROUP B; TYPE 1A CONSTRUCTION)",
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "B100894374",
+   "street_number": "121",
+   "street_direction": "N",
+   "street_name": "LA SALLE ST",
+   "application_start_date": "2020-10-06T00:00:00.000",
+   "issue_date": "2020-11-24T00:00:00.000",
+   "reported_cost": "250",
+   "work_description": "MONTHLY MAINTENANCE PERMIT FOR THE PERIOD  OCT-DEC 2020 FOR WORK COMPLETED BY AT&T AT 121 N LA SALE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN ATT_ 708-465-2229",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "100888468",
+   "street_number": "121",
+   "street_direction": "N",
+   "street_name": "LA SALLE ST",
+   "application_start_date": "2020-08-31T00:00:00.000",
+   "issue_date": "2020-10-03T00:00:00.000",
+   "reported_cost": "100000",
+   "work_description": "SPR 2019 CBRCEXTERIOR FACADE REPAIR TO INCLUDE REPAIR/REPLACING OF LINTELS IN THE COURT YARD ON THE 11TH FLOOR AS PER PLANS. (OCCUPANCY GROUP B TYPE 1A CONSTRUCTION)",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "100886770",
+   "street_number": "121",
+   "street_direction": "N",
+   "street_name": "LA SALLE ST",
+   "application_start_date": "2020-08-27T00:00:00.000",
+   "issue_date": "2020-09-30T00:00:00.000",
+   "reported_cost": "50000",
+   "work_description": "SPR 2019 CBRC: INSTALLATION OF 2 NEW STRUCTURAL SUPPORT COLUMNS IN BASEMENT AS PER PLANS. (OCCUPANCY GROUP B TYPE 1A CONSTRUCTION)",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  }
+ ]
+}

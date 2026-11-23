@@ -1,0 +1,105 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24group=permit_status%2C+permit_milestone&%24limit=50000&%24select=permit_status%2C+permit_milestone%2C+count%28%2A%29+as+n%2C+sum%28case%28reported_cost+%3E%3D+0%2C+reported_cost%29%29+as+v&%24where=issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "n": "383",
+   "v": "13537191.21"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY ISSUED",
+   "n": "40",
+   "v": "155007625"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "56",
+   "v": "81817823"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "10",
+   "v": "3800000"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "4",
+   "v": "6290000"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CANCELLED",
+   "n": "12",
+   "v": "510860"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "9",
+   "v": "772850"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "n": "448",
+   "v": "24147591.5"
+  },
+  {
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "INSPECTIONS",
+   "n": "2",
+   "v": "31000000"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "n": "4",
+   "v": "86500"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "PROGRESS INSPECTIONS",
+   "n": "1",
+   "v": "45000"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "2",
+   "v": "450000"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "n": "1401",
+   "v": "72392530.23"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "n": "390",
+   "v": "97876421"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "n": "158",
+   "v": "33725974"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "3",
+   "v": "375001"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "POST CONSTRUCTION FILING",
+   "n": "9"
+  }
+ ]
+}

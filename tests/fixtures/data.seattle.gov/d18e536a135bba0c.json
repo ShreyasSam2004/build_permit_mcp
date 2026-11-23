@@ -1,0 +1,48 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Temporary%27%2C+%27Change+of+Use+Only+-+No+Construction%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27New%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Addition%2FAlteration%27%2C+%27Tenant+Improvment%27%2C+%27Tenant+Improvement+Pre-Approval%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Curb+Cut%27%29%29%29%29+OR+%28%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Relocation%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27New%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Addition%2FAlteration%27%2C+%27Tenant+Improvment%27%2C+%27Tenant+Improvement+Pre-Approval%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Curb+Cut%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29%29%29+OR+%28%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27ECA+and+Shoreline+Exemption%2FStreet+Improvement+Exception+Request%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27New%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Addition%2FAlteration%27%2C+%27Tenant+Improvment%27%2C+%27Tenant+Improvement+Pre-Approval%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Curb+Cut%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Roof%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Grading%27%29%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7093198-CN",
+   "originaladdress1": "800 OCCIDENTAL AVE S",
+   "applieddate": "2025-06-25T00:00:00.000",
+   "issueddate": "2025-07-10T00:00:00.000",
+   "estprojectcost": "500000.0000",
+   "description": "Erect temporary stage  cover and scaffold in endzone of Lumen Field for Weeknd Concert  Concert on July 12th  2025  per plans. All stage components are provided by stage company and assembled by professional crew. Owner responsible for structural integrity of structure.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7093198-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Temporary"
+  },
+  {
+   "permitnum": "7083977-CN",
+   "originaladdress1": "3116 W SMITH ST",
+   "applieddate": "2025-06-14T00:00:00.000",
+   "issueddate": "2025-11-04T00:00:00.000",
+   "estprojectcost": "1.0000",
+   "description": "Change of use from office to child care center per land use code. Construct alterations to existing commercial building  occupy per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7083977-CN"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Change of Use Only - No Construction"
+  },
+  {
+   "permitnum": "7089749-CN",
+   "originaladdress1": "1250 1ST AVE S",
+   "applieddate": "2025-06-09T00:00:00.000",
+   "issueddate": "2025-06-25T00:00:00.000",
+   "estprojectcost": "500000.0000",
+   "description": "Erect temporary stage  cover and scaffold at T-Mobile Park for Post Malone Jelly Roll concert on June 26th  2025 and occupy per plans. All stage components are provided by stage company and assembled by professional crew. Owner responsible for structural integrity of temporary installation.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7089749-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Temporary"
+  }
+ ]
+}

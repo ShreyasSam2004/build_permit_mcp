@@ -1,0 +1,149 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2021-067970 BP",
+   "original_address1": "4911 DUVAL ST",
+   "applieddate": "2021-04-19T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-02T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "total demo of a 1468 sf SFR circa 1946",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12692624"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2021-067971 BP",
+   "original_address1": "4911 DUVAL ST",
+   "applieddate": "2021-04-19T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-02T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "total demo of a 480 sf garage/apartment circa 1951",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12692625"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2021-160829 BP",
+   "original_address1": "4107 JEFFERSON ST",
+   "applieddate": "2021-10-07T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-03T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Replace 24 windows",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12799999"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2024-057552 EP",
+   "original_address1": "5222 BURNET RD UNIT 600",
+   "applieddate": "2023-08-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-04T00:00:00.000",
+   "description": "23125SF GROCERY INTERIOR REMODELING. NO ALTERATION OF STRUCTURAL DESIGN & EXTERIOR DESIGN.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13325672"
+   },
+   "status_current": "Final",
+   "permittype": "EP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2024-082781 EP",
+   "original_address1": "1208 BRENTWOOD ST BLDG 1",
+   "applieddate": "2024-05-02T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Bldg 1 (west building) : New 2-Story [4 bed 4 bath] detached residence with attached 1-car Garage.  Part of two-unit use. driveway & sidewalk permit included",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13354118"
+   },
+   "status_current": "Final",
+   "permittype": "EP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2024-082782 EP",
+   "original_address1": "1208 BRENTWOOD ST BLDG 2",
+   "applieddate": "2024-05-02T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "2-Story [4bed 4bath] with attached Garage and Autofill Pool.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13354121"
+   },
+   "status_current": "Final",
+   "permittype": "EP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2024-097963 PP",
+   "original_address1": "1313 KENT LN",
+   "applieddate": "2024-06-13T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-06-10T00:00:00.000",
+   "description": "Interior remodel of existing accessory structure.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13371175"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2024-106865 MP",
+   "original_address1": "4911 WESTFIELD DR",
+   "applieddate": "2024-05-03T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-11-17T00:00:00.000",
+   "description": "New single-story addition to existing single-story residence. Convert existing garage into conditioned space.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13381209"
+   },
+   "status_current": "Final",
+   "permittype": "MP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2024-114178 DS",
+   "original_address1": "4104 PAINT ROCK DR",
+   "applieddate": "2025-04-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-08-14T00:00:00.000",
+   "description": "Construct new driveway approach of 19.25 FT",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13389199"
+   },
+   "status_current": "Final",
+   "permittype": "DS",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2024-134337 PP",
+   "original_address1": "11601 CENTURY OAKS TER BLDG L UNIT 101",
+   "applieddate": "2024-09-25T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "INTERIOR REMODEL TO RETURN TO SHELL LIKE CONDITIONS FOR SUITE 101",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13411000"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Remodel"
+  }
+ ]
+}

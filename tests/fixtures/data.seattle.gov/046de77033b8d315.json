@@ -1,0 +1,76 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27Addition%2FAlteration%27%2C+%27Tenant+Improvment%27%2C+%27Tenant+Improvement+Pre-Approval%27%29%29%29+AND+NOT+%28%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Building%27%29%29+AND+%28permittypedesc+IS+NOT+NULL+AND+permittypedesc+IN+%28%27New%27%29%29%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7037409-CN",
+   "originaladdress1": "1000 8TH AVE",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-07-09T00:00:00.000",
+   "estprojectcost": "30000.0000",
+   "description": "Construct alterations to minor telecommunications facility (AT&T) at the roof level of multifamily building  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7037409-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7057717-CN",
+   "originaladdress1": "600 UNIVERSITY ST",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-08-12T00:00:00.000",
+   "estprojectcost": "1011309.0000",
+   "description": "Construct tenant improvements for office space at level one of existing commercial building  occupy per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7057717-CN"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7070052-CN",
+   "originaladdress1": "9902 32ND AVE SW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-06-30T00:00:00.000",
+   "estprojectcost": "85100.0000",
+   "description": "Construct single-story addition to single-family dwelling  subject to field inspection.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7070052-CN"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7080258-CN",
+   "originaladdress1": "9814 45TH AVE SW",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-10-16T00:00:00.000",
+   "estprojectcost": "360000.0000",
+   "description": "Construct alterations to existing one-family dwelling  per plan. [Allow detached accessory dwelling unit to existing single-family use per land use code.  Construct alterations to existing one-family dwelling and construct one-family dwelling  per plan. Review and processing for (2) construction records under 7080258-CN.]",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7080258-CN"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7082485-CN",
+   "originaladdress1": "2420 1ST AVE W",
+   "applieddate": "2025-06-30T00:00:00.000",
+   "issueddate": "2025-08-28T00:00:00.000",
+   "estprojectcost": "48521.0000",
+   "description": "Construct new detached garage accessory to existing one family dwelling  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7082485-CN"
+   },
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  }
+ ]
+}

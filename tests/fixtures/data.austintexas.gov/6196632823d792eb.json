@@ -1,0 +1,81 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Demolition%27%2C+%27Interior+Demo+Non-Structural%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27DS%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27New%27%2C+%27Shell%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Remodel%27%2C+%27Addition%27%2C+%27Addition+and+Remodel%27%2C+%27Remodel+Mobile+Home%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Repair%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2021-067970 BP",
+   "original_address1": "4911 DUVAL ST",
+   "applieddate": "2021-04-19T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-02T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "total demo of a 1468 sf SFR circa 1946",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12692624"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2021-067971 BP",
+   "original_address1": "4911 DUVAL ST",
+   "applieddate": "2021-04-19T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-02T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "total demo of a 480 sf garage/apartment circa 1951",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12692625"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2025-054621 BP",
+   "original_address1": "3804 MANORWOOD RD",
+   "applieddate": "2025-04-09T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-01T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "Total Demo of SFR 1104 sqft circa 1954",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511634"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2025-063768 BP",
+   "original_address1": "4906 ENCHANTED LN",
+   "applieddate": "2025-05-07T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-09-01T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "Total demo of detached shed 290 sq ft circa 1959\n***The building shall not be demolished until after the contractor has fulfilled the neighbor notification requirements outlined in Steps 5 & 6 of the Demolition webpage.***",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13522301"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  },
+  {
+   "permit_number": "2025-079333 BP",
+   "original_address1": "4010 VALLEY VIEW RD UNIT 2A",
+   "applieddate": "2025-06-17T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "Total Demo of Pool",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13539942"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Demolition"
+  }
+ ]
+}

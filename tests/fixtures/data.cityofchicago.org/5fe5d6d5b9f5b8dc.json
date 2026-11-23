@@ -1,0 +1,9 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24select=count%28%2A%29+as+n&%24where=%28NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27CANCELLED%27%2C+%27REVOKED%27%29%29%29+AND+NOT+%28%28permit_milestone+IS+NOT+NULL+AND+permit_milestone+IN+%28%27CANCELLED%27%2C+%27DENIED%27%29%29%29+AND+NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27EXPIRED%27%29%29%29+AND+NOT+%28%28permit_milestone+IS+NOT+NULL+AND+permit_milestone+IN+%28%27EXPIRED%27%29%29%29+AND+NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27COMPLETE%27%29%29%29+AND+NOT+%28%28permit_status+IS+NOT+NULL+AND+permit_status+IN+%28%27ACTIVE%27%2C+%27PHASED+PERMITTING%27%2C+%27SUSPENDED%27%29%29%29%29+AND+%28%28application_start_date+IS+NOT+NULL+AND+application_start_date+%3C+%272024-11-22T00%3A00%3A00%27%29+OR+%28NOT+%28application_start_date+IS+NOT+NULL%29+AND+issue_date+IS+NOT+NULL+AND+issue_date+%3C+%272024-11-22T00%3A00%3A00%27%29%29+AND+%28reported_cost+%3E%3D+1000000%29",
+ "status": 200,
+ "body": [
+  {
+   "n": "1452"
+  }
+ ]
+}

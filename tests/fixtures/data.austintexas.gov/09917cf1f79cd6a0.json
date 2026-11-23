@@ -1,0 +1,76 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2024-097963 PP",
+   "original_address1": "1313 KENT LN",
+   "applieddate": "2024-06-13T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-06-10T00:00:00.000",
+   "description": "Interior remodel of existing accessory structure.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13371175"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Addition and Remodel"
+  },
+  {
+   "permit_number": "2024-134337 PP",
+   "original_address1": "11601 CENTURY OAKS TER BLDG L UNIT 101",
+   "applieddate": "2024-09-25T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "INTERIOR REMODEL TO RETURN TO SHELL LIKE CONDITIONS FOR SUITE 101",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13411000"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2024-136118 PP",
+   "original_address1": "5204 RAMBLING RANGE",
+   "applieddate": "2024-07-10T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-11-26T00:00:00.000",
+   "description": "New Barn at rear of property",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13413015"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-030006 PP",
+   "original_address1": "1201 W 38TH ST",
+   "applieddate": "2025-01-02T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-16T00:00:00.000",
+   "description": "THIS PROJECT CONSISTS OF RENOVATION ON THE GROUND FLOOR OF THE EXISTING ASCENSION SETON MAIN CAMPUS HOSPITAL TO EXPAND AND MODERNIZE THE EXISTING STERILE PROCESSING DEPARTMENT. ALTERATIONS WILL ALSO EXTEND INTO AREAS AND FLOORS BEYOND THIS DEPARTMENT TO ACCOMMODATE UPDATED MECHANICAL AND EXHAUST SYSTEMS. FLOOR 1\n\n[Phase 1]",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13483160"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-054724 PP",
+   "original_address1": "11700 ROCK ROSE AVE UNIT 100",
+   "applieddate": "2025-04-03T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "INTERIOR REMODEL OF EXISTING RETAIL SPACE #100",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511750"
+   },
+   "status_current": "Final",
+   "permittype": "PP",
+   "work_class": "Remodel"
+  }
+ ]
+}

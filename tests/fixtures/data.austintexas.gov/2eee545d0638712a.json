@@ -1,0 +1,81 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Repair%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27DS%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27New%27%2C+%27Shell%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27Remodel%27%2C+%27Addition%27%2C+%27Addition+and+Remodel%27%2C+%27Remodel+Mobile+Home%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2021-160829 BP",
+   "original_address1": "4107 JEFFERSON ST",
+   "applieddate": "2021-10-07T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-03T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Replace 24 windows",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12799999"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-053508 BP",
+   "original_address1": "5907 BROWN ROCK TRL",
+   "applieddate": "2025-04-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-29T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express - Replace siding by the back right and left side of the house.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13510304"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-062881 BP",
+   "original_address1": "12211 BAR X DR",
+   "applieddate": "2025-05-20T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-07-18T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Replacing 2 windows and 1 door like for like.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13521270"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-069613 BP",
+   "original_address1": "2208 MONTCLAIRE ST",
+   "applieddate": "2025-06-04T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-09-09T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Exploratory non structural demo\n\nREVISION: Add MEP Permits",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13528959"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-080418 BP",
+   "original_address1": "2907 ROGGE LN",
+   "applieddate": "2025-06-27T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-08-29T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express: Foundation repair",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13541206"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "Repair"
+  }
+ ]
+}

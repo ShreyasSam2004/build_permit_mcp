@@ -1,0 +1,42 @@
+name: Schema drift
+
+# Daily check that every column the city configs map still exists with the expected type
+# (fails), and that no new raw status/type values have appeared (warns, with a job-summary
+# table naming the rule to add). Kept out of CI so a flaky portal never fails a PR.
+
+on:
+  schedule:
+    - cron: "17 13 * * *"  # 13:17 UTC daily; off the hour to dodge scheduler congestion
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+      - run: uv sync --locked
+      - name: Check live portals
+        env:
+          SOCRATA_APP_TOKEN: ${{ secrets.SOCRATA_APP_TOKEN }}
+        run: uv run pytest -m live -v -W default
+      - name: Open or update an issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          title="Schema drift check failed"
+          body="A mapped column disappeared or changed type, or a portal was unreachable after retries. Details: $RUN_URL"
+          existing=$(gh issue list --state open --search "\"$title\" in:title" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "$title" --body "$body"
+          fi

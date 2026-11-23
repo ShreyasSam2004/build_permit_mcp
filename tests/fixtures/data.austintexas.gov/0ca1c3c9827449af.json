@@ -1,0 +1,49 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Pending%27%2C+%27Pending+Permit%27%2C+%27Re+Review%27%2C+%27Closed%27%2C+%27New+Permit+Required%27%2C+%27Application+Incomplete%27%2C+%27Awaiting+Upload%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Expired%27%2C+%27Expired+-+License%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27VOID%27%2C+%27Withdrawn%27%2C+%27Cancelled%27%2C+%27Cancelled+-+Contractor+Required%27%2C+%27Cancelled+-+New+Permit+Required%27%2C+%27Aborted%27%2C+%27Revoked%27%2C+%27Denied+but+Closed%27%2C+%27Rejected%27%29%29%29%29+OR+%28NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Expired%27%2C+%27Expired+-+License%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27VOID%27%2C+%27Withdrawn%27%2C+%27Cancelled%27%2C+%27Cancelled+-+Contractor+Required%27%2C+%27Cancelled+-+New+Permit+Required%27%2C+%27Aborted%27%2C+%27Revoked%27%2C+%27Denied+but+Closed%27%2C+%27Rejected%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Pending%27%2C+%27Pending+Permit%27%2C+%27Re+Review%27%2C+%27Closed%27%2C+%27New+Permit+Required%27%2C+%27Application+Incomplete%27%2C+%27Awaiting+Upload%27%29%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2025-073958 BP",
+   "original_address1": "5707 SOUTHWEST PKWY BLDG 1",
+   "applieddate": "2025-06-13T00:00:00.000",
+   "issue_date": "2025-06-16T00:00:00.000",
+   "statusdate": "2026-09-17T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Interior Non Structural Demo Floors 1-4",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13533946"
+   },
+   "status_current": "Pending",
+   "permittype": "BP",
+   "work_class": "Interior Demo Non-Structural"
+  },
+  {
+   "permit_number": "2025-071942 BP",
+   "original_address1": "516 1/2 W 8TH ST",
+   "applieddate": "2025-05-16T00:00:00.000",
+   "issue_date": "2025-06-12T00:00:00.000",
+   "statusdate": "2026-06-11T00:00:00.000",
+   "description": "Cell Equipment / Antenna installation on rooftop. (3) antenna locations (approx. 94.5 feet in height / 10x16 equip. frame (overall install 300 sq. ft.). Fiber will route w/in existing 4 conduit from (E) Pwr. Pole at street corner to existing electrical room then route up to roof. VZW will sub-meter.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13531609"
+   },
+   "status_current": "Pending Permit",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "2025-054888 EP",
+   "original_address1": "2611 ST ANTHONY ST",
+   "applieddate": "2025-05-02T00:00:00.000",
+   "issue_date": "2025-06-05T00:00:00.000",
+   "statusdate": "2026-01-06T00:00:00.000",
+   "description": "Install 3-receptacles on the rock wall.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13511930"
+   },
+   "status_current": "Pending",
+   "permittype": "EP",
+   "work_class": "Repair"
+  }
+ ]
+}

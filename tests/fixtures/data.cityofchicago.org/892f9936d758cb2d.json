@@ -1,0 +1,9 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24select=count%28%2A%29+as+n&%24where=application_start_date+IS+NOT+NULL+AND+application_start_date+%3E%3D+%272026-03-01T00%3A00%3A00%27+AND+application_start_date+%3C+%272026-04-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "n": "2731"
+  }
+ ]
+}

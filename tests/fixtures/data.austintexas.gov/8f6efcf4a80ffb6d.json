@@ -1,0 +1,81 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27BP%27%29%29+AND+%28work_class+IS+NOT+NULL+AND+work_class+IN+%28%27New%27%2C+%27Shell%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27EP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27MP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27PP%27%29%29%29+AND+NOT+%28%28permittype+IS+NOT+NULL+AND+permittype+IN+%28%27DS%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2020-134637 BP",
+   "original_address1": "900 E PARMER LN BLDG 7",
+   "applieddate": "2019-09-13T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "total_job_valuation": "249900",
+   "description": "2499 sf SHELL BLDG ONLY RESTAURANT",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12541758"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Shell"
+  },
+  {
+   "permit_number": "2024-148413 BP",
+   "original_address1": "12100 SAMSUNG BLVD",
+   "applieddate": "2024-11-06T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-28T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "TEMPORARY BUILDING PERMIT-scope of permit is limited to foundation slab on grade and underground utilities for PR 2024-093191",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13427045"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Shell"
+  },
+  {
+   "permit_number": "2025-000460 BP",
+   "original_address1": "6607 BREEZY PASS",
+   "applieddate": "2024-02-08T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-06-09T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "New 2-story SFR w/ pool",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13449686"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-056374 BP",
+   "original_address1": "2603 RICHCREEK RD",
+   "applieddate": "2025-01-21T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-09-28T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "New 2-story 5 bedroom 4 bathroom single family residence with attached garage covered front porch covered side porch and rear covered patio.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13513669"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "2025-063942 BP",
+   "original_address1": "4600 SECLUDED HOLW",
+   "applieddate": "2025-04-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-15T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "The swimming pool and spa are raised 18 above the pool with a concrete deck and tile finish. This project is flat on the ground and the tree permit is active with the home construction permit. Tree protection is already in place.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13522499"
+   },
+   "status_current": "Final",
+   "permittype": "BP",
+   "work_class": "New"
+  }
+ ]
+}

@@ -1,0 +1,612 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=50&%24offset=0&%24order=case%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27%2C+applieddate%2C+true%2C+issueddate%29+ASC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29+OR+%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29+OR+%28%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Issued%27%2C+%27Phase+Issued%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29%29%29+AND+%28%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-11-22T00%3A00%3A00%27%29+OR+%28NOT+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27%29+AND+issueddate+IS+NOT+NULL+AND+issueddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+issueddate+%3C+%272025-11-22T00%3A00%3A00%27%29%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "6118168-CN",
+   "originaladdress1": "1811 S LANE ST",
+   "applieddate": "1990-09-21T00:00:00.000",
+   "issueddate": "2005-05-02T00:00:00.000",
+   "estprojectcost": "49401.0000",
+   "description": "ESTABLISH USE AS SINGLE FAMILY RESIDENCE CONSTRUCT SINGLE FAMILY DWELLING  PER PLANS",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6118168-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6103866-CN",
+   "originaladdress1": "117 N 48TH ST",
+   "applieddate": "1998-10-05T00:00:00.000",
+   "issueddate": "2004-12-23T00:00:00.000",
+   "estprojectcost": "196963.0000",
+   "description": "Construct 2nd and 3rd story addition to single family residence. Add roof deck and seismic upgrade  all per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6103866-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6075460-CN",
+   "originaladdress1": "115 N 47TH ST",
+   "applieddate": "1999-10-19T00:00:00.000",
+   "issueddate": "2004-04-09T00:00:00.000",
+   "estprojectcost": "45000.0000",
+   "description": "INTERIOR NON STRUCTURAL ALTERATIONS TO EXISTING  SINGLE FAMILY RESIDENCE  SUBJECT TO FIELD INSPECTION (STFI)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075460-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6125390-CN",
+   "originaladdress1": "7940 10TH AVE SW",
+   "applieddate": "2002-05-28T00:00:00.000",
+   "issueddate": "2005-07-12T00:00:00.000",
+   "estprojectcost": "26393.0000",
+   "description": "CONSTRUCT ADDITION AND PERFORM ALTERATIONS AND CONSTRUCT AND ESTABLISH USE AS ADU ALL PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6125390-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6079388-CN",
+   "originaladdress1": "9708 RENTON AVE S",
+   "applieddate": "2003-06-24T00:00:00.000",
+   "issueddate": "2004-05-19T00:00:00.000",
+   "estprojectcost": "225642.0000",
+   "description": "ESTABLISH USE AND OCCUPY AS SINGLE FAMILY RESIDENC NEW CONSTRUCTION OF A 3-STORY + BSMT SINGLE FAMILY WITH ATTACHED GARAGE PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079388-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6079627-CN",
+   "originaladdress1": "3731 SUNNYSIDE AVE N",
+   "applieddate": "2003-08-08T00:00:00.000",
+   "issueddate": "2004-05-19T00:00:00.000",
+   "estprojectcost": "350443.0000",
+   "description": "CONSTRUCT 2nd & 3rd  FLOORS  ALTER EXISTING MAIN FLOOR  BASEMENT  & FOUNDATION TO COMPLETE WORK  ESTABLISH ACCESSORY DWELLING UNIT & CLEAR CASE #232062 PER PLAN.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079627-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6070631-CN",
+   "originaladdress1": "9504 PHINNEY AVE N",
+   "applieddate": "2003-11-07T00:00:00.000",
+   "issueddate": "2005-08-26T00:00:00.000",
+   "estprojectcost": "198744.0000",
+   "description": "Demolish existing single family residence. Establish use as single family residence. Construct a one family dwelling with attached garage per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6070631-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6075453-CN",
+   "originaladdress1": "3416 45TH AVE SW",
+   "applieddate": "2003-11-25T00:00:00.000",
+   "issueddate": "2003-11-25T00:00:00.000",
+   "estprojectcost": "100000.0000",
+   "description": "CONSTRUCT DECKS ADDITIONS AND REPLACE ROOF AND ALTER INTERIOR OF SINGLE FAMILY RESIDENCE  PER PLOT PLAN & SUBJECT TO FIELD INSPECTION",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075453-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6076533-CN",
+   "originaladdress1": "3751 SW 100TH ST",
+   "applieddate": "2004-01-12T00:00:00.000",
+   "issueddate": "2005-10-20T00:00:00.000",
+   "estprojectcost": "101000.0000",
+   "description": "DEMOLISH EXISTING GARAGE  ESTABLISH USE AS SINGLE FAMILY RESIDENCE  CONSTRUCT NEW ONE FAMILY DWELLING  PER PLANS",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6076533-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6089958-CN",
+   "originaladdress1": "726 N 66TH ST",
+   "applieddate": "2004-06-30T00:00:00.000",
+   "issueddate": "2004-08-24T00:00:00.000",
+   "estprojectcost": "175000.0000",
+   "description": "CONSTRUCT 2 STORY ADDITION & INTERIOR ALTERATIONS TO AN EXISTING SINGLE FAMILY RESIDENCE AND CREATE AN ATTACHED ACESSORY DWELLING UNIT  PER PLAN",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089958-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6089951-CN",
+   "originaladdress1": "3801 46TH AVE SW",
+   "applieddate": "2004-08-10T00:00:00.000",
+   "issueddate": "2004-08-30T00:00:00.000",
+   "estprojectcost": "80000.0000",
+   "description": "Interior alterations to existing single family residence per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089951-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6100756-CN",
+   "originaladdress1": "1702 PALM AVE SW",
+   "applieddate": "2004-08-10T00:00:00.000",
+   "issueddate": "2004-10-27T00:00:00.000",
+   "estprojectcost": "200000.0000",
+   "description": "CONST. 2 STORY + BSTM AND DECK ADDITIONS  ALTER EXIST. SINGLE FAMIY DWELLING  PER PLANS",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100756-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6101212-CN",
+   "originaladdress1": "1123 24TH AVE S",
+   "applieddate": "2005-04-26T00:00:00.000",
+   "estprojectcost": "208219.0000",
+   "description": "ESTABLISH USE AS TOWNHOUSES & CONSTRUCT NEW TOWNHOUSE/DUPLEX STRUCTURE WITH ACCESSORY PARKING PER PLAN (review and processing under PTS 2404980).",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101212-CN"
+   },
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6099834-CN",
+   "applieddate": "2005-05-17T00:00:00.000",
+   "issueddate": "2006-06-23T00:00:00.000",
+   "estprojectcost": "628598.0000",
+   "description": "ESTABLISH A STANDARD PLAN FOR BUILDING TYPE #2 FOR THE SYLVAN HEIGHTS DEVELOPMENT PROJECT  4-UNIT & 3-STORY TOWNHOUSE WITH ATTACHED GARAGES  PER PLAN - NO CONSTRUCTION/OCCUPANCY THIS PERMIT.  STRUCTURAL DESIGN IS SPECIFIC TO SYLVAN HEIIGHTS - USE ELSEWHERE REQUIRES ADDITIONAL REVIEW.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6099834-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6101784-DM",
+   "originaladdress1": "4014 S DAKOTA ST",
+   "applieddate": "2005-05-30T00:00:00.000",
+   "description": "DEMOLISH SINGLE FAMILY RESIDENCE",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101784-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6101648-CN",
+   "applieddate": "2005-06-27T00:00:00.000",
+   "estprojectcost": "664.0000",
+   "description": "CONSTRUCT NORTHEAST ADDITION AND REMOVE PORTION OF BUILDING TO THE EXISTING WAREHOUSE BUILDING ALL PER PLAN (BUILDING ID #2)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101648-CN"
+   },
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6101127-CN",
+   "applieddate": "2005-07-05T00:00:00.000",
+   "description": "application not needed",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101127-CN"
+   },
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building"
+  },
+  {
+   "permitnum": "6069244-CN",
+   "originaladdress1": "3482 W BLAINE ST",
+   "applieddate": "2005-08-19T00:00:00.000",
+   "estprojectcost": "20000.0000",
+   "description": "demo estg garage and provide required off-street parking;  Interior removal of non-load bearing walls of existing single family residence subject to field inspection (stfi) and per plot plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6069244-CN"
+   },
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6100939-DM",
+   "originaladdress1": "6557 42ND AVE SW",
+   "applieddate": "2005-08-30T00:00:00.000",
+   "description": "DEMO EXISTING DUPLEX  (STFI)  PER PLAN.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100939-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "6100951-DM",
+   "originaladdress1": "611 22ND AVE",
+   "applieddate": "2005-09-07T00:00:00.000",
+   "description": "DEMOLISH TWO EXISTING SINGLE FAMILY RESIDENCES.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100951-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6071686-DM",
+   "originaladdress1": "5327 47TH AVE SW",
+   "applieddate": "2005-09-08T00:00:00.000",
+   "estprojectcost": "0.0000",
+   "description": "Demolish existing single family residence  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6071686-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "6072937-DM",
+   "originaladdress1": "9737 PALATINE AVE N",
+   "applieddate": "2005-09-20T00:00:00.000",
+   "estprojectcost": "0.0000",
+   "description": "Demolish existing single family residence  per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6072937-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition",
+   "permittypedesc": "Demolition"
+  },
+  {
+   "permitnum": "6076108-DM",
+   "originaladdress1": "7023 27TH AVE NW",
+   "applieddate": "2005-10-17T00:00:00.000",
+   "description": "demolish existing single family dwelling for 6071938 permit to construct new sfr",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6076108-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6075156-DM",
+   "originaladdress1": "5950 41ST AVE SW",
+   "applieddate": "2005-10-18T00:00:00.000",
+   "description": "Demolish existing house and detached garage.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075156-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6074962-DM",
+   "originaladdress1": "3320 31ST AVE SW",
+   "applieddate": "2005-11-07T00:00:00.000",
+   "description": "Demo existing single family residence.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6074962-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6079839-DM",
+   "originaladdress1": "3812 INTERLAKE AVE N",
+   "applieddate": "2005-11-21T00:00:00.000",
+   "description": "Demolish existing single family residence.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079839-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6080220-DM",
+   "originaladdress1": "8027 BEACON AVE S",
+   "applieddate": "2005-12-01T00:00:00.000",
+   "description": "Demolish existing single family residence",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6080220-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6080785-CN",
+   "originaladdress1": "6521 CHAPIN PL N",
+   "applieddate": "2005-12-01T00:00:00.000",
+   "estprojectcost": "7800.0000",
+   "description": "Finish and final the work of permit #741623 from cover inspection approved at single family dwelling  subject to field inspection.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6080785-CN"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6081646-BK",
+   "originaladdress1": "1420 5TH AVE",
+   "applieddate": "2005-12-09T00:00:00.000",
+   "estprojectcost": "0.0000",
+   "description": "Blanket Permit for interior non-structural alterations to the 44th floor US Bank Center",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6081646-BK"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  },
+  {
+   "permitnum": "6082189-DM",
+   "originaladdress1": "1200 SHENANDOAH DR E",
+   "applieddate": "2005-12-14T00:00:00.000",
+   "description": "Demolish existing single-family dwelling per plot plan subject to field inspection (stfi).",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6082189-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6082459-DM",
+   "originaladdress1": "4318 GREENWOOD AVE N",
+   "applieddate": "2005-12-16T00:00:00.000",
+   "description": "Demolish existing one family dwelling and detached garage. Per plan and subject to field inspection (STFI).",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6082459-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6083344-BK",
+   "originaladdress1": "701 5TH AVE",
+   "applieddate": "2005-12-28T00:00:00.000",
+   "estprojectcost": "0.0000",
+   "description": "Blanket Permit for interior non-structural alterations to the 62nd floor Heller Ehrman",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6083344-BK"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  },
+  {
+   "permitnum": "6084347-DM",
+   "originaladdress1": "8418 DELRIDGE WAY SW",
+   "applieddate": "2006-01-06T00:00:00.000",
+   "description": "Demolish existing detached garage and establish parking space accessory to existing single family residence. All per plot plan and subject to field inspection (stfi)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084347-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6084804-DM",
+   "originaladdress1": "5440 40TH AVE SW",
+   "applieddate": "2006-01-12T00:00:00.000",
+   "description": "Demolish existing single family residence for construction of new single family residence.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084804-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6085014-DM",
+   "originaladdress1": "185 34TH AVE E",
+   "applieddate": "2006-01-13T00:00:00.000",
+   "description": "Demolish existing single family residence",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6085014-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6086760-DM",
+   "originaladdress1": "2304 50TH AVE SW",
+   "applieddate": "2006-01-31T00:00:00.000",
+   "description": "Demolish single family residence per plan.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6086760-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6088139-DM",
+   "originaladdress1": "1205 S LUCILE ST",
+   "applieddate": "2006-02-14T00:00:00.000",
+   "description": "Demolish single family residence.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6088139-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6089242-DM",
+   "originaladdress1": "11034 PHINNEY AVE N",
+   "applieddate": "2006-02-23T00:00:00.000",
+   "description": "demo existing one family dwelling. (STFI)  Tracking under A/P #6084935.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089242-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6066181-DM",
+   "originaladdress1": "1614 26TH AVE",
+   "applieddate": "2006-03-01T00:00:00.000",
+   "description": "demo exising sfr",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6066181-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6090249-DM",
+   "originaladdress1": "10725 SAND POINT WAY NE",
+   "applieddate": "2006-03-06T00:00:00.000",
+   "description": "Demo Existing SFR",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6090249-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6091863-DM",
+   "originaladdress1": "418 BELLEVUE AVE E",
+   "applieddate": "2006-03-17T00:00:00.000",
+   "description": "Complete demolition of structure started without prior demolition permit approval.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6091863-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6084628-CN",
+   "originaladdress1": "7156 30TH AVE SW",
+   "applieddate": "2006-03-21T00:00:00.000",
+   "issueddate": "2006-06-26T00:00:00.000",
+   "estprojectcost": "170338.0000",
+   "description": "Construct new detached accessory garage and raise existing house to 2nd-floor level for construct new 1st-floor addition under at existing single family dwelliing use  per plans.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084628-CN"
+   },
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6092532-DM",
+   "originaladdress1": "4051 NE 57TH ST",
+   "applieddate": "2006-03-23T00:00:00.000",
+   "description": "Demolish existing sfr",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6092532-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6092715-DM",
+   "originaladdress1": "8512 1ST AVE NE",
+   "applieddate": "2006-03-24T00:00:00.000",
+   "description": "Demolish one single family dwelling per STFI/PP",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6092715-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6089090-DM",
+   "originaladdress1": "2161 N 122ND ST",
+   "applieddate": "2006-03-29T00:00:00.000",
+   "description": "Demolish existing single family residence  subject to field inspection  pending short plat 3003616",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089090-DM"
+   },
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6093779-DM",
+   "originaladdress1": "753 N 80TH ST",
+   "applieddate": "2006-04-04T00:00:00.000",
+   "description": "Demo existing one family dwelling and detached garage. (STFI)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6093779-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6094173-DM",
+   "originaladdress1": "3828 WALLINGFORD AVE N",
+   "applieddate": "2006-04-06T00:00:00.000",
+   "description": "Demo.exist. detached storage shed  per plans",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6094173-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6097643-DM",
+   "originaladdress1": "11754 LAKESIDE AVE NE",
+   "applieddate": "2006-05-08T00:00:00.000",
+   "description": "Demolish existing single family residence subject to field inspection.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6097643-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6095276-DM",
+   "originaladdress1": "1839 24TH AVE E",
+   "applieddate": "2006-05-16T00:00:00.000",
+   "description": "Demolish existing single family down to foundation",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6095276-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  },
+  {
+   "permitnum": "6078840-DM",
+   "originaladdress1": "1410 N 55TH ST",
+   "applieddate": "2006-06-14T00:00:00.000",
+   "description": "Demolish existing single family residence",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6078840-DM"
+   },
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition"
+  }
+ ]
+}

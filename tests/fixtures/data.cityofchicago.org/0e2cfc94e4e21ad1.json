@@ -1,0 +1,71 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=application_start_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=application_start_date+IS+NOT+NULL+AND+application_start_date+%3E%3D+%272026-03-01T00%3A00%3A00%27+AND+application_start_date+%3C+%272026-04-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101078999",
+   "street_number": "11",
+   "street_direction": "E",
+   "street_name": "CEDAR ST",
+   "application_start_date": "2026-03-31T00:00:00.000",
+   "issue_date": "2026-04-06T00:00:00.000",
+   "reported_cost": "125000",
+   "work_description": "SELF-CERT 2019 CBRC: TENANT INTERIOR ALTERATIONS TO AN EXISTING SECOND FLOOR DENTIST OFFICE TO CONVERT INTO A RETAIL STORE FOR THE GROOMSMAN SUIT, INC. DBA SUITSHOP, AS PER PLANS. SCOPE OF WORK INCLUDES SELECTIVE INTERIOR DEMOLITION, NEW NON-LOAD-BEARING PARTITIONS FOR THE CONSTRUCTION BACK-OF-HOUSE OFFICE, CHANGING ROOMS AND SHOWROOM, LIGHTING, FINISHES, DOORS AND HARDWARE, AND ASSOCIATED MECHANICAL, ELECTRICAL, AND PLUMBING WORK. NO EXTERIOR OR STRUCTURAL WORK. (CONSTRUCTION TYPE: III-B; OCCUPANCY: M-MERCANTILE)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "101079467",
+   "street_number": "5708",
+   "street_direction": "S",
+   "street_name": "HONORE ST",
+   "application_start_date": "2026-03-31T00:00:00.000",
+   "issue_date": "2026-07-16T00:00:00.000",
+   "reported_cost": "10000",
+   "work_description": "SPR 2019 CBRC - REVISION TO PERMIT 101070139: RETURN MAINBEDROOM AT FIRST FLOOR TO ORIGINAL STATE AS PER PLANS  (OCCUPANCY GROUP R-5; CONSTRUCTION TYPE IIIA)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "101079544",
+   "street_number": "668",
+   "street_direction": "W",
+   "street_name": "IRVING PARK RD",
+   "application_start_date": "2026-03-31T00:00:00.000",
+   "issue_date": "2026-04-22T00:00:00.000",
+   "reported_cost": "250000",
+   "work_description": "SELF-CERT 2019 CBRC: INTERIOR ALTERATIONS TO EXISTING 1ST FLOOR CONDOMINIUM UNIT (UNIT H1) TO INCLUDE NEW EXTERIOR A/C CONDENSING UNIT AS PER PLANS. (OCCUPANCY GROUP: R-2 / TYPE 3A CONSTRUCTION)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "101079860",
+   "street_number": "8600",
+   "street_direction": "W",
+   "street_name": "BRYN MAWR AVE",
+   "application_start_date": "2026-03-31T00:00:00.000",
+   "issue_date": "2026-04-01T00:00:00.000",
+   "reported_cost": "5700000",
+   "work_description": "SELF-CERT 2019 CBRC: BUILDOUT OF SINGLE-FLOOR OFFICE TENANT SPACE LOCATED ON THE 2ND FLOOR OF AN EXISTING OFFICE BUILDING. SCOPE OF WORK INCLUDES NEW PARTITIONS, MILLWORK, FINISHES, ELECTRICAL MECHANICAL AND PLUMBING SYSTEMS AS PER PLANS. (OCCUPANCY GROUP B; TYPE 1A CONSTRUCTION) (STRUCTURAL PEER REVIEW)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  },
+  {
+   "permit_": "101080177",
+   "street_number": "2628",
+   "street_direction": "S",
+   "street_name": "STATE ST",
+   "application_start_date": "2026-03-31T00:00:00.000",
+   "issue_date": "2026-09-22T00:00:00.000",
+   "reported_cost": "800000",
+   "work_description": "SPR 2019 CBC: NON REQUIRED ACCESSORY SURFACE PARKING LOT WITH 58 VEHICLE PARKING SPACES AND A UNDERGROUND STORMWATER RETENTION TANK TO SERVE TRAINING FACILITY AT 2540 S STATE ST. INCLUDES LANDSCAPE, LIGHTING, ELECTRICAL, PAVING, AND FENCING (OCCUPANCY GROUP U, TYPE IA CONSTRUCTION)",
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  }
+ ]
+}

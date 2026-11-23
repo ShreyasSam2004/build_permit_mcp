@@ -1,0 +1,65 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=issueddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=upper%28originaladdress1%29+like+%27%251420+5TH+AVE%25%27",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "6066075-BK",
+   "originaladdress1": "1420 5TH AVE",
+   "description": "Blanket Permit for interior non-structural alterations.  Administrative Permit only - no work authorized.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6066075-BK"
+   },
+   "statuscurrent": "Active",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvement Pre-Approval"
+  },
+  {
+   "permitnum": "6081646-BK",
+   "originaladdress1": "1420 5TH AVE",
+   "applieddate": "2005-12-09T00:00:00.000",
+   "estprojectcost": "0.0000",
+   "description": "Blanket Permit for interior non-structural alterations to the 44th floor US Bank Center",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6081646-BK"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  },
+  {
+   "permitnum": "6257719-CN",
+   "originaladdress1": "1420 5TH AVE",
+   "description": "TI FOR FROZEN YOGURT SHOP.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6257719-CN"
+   },
+   "statuscurrent": "Closed",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "6261057-BK",
+   "originaladdress1": "1420 5TH AVE",
+   "applieddate": "2010-09-16T00:00:00.000",
+   "description": "Blanket Permit for interior non-structural alterations for 8th floor of Pacific First Center.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6261057-BK"
+   },
+   "statuscurrent": "Canceled",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  },
+  {
+   "permitnum": "6261058-BK",
+   "originaladdress1": "1420 5TH AVE",
+   "applieddate": "2010-09-16T00:00:00.000",
+   "description": "8/12/16 HUD. CANCELLED IAW SBC 106.6.9. Blanket Permit for interior non-structural alterations for 13th floor  Pacific First Center.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6261058-BK"
+   },
+   "statuscurrent": "Canceled",
+   "permittypemapped": "Building",
+   "permittypedesc": "Tenant Improvment"
+  }
+ ]
+}

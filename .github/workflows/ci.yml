@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Lint, types, tests (Python ${{ matrix.python }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.12", "3.14"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: ${{ matrix.python }}
+          enable-cache: true
+      - run: uv sync --locked
+      - run: uv run ruff check .
+      - run: uv run ruff format --check .
+      - run: uv run pyright
+      # Offline: Socrata responses are replayed from tests/fixtures; live checks run in schema-drift.yml.
+      - run: uv run pytest
+
+  docker:
+    name: Container builds and serves /healthz
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t permits-mcp .
+      - run: |
+          docker run -d --name permits -p 8080:8080 permits-mcp
+          for i in $(seq 1 30); do curl -sf http://127.0.0.1:8080/healthz && exit 0; sleep 1; done
+          docker logs permits; exit 1

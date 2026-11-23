@@ -1,0 +1,10 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24select=min%28issueddate%29+as+earliest%2C+max%28issueddate%29+as+latest&%24where=issueddate+IS+NOT+NULL+AND+issueddate+%3E%3D+%271901-01-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "earliest": "1986-07-03T00:00:00.000",
+   "latest": "2026-11-20T00:00:00.000"
+  }
+ ]
+}

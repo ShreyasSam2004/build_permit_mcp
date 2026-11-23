@@ -1,0 +1,71 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+WRECKING%2FDEMOLITION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+NEW+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+-+RENOVATION%2FALTERATION%27%2C+%27PERMIT+-+PORCH+CONSTRUCTION%27%29%29%29+AND+NOT+%28%28permit_type+IS+NOT+NULL+AND+permit_type+IN+%28%27PERMIT+%E2%80%93+EXPRESS+PERMIT+PROGRAM%27%2C+%27PERMIT+-+EASY+PERMIT+PROCESS%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "B101064183",
+   "street_number": "5853",
+   "street_direction": "S",
+   "street_name": "HALSTED ST",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "172080",
+   "work_description": "EMERGENCY WRECK AND REMOVE A 2 STORY MASONRY BUILDING",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101067375",
+   "street_number": "2072",
+   "street_direction": "N",
+   "street_name": "WESTERN AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "8240",
+   "work_description": "WRECK AND REMOVE A 1 STORY MASONRY BUILDING",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101068131",
+   "street_number": "5956",
+   "street_direction": "W",
+   "street_name": "HIGGINS AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "48000",
+   "work_description": "WRECK AND REMOVE A 1 STORY MASONRY BUILDING",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101068624",
+   "street_number": "4305",
+   "street_direction": "N",
+   "street_name": "WOLCOTT AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "12000",
+   "work_description": "WRECK AND REMOVE A 2 STORY MASONRY MULTI UNIT RESIDENCE",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  },
+  {
+   "permit_": "B101068735",
+   "street_number": "1830",
+   "street_direction": "N",
+   "street_name": "ST LOUIS AVE",
+   "application_start_date": "2025-06-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "reported_cost": "20000",
+   "work_description": "WRECK AND REMOVE A 2 STORY FRAME MULTI UNIT COACH HOUSE (REAR ONLY)",
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "permit_type": "PERMIT - WRECKING/DEMOLITION"
+  }
+ ]
+}

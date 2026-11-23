@@ -1,0 +1,54 @@
+[project]
+name = "permits-mcp"
+version = "0.1.0"
+description = "MCP server giving agents one normalized building-permit schema across US cities' Socrata open-data portals."
+readme = "README.md"
+authors = [
+    { name = "ShreyasSam2004", email = "shreyas.cvt@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "anyio>=4.16",
+    "httpx>=0.28,<1",
+    "mcp>=2.3,<3",
+    "pydantic>=2.11,<3",
+    "tzdata>=2026.6",  # IANA zones on Windows and slim containers that lack a system tz database
+]
+
+[project.scripts]
+permits-mcp = "permits_mcp:main"
+
+[build-system]
+requires = ["uv_build>=0.11.25,<0.12.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.414",
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-m 'not live' --strict-markers"
+markers = ["live: calls real Socrata portals (schema-drift checks); run with -m live"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "SIM", "RUF"]
+ignore = [
+    "RUF001", "RUF003",  # the en dash in Chicago's raw type value is real data
+    "N818",  # NoPossibleMatch / SocrataUnavailable are signals; an "Error" suffix adds nothing
+]
+
+[tool.ruff.format]
+exclude = ["docs/**"]
+
+[tool.pyright]
+include = ["src", "tests"]
+pythonVersion = "3.12"
+typeCheckingMode = "standard"

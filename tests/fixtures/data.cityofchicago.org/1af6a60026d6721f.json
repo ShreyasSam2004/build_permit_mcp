@@ -1,0 +1,9 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24select=count%28%2A%29+as+n&%24where=upper%28coalesce%28street_number+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_direction+%7C%7C+%27+%27%2C+%27%27%29+%7C%7C+coalesce%28street_name%2C+%27%27%29%29+like+%27%25121+N+LA+SALLE+ST%25%27",
+ "status": 200,
+ "body": [
+  {
+   "n": "133"
+  }
+ ]
+}

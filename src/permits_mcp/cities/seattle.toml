@@ -1,0 +1,67 @@
+# Seattle — Building Permits (https://data.seattle.gov/d/76t5-zqzr)
+# Every raw value below was copied from the live API on 2026-11-23, not typed from docs.
+# Mapping decisions were checked against the date columns, not just the status names
+# (e.g. "Active" records have no application or issue date, so they are not "issued").
+
+id = "seattle"
+name = "Seattle, WA"
+domain = "data.seattle.gov"
+dataset_id = "76t5-zqzr"
+timezone = "America/Los_Angeles"
+permit_id_example = "7148658-CN"
+date_null_before = 1901-01-01  # 25 records use 1900-01-01 as a placeholder date
+known_gaps = [
+  "Covers the full lifecycle: applications ('applied'), plan review ('in_review'), issued and closed permits.",
+  "No last-activity date is published; last_activity_date is always null.",
+  "'Closed' means two things in the source data: mostly an application closed without a permit (-> cancelled), but for demolitions usually a completed permit (-> finaled). Check status_raw when it matters.",
+  "268 records with status 'Active' have no application, issue or completion date; their status is 'unknown'.",
+  "About 3,650 'Building' permits have no subtype; their permit_type is 'unknown'.",
+  "Electrical, mechanical and plumbing trade permits are in a separate Seattle dataset and are not included.",
+  "Environmental-critical-area and shoreline exemption requests are included and normalize to permit_type 'other'.",
+]
+
+[fields]
+permit_id = "permitnum"
+address = "originaladdress1"
+applied_date = "applieddate"
+issued_date = "issueddate"
+# last_activity_date: not published -> always null
+valuation_usd = "estprojectcost"
+description = "description"
+source_url = "link"
+
+# First match wins. No match -> "unknown" (and a WARNING log if the raw value is non-blank).
+[status]
+rules = [
+  { when = { statuscurrent = ["Closed"], permittypemapped = ["Demolition"] }, then = "finaled" },
+  { when = { statuscurrent = ["Closed"] }, then = "cancelled" },
+  { when = { statuscurrent = ["Active"] }, then = "unknown" },
+  { when = { statuscurrent = [
+      "Initiated", "Ready for Intake", "Scheduled", "Scheduled and Submitted", "Pending",
+      "Additional Info Requested",
+  ] }, then = "applied" },
+  { when = { statuscurrent = [
+      "Application Completed", "Reviews In Process", "Corrections Required", "Corrections Submitted",
+      "Awaiting Information", "Reviews Completed", "Ready for Issuance",
+  ] }, then = "in_review" },
+  { when = { statuscurrent = ["Issued", "Phase Issued"] }, then = "issued" },
+  { when = { statuscurrent = ["Completed", "Inspections Completed", "Approved to Occupy"] }, then = "finaled" },
+  { when = { statuscurrent = ["Expired"] }, then = "expired" },
+  { when = { statuscurrent = ["Withdrawn", "Canceled", "Denied"] }, then = "cancelled" },
+]
+
+[permit_type]
+rules = [
+  { when = { permittypemapped = ["Building"], permittypedesc = ["New"] }, then = "new_construction" },
+  { when = { permittypemapped = ["Building"], permittypedesc = [
+      "Addition/Alteration", "Tenant Improvment", "Tenant Improvement Pre-Approval",
+  ] }, then = "addition_alteration" },  # "Improvment" is the source's spelling
+  { when = { permittypemapped = ["Building"], permittypedesc = ["Curb Cut"] }, then = "site_work" },
+  { when = { permittypemapped = ["Building"], permittypedesc = ["Temporary", "Change of Use Only - No Construction"] }, then = "other" },
+  { when = { permittypemapped = ["Building"] }, then = "unknown" },  # no subtype ("NONE" or blank)
+  { when = { permittypemapped = ["Demolition"], permittypedesc = ["Relocation"] }, then = "other" },
+  { when = { permittypemapped = ["Demolition"] }, then = "demolition" },
+  { when = { permittypemapped = ["Roof"] }, then = "repair" },
+  { when = { permittypemapped = ["Grading"] }, then = "site_work" },
+  { when = { permittypemapped = ["ECA and Shoreline Exemption/Street Improvement Exception Request"] }, then = "other" },
+]

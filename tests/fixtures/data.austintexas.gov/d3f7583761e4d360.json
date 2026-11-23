@@ -1,0 +1,154 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=case%28applieddate+IS+NOT+NULL%2C+applieddate%2C+true%2C+issue_date%29+ASC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29%29+AND+%28%28applieddate+IS+NOT+NULL+AND+applieddate+%3C+%272025-11-22T00%3A00%3A00%27%29+OR+%28NOT+%28applieddate+IS+NOT+NULL%29+AND+issue_date+IS+NOT+NULL+AND+issue_date+%3C+%272025-11-22T00%3A00%3A00%27%29%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "1980-002807 BP",
+   "original_address1": "2006 VALLEJO ST",
+   "applieddate": "1980-04-07T00:00:00.000",
+   "issue_date": "2022-02-07T00:00:00.000",
+   "statusdate": "2022-02-07T00:00:00.000",
+   "description": "1 Stry Frm Addn To Exist &Remodel Res",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=501413"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1980-005143 BP",
+   "original_address1": "1715 CULLEN AVE",
+   "applieddate": "1980-09-10T00:00:00.000",
+   "issue_date": "1980-09-10T00:00:00.000",
+   "statusdate": "2015-02-26T00:00:00.000",
+   "description": "Addn To Res To Create Living Area---Life safety",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=502921"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1981-014197 BP",
+   "original_address1": "9201 GEORGIAN DR",
+   "applieddate": "1981-02-25T00:00:00.000",
+   "issue_date": "1981-02-25T00:00:00.000",
+   "statusdate": "2015-08-31T00:00:00.000",
+   "total_job_valuation": "4000",
+   "description": "Addn To Res To Create Lvg/Stor Rm",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=506479"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1981-009146 BP",
+   "original_address1": "1120 E 3RD ST",
+   "applieddate": "1981-05-27T00:00:00.000",
+   "issue_date": "1981-05-27T00:00:00.000",
+   "statusdate": "2015-10-02T00:00:00.000",
+   "total_job_valuation": "4000",
+   "description": "Wood Frame Addn To Exist Structure",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=508739"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1981-012055 BP",
+   "original_address1": "11514 CHANCELLROY DR",
+   "applieddate": "1981-06-03T00:00:00.000",
+   "issue_date": "1981-06-03T00:00:00.000",
+   "statusdate": "2015-08-03T00:00:00.000",
+   "total_job_valuation": "14963",
+   "description": "Private Swimming Pool & Req Enclosure Device",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=509105"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "1981-001682 BP",
+   "original_address1": "6701 WILLAMETTE DR",
+   "applieddate": "1981-08-03T00:00:00.000",
+   "issue_date": "1981-08-03T00:00:00.000",
+   "statusdate": "2017-11-27T00:00:00.000",
+   "total_job_valuation": "14500",
+   "description": "Private Swimming Pool & Req Enclosure Device",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=510434"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  },
+  {
+   "permit_number": "1981-001868 BP",
+   "original_address1": "1911 PARAMOUNT AVE",
+   "applieddate": "1981-08-06T00:00:00.000",
+   "issue_date": "1981-08-06T00:00:00.000",
+   "statusdate": "2016-01-22T00:00:00.000",
+   "total_job_valuation": "25000",
+   "description": "Addn To Re To Creat Fam. Rm. Bedroom & Bath",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=510528"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Remodel"
+  },
+  {
+   "permit_number": "1981-004079 BP",
+   "original_address1": "1110 S 1ST ST",
+   "applieddate": "1981-08-14T00:00:00.000",
+   "issue_date": "1981-08-14T00:00:00.000",
+   "statusdate": "2014-05-12T00:00:00.000",
+   "total_job_valuation": "700",
+   "description": "Addn To Res-Front Porch",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=510752"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1981-004142 BP",
+   "original_address1": "1114 TERRY DR",
+   "applieddate": "1981-08-17T00:00:00.000",
+   "issue_date": "1981-08-17T00:00:00.000",
+   "statusdate": "2015-03-11T00:00:00.000",
+   "total_job_valuation": "6500",
+   "description": "Addn To Res To Create 2 Sty Addn",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=510777"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "Addition"
+  },
+  {
+   "permit_number": "1981-013092 BP",
+   "original_address1": "802 BARTON BLVD",
+   "applieddate": "1981-10-23T00:00:00.000",
+   "issue_date": "1981-10-23T00:00:00.000",
+   "statusdate": "2015-10-14T00:00:00.000",
+   "total_job_valuation": "30760",
+   "description": "Private Swimming Pool & Req Enclosure Device  / will require electrical permit",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=512204"
+   },
+   "status_current": "Active",
+   "permittype": "BP",
+   "work_class": "New"
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=10&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Expired%27%2C+%27Expired+-+License%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Final%27%29%29%29+AND+NOT+%28%28status_current+IS+NOT+NULL+AND+status_current+IN+%28%27Active%27%2C+%27On+Hold%27%2C+%27Suspended%27%2C+%27Inactive+Pending+Revision%27%2C+%27Inactive+Contractor%27%29%29%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2018-022780 EP",
+   "original_address1": "744 W WILLIAM CANNON DR UNIT 1067",
+   "applieddate": "2018-02-22T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "REPLACE EXTERIOR PANEL @ UNIT #1067",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=11871746"
+   },
+   "status_current": "Expired",
+   "permittype": "EP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2018-057433 EP",
+   "original_address1": "2500 DANA CV BLDG A",
+   "applieddate": "2018-03-22T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Install new meter can  and panel with main breaker to replace damaged equipment.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=11911638"
+   },
+   "status_current": "Expired",
+   "permittype": "EP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2020-134637 BP",
+   "original_address1": "900 E PARMER LN BLDG 7",
+   "applieddate": "2019-09-13T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "total_job_valuation": "249900",
+   "description": "2499 sf SHELL BLDG ONLY RESTAURANT",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=12541758"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Shell"
+  },
+  {
+   "permit_number": "2024-148413 BP",
+   "original_address1": "12100 SAMSUNG BLVD",
+   "applieddate": "2024-11-06T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-28T00:00:00.000",
+   "total_job_valuation": "0",
+   "description": "TEMPORARY BUILDING PERMIT-scope of permit is limited to foundation slab on grade and underground utilities for PR 2024-093191",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13427045"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Shell"
+  },
+  {
+   "permit_number": "2024-162036 EP",
+   "original_address1": "16121 LARUSTINUS ST",
+   "applieddate": "2024-12-11T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-28T00:00:00.000",
+   "description": "ETJ TEMP POWER",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13442431"
+   },
+   "status_current": "Expired",
+   "permittype": "EP",
+   "work_class": "Homebuilder Loop"
+  },
+  {
+   "permit_number": "2025-053508 BP",
+   "original_address1": "5907 BROWN ROCK TRL",
+   "applieddate": "2025-04-30T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-29T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express - Replace siding by the back right and left side of the house.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13510304"
+   },
+   "status_current": "Expired",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-069005 MP",
+   "original_address1": "406 WILMES DR",
+   "applieddate": "2025-06-03T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-28T00:00:00.000",
+   "description": "Replacement of complete existing central heat and air system with or without duct work",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13528264"
+   },
+   "status_current": "Expired",
+   "permittype": "MP",
+   "work_class": "Change Out"
+  },
+  {
+   "permit_number": "2025-074258 MP",
+   "original_address1": "401 W 55TH ST",
+   "applieddate": "2025-06-15T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-06-29T00:00:00.000",
+   "description": "Replacement of complete existing central heat and air system with or without duct work",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13534313"
+   },
+   "status_current": "Expired",
+   "permittype": "MP",
+   "work_class": "Change Out"
+  },
+  {
+   "permit_number": "2025-076276 PP",
+   "original_address1": "8306 ROCKWOOD LN",
+   "applieddate": "2025-06-18T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2025-12-30T00:00:00.000",
+   "description": "Drain line replacement under home approx. 45ft.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13536559"
+   },
+   "status_current": "Expired",
+   "permittype": "PP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-078101 EP",
+   "original_address1": "5902 EMERALD FOREST DR UNIT 2",
+   "applieddate": "2025-06-23T00:00:00.000",
+   "issue_date": "2025-06-30T00:00:00.000",
+   "statusdate": "2026-07-13T00:00:00.000",
+   "description": "Replace meter lug",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13538533"
+   },
+   "status_current": "Expired",
+   "permittype": "EP",
+   "work_class": "Repair"
+  }
+ ]
+}

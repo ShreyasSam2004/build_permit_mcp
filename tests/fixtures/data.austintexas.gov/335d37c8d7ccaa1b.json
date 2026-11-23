@@ -1,0 +1,229 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24group=permittype%2C+work_class&%24limit=50000&%24select=permittype%2C+work_class%2C+count%28%2A%29+as+n%2C+sum%28case%28total_job_valuation+%3E%3D+0%2C+total_job_valuation%29%29+as+v&%24where=issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-06-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-07-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "permittype": "MP",
+   "work_class": "Addition",
+   "n": "1"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Addition and Remodel",
+   "n": "99"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "Change Out",
+   "n": "641"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "New",
+   "n": "194"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Relocation",
+   "n": "3",
+   "v": "0"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Remodel",
+   "n": "251"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Shell",
+   "n": "8"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Freestanding",
+   "n": "10"
+  },
+  {
+   "permittype": "DS",
+   "work_class": "New",
+   "n": "84"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Remodel",
+   "n": "115"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "Repair",
+   "n": "37"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Shell",
+   "n": "7",
+   "v": "230249901"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Addition",
+   "n": "2",
+   "v": "136601"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Homebuilder Loop",
+   "n": "187"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Interior Demo Non-Structural",
+   "n": "15",
+   "v": "1"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "New",
+   "n": "451"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Addition and Remodel",
+   "n": "65"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Repair",
+   "n": "357"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Temporary  Loop",
+   "n": "8"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "Addition and Remodel",
+   "n": "65"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Auxiliary Power",
+   "n": "50"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Remodel",
+   "n": "192"
+  },
+  {
+   "permittype": "DS",
+   "work_class": "Repair",
+   "n": "5"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Auxiliary Water",
+   "n": "1"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "Remodel",
+   "n": "101"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Shell",
+   "n": "3"
+  },
+  {
+   "permittype": "DS",
+   "work_class": "Modification",
+   "n": "1"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Repair",
+   "n": "172",
+   "v": "722891"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Irrigation",
+   "n": "212"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Awning",
+   "n": "1"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Fireline",
+   "n": "8"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Special Inspections Program",
+   "n": "41"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Repair",
+   "n": "352"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Upgrade",
+   "n": "165"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Plumbing Service Line",
+   "n": "3"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "New",
+   "n": "357",
+   "v": "217982267"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Change Out",
+   "n": "145"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Addition and Remodel",
+   "n": "131",
+   "v": "3793855"
+  },
+  {
+   "permittype": "MP",
+   "work_class": "Shell",
+   "n": "3"
+  },
+  {
+   "permittype": "BP",
+   "work_class": "Demolition",
+   "n": "68",
+   "v": "0"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "Cut Over/Tank Abandonment",
+   "n": "1"
+  },
+  {
+   "permittype": "EP",
+   "work_class": "Wall",
+   "n": "80"
+  },
+  {
+   "permittype": "PP",
+   "work_class": "New",
+   "n": "302"
+  }
+ ]
+}
