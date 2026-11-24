@@ -1,0 +1,1 @@
+{"ts": "2026-11-24T19:17:57.781+00:00", "level": "WARNING", "logger": "permits_mcp", "msg": "SOCRATA_APP_TOKEN is not set; Socrata throttles anonymous requests more aggressively"}

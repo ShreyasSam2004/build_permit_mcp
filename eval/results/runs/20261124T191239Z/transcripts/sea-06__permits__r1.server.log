@@ -1,0 +1,2 @@
+{"ts": "2026-11-24T19:15:56.216+00:00", "level": "WARNING", "logger": "permits_mcp", "msg": "SOCRATA_APP_TOKEN is not set; Socrata throttles anonymous requests more aggressively"}
+{"ts": "2026-11-24T19:16:02.838+00:00", "level": "WARNING", "logger": "permits_mcp.socrata", "msg": "socrata request failed; retrying", "url": "https://data.seattle.gov/resource/76t5-zqzr.json", "status": null, "error": "ConnectTimeout", "attempt": 1, "delay_s": 0.37}

@@ -1,9 +1,9 @@
 {
- "computed_at": "2026-11-23T10:46:11+00:00",
+ "computed_at": "2026-11-24T19:12:49+00:00",
  "city_dates": {
-  "chicago": "2026-11-23",
-  "seattle": "2026-11-23",
-  "austin": "2026-11-23"
+  "chicago": "2026-11-24",
+  "seattle": "2026-11-24",
+  "austin": "2026-11-24"
  },
  "questions": {
   "chi-01": {
@@ -132,12 +132,12 @@
      },
      "rows": [
       {
-       "n": "5924"
+       "n": "5912"
       }
      ]
     }
    ],
-   "expected": 5924
+   "expected": 5912
   },
   "chi-07": {
    "answer_type": "integer",
@@ -147,16 +147,16 @@
      "city": "chicago",
      "params": {
       "$select": "count(*) as n",
-      "$where": "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '2024-11-23T00:00:00') OR (application_start_date IS NULL AND issue_date < '2024-11-23T00:00:00'))"
+      "$where": "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '2024-11-24T00:00:00') OR (application_start_date IS NULL AND issue_date < '2024-11-24T00:00:00'))"
      },
      "rows": [
       {
-       "n": "774"
+       "n": "772"
       }
      ]
     }
    ],
-   "expected": 774
+   "expected": 772
   },
   "chi-08": {
    "answer_type": "integer",
@@ -304,16 +304,16 @@
      "city": "seattle",
      "params": {
       "$select": "count(*) as n",
-      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-23T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-23T00:00:00'))"
+      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-24T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-24T00:00:00'))"
      },
      "rows": [
       {
-       "n": "5003"
+       "n": "5004"
       }
      ]
     }
    ],
-   "expected": 5003
+   "expected": 5004
   },
   "sea-08": {
    "answer_type": "integer",
@@ -445,7 +445,7 @@
      "city": "austin",
      "params": {
       "$select": "count(*) as n",
-      "$where": "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '2023-11-24T00:00:00') OR (applieddate IS NULL AND issue_date < '2023-11-24T00:00:00'))"
+      "$where": "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '2023-11-25T00:00:00') OR (applieddate IS NULL AND issue_date < '2023-11-25T00:00:00'))"
      },
      "rows": [
       {

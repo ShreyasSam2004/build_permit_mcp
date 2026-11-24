@@ -404,7 +404,9 @@ def _git_state() -> dict[str, Any]:
     def git(*args: str) -> str:
         return subprocess.run(["git", *args], cwd=REPO_DIR, capture_output=True, text=True, check=False).stdout.strip()
 
-    return {"commit": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain"))}
+    # Only what changes a run's behaviour: eval/results is written by the run itself (ground truth first).
+    code = ("src", "eval", "pyproject.toml", "uv.lock", ":(exclude)eval/results")
+    return {"commit": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain", "--", *code))}
 
 
 def _done_keys(path: Path) -> set[str]:

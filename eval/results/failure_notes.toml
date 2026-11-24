@@ -1,0 +1,18 @@
+# Human failure classes for graded failures, keyed "<question>/<arm>" (see eval/grade.py).
+# Written after reading each transcript of run 20261124T191239Z.
+
+["chi-06/permits"]
+class = "server can't reach raw status"
+note = "The server folds SUSPENDED into 'issued' and can't filter or group by raw status; the agent declined rather than page 7,342 rows"
+
+["aus-08/permits"]
+class = "ambiguous wording"
+note = "Read 'issued permits' as the server's status 'issued' (still open): 429; named 4,248 as the other reading"
+
+["chi-07/baseline"]
+class = "judgment call: what is open"
+note = "Counted ACTIVE only (319); the key also counts SUSPENDED (238) and PHASED PERMITTING (215)"
+
+["sea-07/baseline"]
+class = "key convention not in question"
+note = "Literal application date; the key uses issue date for 36 undated permits and drops 10 dated 1900 (4978 + 36 - 10)"
