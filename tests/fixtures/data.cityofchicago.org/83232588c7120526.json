@@ -1,0 +1,9 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24select=count%28%2A%29+as+n&%24where=NOT+%28issue_date+IS+NOT+NULL%29",
+ "status": 200,
+ "body": [
+  {
+   "n": "0"
+  }
+ ]
+}

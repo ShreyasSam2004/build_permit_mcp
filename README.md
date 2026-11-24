@@ -54,7 +54,7 @@ claude mcp add permits -e SOCRATA_APP_TOKEN=<optional token> -- uv run --directo
 | `search_permits` | Listing permits by address, status (normalized, or the city's own via `status_raw`), type, date range (issued or applied) or minimum valuation; cursor pagination |
 | `get_permit` | One permit's full record plus every raw source field |
 | `find_stale_permits` | Permits still open past N days, oldest first, with excluded-unknown counts |
-| `permit_stats` | Exact counts and valuation sums by status, the city's own status (`status_raw`), type, month or year, aggregated by the portal |
+| `permit_stats` | Exact counts and valuation sums by status, the city's own status (`status_raw`), type, month or year, aggregated by the portal. The date range is optional: without one, permits with no date are counted too; with one, the result says how many it left out |
 
 Statuses are normalized across cities, so each one folds several of a city's own values together:
 Chicago's `issued` includes `ACTIVE`, `PHASED PERMITTING` and `SUSPENDED`. For a question about one
@@ -114,6 +114,7 @@ route traffic to port 8080.
 ```bash
 uv run ruff check . && uv run ruff format --check . && uv run pyright && uv run pytest
 PERMITS_RECORD=1 uv run pytest   # re-record fixtures from the live portals
+PERMITS_RECORD=missing uv run pytest   # record only requests with no fixture yet; keep the rest
 uv run pytest -m live            # schema-drift check against the live portals
 uv run permits-mcp --transport http --port 8000   # Streamable HTTP at /mcp, health at /healthz
 ```

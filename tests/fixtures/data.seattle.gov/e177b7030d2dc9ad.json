@@ -1,0 +1,156 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24group=statuscurrent%2C+permittypemapped&%24limit=50000&%24select=statuscurrent%2C+permittypemapped%2C+count%28%2A%29+as+n%2C+sum%28case%28estprojectcost+%3E%3D+0%2C+estprojectcost%29%29+as+v&%24where=%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29",
+ "status": 200,
+ "body": [
+  {
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Demolition",
+   "n": "25",
+   "v": "48180126.0000"
+  },
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "n": "653",
+   "v": "281531862.6000"
+  },
+  {
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Demolition",
+   "n": "215",
+   "v": "11615374.0000"
+  },
+  {
+   "statuscurrent": "Awaiting Information",
+   "permittypemapped": "Demolition",
+   "n": "107",
+   "v": "103548652.1600"
+  },
+  {
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "ECA and Shoreline Exemption/Street Improvement Exception Request",
+   "n": "188",
+   "v": "366935385.4500"
+  },
+  {
+   "statuscurrent": "Corrections Submitted",
+   "permittypemapped": "Demolition",
+   "n": "1",
+   "v": "125000.0000"
+  },
+  {
+   "statuscurrent": "Awaiting Information",
+   "permittypemapped": "Building",
+   "n": "411",
+   "v": "147657428.0000"
+  },
+  {
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Building",
+   "n": "75",
+   "v": "72967354.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition",
+   "n": "147",
+   "v": "1057074309.2000"
+  },
+  {
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "n": "466",
+   "v": "6604287475.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Building",
+   "n": "553",
+   "v": "372463353.0000"
+  },
+  {
+   "statuscurrent": "Awaiting Information",
+   "permittypemapped": "Grading",
+   "n": "1",
+   "v": "593000.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Grading",
+   "n": "42",
+   "v": "30602216.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Grading",
+   "n": "5",
+   "v": "391000.0000"
+  },
+  {
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Grading",
+   "n": "6",
+   "v": "10502773.0000"
+  },
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "ECA and Shoreline Exemption/Street Improvement Exception Request",
+   "n": "34",
+   "v": "39931566.6900"
+  },
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Demolition",
+   "n": "46",
+   "v": "28031216.0000"
+  },
+  {
+   "statuscurrent": "Corrections Submitted",
+   "permittypemapped": "Building",
+   "n": "32",
+   "v": "19677894.0000"
+  },
+  {
+   "statuscurrent": "Reviews Completed",
+   "permittypemapped": "Grading",
+   "n": "2",
+   "v": "0.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "n": "1746",
+   "v": "2541165463.9600"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "ECA and Shoreline Exemption/Street Improvement Exception Request",
+   "n": "212",
+   "v": "127677211.9900"
+  },
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Grading",
+   "n": "3",
+   "v": "123752000.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Demolition",
+   "n": "141",
+   "v": "1171836868.0000"
+  },
+  {
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "ECA and Shoreline Exemption/Street Improvement Exception Request",
+   "n": "42",
+   "v": "226429628.0000"
+  },
+  {
+   "statuscurrent": "Corrections Submitted",
+   "permittypemapped": "ECA and Shoreline Exemption/Street Improvement Exception Request",
+   "n": "1",
+   "v": "300000.0000"
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24select=count%28%2A%29+as+n&%24where=%28statuscurrent+IS+NOT+NULL+AND+upper%28statuscurrent%29+IN+%28%27CORRECTIONS+REQUIRED%27%29%29+AND+%28NOT+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27%29%29",
+ "status": 200,
+ "body": [
+  {
+   "n": "215"
+  }
+ ]
+}

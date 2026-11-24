@@ -1,0 +1,119 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24group=period&%24limit=50000&%24select=date_trunc_y%28applieddate%29+as+period%2C+count%28%2A%29+as+n%2C+sum%28case%28estprojectcost+%3E%3D+0%2C+estprojectcost%29%29+as+v&%24where=%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Application+Completed%27%2C+%27Reviews+In+Process%27%2C+%27Corrections+Required%27%2C+%27Corrections+Submitted%27%2C+%27Awaiting+Information%27%2C+%27Reviews+Completed%27%2C+%27Ready+for+Issuance%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29+AND+%28permittypemapped+IS+NOT+NULL+AND+permittypemapped+IN+%28%27Demolition%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Closed%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Active%27%29%29%29+AND+NOT+%28%28statuscurrent+IS+NOT+NULL+AND+statuscurrent+IN+%28%27Initiated%27%2C+%27Ready+for+Intake%27%2C+%27Scheduled%27%2C+%27Scheduled+and+Submitted%27%2C+%27Pending%27%2C+%27Additional+Info+Requested%27%29%29%29",
+ "status": 200,
+ "body": [
+  {
+   "n": "510",
+   "v": "768443082.1300"
+  },
+  {
+   "period": "2011-01-01T00:00:00.000",
+   "n": "11",
+   "v": "73500.0000"
+  },
+  {
+   "period": "2022-01-01T00:00:00.000",
+   "n": "274",
+   "v": "1030788316.0000"
+  },
+  {
+   "period": "2009-01-01T00:00:00.000",
+   "n": "4",
+   "v": "1.0000"
+  },
+  {
+   "period": "2013-01-01T00:00:00.000",
+   "n": "13",
+   "v": "583000.0000"
+  },
+  {
+   "period": "2008-01-01T00:00:00.000",
+   "n": "25"
+  },
+  {
+   "period": "2006-01-01T00:00:00.000",
+   "n": "32",
+   "v": "140000.0000"
+  },
+  {
+   "period": "2021-01-01T00:00:00.000",
+   "n": "245",
+   "v": "1558003450.0000"
+  },
+  {
+   "period": "2017-01-01T00:00:00.000",
+   "n": "101",
+   "v": "156574627.0000"
+  },
+  {
+   "period": "2012-01-01T00:00:00.000",
+   "n": "4",
+   "v": "75000.0000"
+  },
+  {
+   "period": "2015-01-01T00:00:00.000",
+   "n": "20",
+   "v": "37229859.0000"
+  },
+  {
+   "period": "2005-01-01T00:00:00.000",
+   "n": "19",
+   "v": "236683.0000"
+  },
+  {
+   "period": "2023-01-01T00:00:00.000",
+   "n": "408",
+   "v": "2268574098.4800"
+  },
+  {
+   "period": "2025-01-01T00:00:00.000",
+   "n": "604",
+   "v": "832594841.9600"
+  },
+  {
+   "period": "2010-01-01T00:00:00.000",
+   "n": "8",
+   "v": "53000.0000"
+  },
+  {
+   "period": "2024-01-01T00:00:00.000",
+   "n": "444",
+   "v": "1323794588.8400"
+  },
+  {
+   "period": "2026-01-01T00:00:00.000",
+   "n": "1814",
+   "v": "2291705469.6400"
+  },
+  {
+   "period": "2007-01-01T00:00:00.000",
+   "n": "40",
+   "v": "0.0000"
+  },
+  {
+   "period": "2020-01-01T00:00:00.000",
+   "n": "217",
+   "v": "2030299651.0000"
+  },
+  {
+   "period": "2016-01-01T00:00:00.000",
+   "n": "50",
+   "v": "149248140.0000"
+  },
+  {
+   "period": "2018-01-01T00:00:00.000",
+   "n": "149",
+   "v": "141579682.0000"
+  },
+  {
+   "period": "2019-01-01T00:00:00.000",
+   "n": "143",
+   "v": "793574762.0000"
+  },
+  {
+   "period": "2014-01-01T00:00:00.000",
+   "n": "19",
+   "v": "3705405.0000"
+  }
+ ]
+}

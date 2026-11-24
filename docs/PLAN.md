@@ -8,12 +8,13 @@ First full run (2026-11-24, `eval/results/runs/20261124T191239Z`, 30 questions �
 - **Accuracy tied at 28/30** (95% CI 79%–98% for both). permits cost $0.082 per question against the baseline's $0.160, on about half the input tokens; tool calls and latency were the same.
 - **Every failure was read in its transcript and labelled in `eval/results/failure_notes.toml`.** permits: chi-06 (it can't reach Chicago's raw `SUSPENDED`, folded into `issued`) and aus-08 (it read "issued permits" as the status `issued`). Baseline: chi-07 (counted `ACTIVE` only as open) and sea-07 (the key's issue-date fallback isn't stated in the question: 4978 + 36 − 10 = 5004).
 - **Both baseline failures rest on conventions the server shares with the answer key.** So the honest reading is that the server wins on cost, not accuracy.
+- **Fixed after the run: `permit_stats` no longer loses undated permits.** It required a date range, and a range can't match a blank date, so "how many Seattle applications are in review" came out 4,644 instead of 5,154. The range is now optional (no range counts everything: 5,154 live, matching the key), and with a range `excluded_no_date_count` plus a warning report what it left out (510). Month/year groups without a range put undated and placeholder dates under `(no date)`.
 - **Changed after the run: `status_raw` (for chi-06).** `search_permits` and `permit_stats` filter on a city's own status, ignoring case; `permit_stats` groups by it, giving each value's normalized status; and `list_cities` lists the values inside each normalized status. Chicago 2024 `SUSPENDED` is 5,912 via the server, matching the key. This is a change made after seeing results, so it gets its own run rather than rewriting this one.
 
 Phase 4 notes (2026-11-23):
 - **30 questions with ground truth for all of them** (`eval/questions.toml`); `eval/ground_truth.py` fails the snapshot on tied labels, a cross-city winner within 10%, or empty id lists. Grader self-check: all 30 reference answers pass; empty, non-answers and near misses (±1, ×1.01, a dropped id, the next month) all fail.
 - **The ground truth was cross-checked against the server's own tools on 11 questions; 9 match exactly.** The two differences are server weaknesses, not ground-truth errors:
-  - `permit_stats` requires a date range, so it silently drops records with no date. Seattle has 5,154 applications in review, but 510 of them have no application date, so `permit_stats` reports 4,644. `search_permits` without dates gets 5,154. The server instructions ("use permit_stats for any count") steer agents to the wrong number.
+  - (Fixed after run 1, see above.) `permit_stats` requires a date range, so it silently drops records with no date. Seattle has 5,154 applications in review, but 510 of them have no application date, so `permit_stats` reports 4,644. `search_permits` without dates gets 5,154. The server instructions ("use permit_stats for any count") steer agents to the wrong number.
   - Address normalization turns "LaSalle" into `LASALLE`; Chicago spells it `LA SALLE ST`, so the search returns 0 (52 expected). The no-match hint tells the agent to retry with the street name only.
 - **Seattle `Closed` demolitions are mixed:** of 895, 561 have a completion date but 314 were never issued. The config maps all of them to `finaled`; the questions avoid this case.
 - **Gap questions were checked against each portal's whole catalog**, because the baseline can search it. Seattle publishes electrical and trade permits separately and Austin publishes plan-review cases, so only Chicago's "applications in review" is a true gap.
@@ -287,8 +288,8 @@ find_stale_permits(
 permit_stats(
     city: CityId,
     group_by: Literal["status", "permit_type", "month", "year"],
-    date_from: date,
-    date_to: date,
+    date_from: date | None = None,           # optional since run 1: omit both to count undated permits too
+    date_to: date | None = None,
     date_field: Literal["issued", "applied"] = "issued",   # PROPOSED ADDITION
     status: list[Status] | None = None,
     status_raw: list[str] | None = None,     # ADDED AFTER RUN 1; also group_by="status_raw"

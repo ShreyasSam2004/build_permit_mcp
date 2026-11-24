@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from collections.abc import Callable, Mapping, Sequence
+from dataclasses import replace
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
@@ -20,6 +21,7 @@ from .adapter import CityAdapter, Filters, NoPossibleMatch
 from .city_config import CityConfig
 from .schema import (
     BLANK_RAW_STATUS,
+    NO_DATE_KEY,
     OPEN_STATUSES,
     PERMIT_TYPES,
     STATUSES,
@@ -436,8 +438,8 @@ class PermitService:
         self,
         city: str,
         group_by: GroupBy,
-        date_from: date,
-        date_to: date,
+        date_from: date | None = None,
+        date_to: date | None = None,
         date_field: DateField = "issued",
         status: Sequence[Status] | None = None,
         permit_type: Sequence[PermitType] | None = None,
@@ -446,7 +448,9 @@ class PermitService:
         adapter = self._adapter(city)
         cfg = adapter.config
         self._check_range(date_from, date_to)
-        date_col = self._date_column(adapter, date_field)
+        ranged = date_from is not None or date_to is not None
+        by_period = group_by in ("month", "year")
+        date_col = self._date_column(adapter, date_field) if ranged or by_period else None
         filters = Filters(
             statuses=tuple(status) if status else None,
             raw_statuses=tuple(dict.fromkeys(status_raw)) if status_raw else None,
@@ -463,6 +467,11 @@ class PermitService:
         )  # fmt: skip
         try:
             where = adapter.where(filters)
+            # A date range can only count permits that have the date; count the rest so they're never silently lost.
+            undated = None
+            if ranged and date_col:
+                no_date = f"NOT ({soql.date_present(date_col, cfg.date_null_before)})"
+                undated = soql.and_(adapter.where(replace(filters, date_from=None, date_to=None)), no_date)
         except NoPossibleMatch as exc:
             result.warnings.extend(w for w in [self._no_match_warning(adapter, str(exc))] if w)
             return result
@@ -479,8 +488,14 @@ class PermitService:
         params = {"$select": select, "$group": group, "$limit": GROUP_LIMIT}
         if where:
             params["$where"] = where
-        rows = await self._query(adapter, params)
+        undated_params = {"$select": "count(*) as n", "$where": undated or ""}
+        rows, undated_rows = await asyncio.gather(
+            self._query(adapter, params), self._query(adapter, undated_params) if undated else _none()
+        )
+        if undated:
+            result.excluded_no_date_count = int(undated_rows[0]["n"]) if undated_rows else 0
 
+        null_before = cfg.date_null_before.isoformat() if cfg.date_null_before else ""
         buckets: dict[str, list[Any]] = {}
         maps_to: dict[str, set[Status]] = {}
         for row in rows:
@@ -494,16 +509,20 @@ class PermitService:
                 key = adapter.classify_type(row)
             else:
                 period = row.get("period") or ""
-                key = period[:7] if group_by == "month" else period[:4]
+                if not period or period[:10] < null_before:  # no date, or a placeholder like 1900-01-01
+                    key = NO_DATE_KEY
+                else:
+                    key = period[:7] if group_by == "month" else period[:4]
             bucket = buckets.setdefault(key, [0, None])
             bucket[0] += int(row["n"])
             if row.get("v") is not None:
                 bucket[1] = (bucket[1] or 0.0) + float(row["v"])
 
-        if group_by in ("month", "year"):
-            for key in _periods(date_from, date_to, group_by):
-                buckets.setdefault(key, [0, None])
-            keys = sorted(buckets)
+        if by_period:
+            if date_from and date_to:
+                for key in _periods(date_from, date_to, group_by):
+                    buckets.setdefault(key, [0, None])
+            keys = sorted(k for k in buckets if k != NO_DATE_KEY) + [k for k in buckets if k == NO_DATE_KEY]
         else:
             keys = sorted(buckets, key=lambda k: (-buckets[k][0], k))
         result.groups = [
@@ -519,6 +538,12 @@ class PermitService:
         if group_by == "status" and "unknown" in buckets and buckets["unknown"][0]:
             result.warnings.append(
                 f"{buckets['unknown'][0]:,} permits have status 'unknown' (blank or unrecognized in the source data)."
+            )
+        if result.excluded_no_date_count:
+            result.warnings.append(
+                f"{result.excluded_no_date_count:,} permits match every other filter but have no {date_field} date, "
+                "so no date range can include them. If the question isn't about a date range (e.g. how many are in "
+                "review now), call again without date_from and date_to to count them too."
             )
         return result
 

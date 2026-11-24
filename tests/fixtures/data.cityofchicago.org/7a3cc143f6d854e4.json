@@ -1,0 +1,11 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24group=period&%24limit=50000&%24select=date_trunc_y%28issue_date%29+as+period%2C+count%28%2A%29+as+n%2C+sum%28case%28reported_cost+%3E%3D+0%2C+reported_cost%29%29+as+v&%24where=issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272023-01-01T00%3A00%3A00%27+AND+issue_date+%3C+%272024-01-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "period": "2023-01-01T00:00:00.000",
+   "n": "34389",
+   "v": "7269583806.41"
+  }
+ ]
+}

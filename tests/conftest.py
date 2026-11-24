@@ -2,7 +2,9 @@
 
 HTTP is replayed from recorded Socrata responses in ``tests/fixtures/<host>/``. Any request
 without a recording fails the test, so unit tests can never touch the network by accident.
-To (re-)record against the live portals: ``PERMITS_RECORD=1 uv run pytest``.
+To (re-)record everything against the live portals: ``PERMITS_RECORD=1 uv run pytest``.
+To record only requests that have no recording yet (e.g. a new query added to a tool), keeping
+every existing recording as it is: ``PERMITS_RECORD=missing uv run pytest``.
 """
 
 from __future__ import annotations
@@ -26,6 +28,7 @@ from permits_mcp.socrata import SocrataClient
 FIXTURES = Path(__file__).parent / "fixtures"
 FROZEN_TODAY = date(2026, 11, 22)  # the date fixtures were recorded; stale-permit cutoffs derive from it
 RECORD = os.environ.get("PERMITS_RECORD") == "1"
+RECORD_MISSING = os.environ.get("PERMITS_RECORD") == "missing"
 
 
 def request_key(request: httpx.Request) -> tuple[str, str]:
@@ -35,17 +38,18 @@ def request_key(request: httpx.Request) -> tuple[str, str]:
 
 
 class ReplayTransport(httpx.AsyncBaseTransport):
-    def __init__(self, root: Path = FIXTURES, record: bool = RECORD) -> None:
+    def __init__(self, root: Path = FIXTURES, record: bool = RECORD, record_missing: bool = RECORD_MISSING) -> None:
         self.root = root
         self.record = record
-        self.live = httpx.AsyncHTTPTransport() if record else None
+        self.record_missing = record_missing
+        self.live = httpx.AsyncHTTPTransport() if record or record_missing else None
         self.requests: list[str] = []
 
     async def handle_async_request(self, request: httpx.Request) -> httpx.Response:
         key, canonical = request_key(request)
         self.requests.append(canonical)
         path = self.root / request.url.host / f"{key}.json"
-        if self.live is not None:
+        if self.live is not None and (self.record or not path.exists()):
             response = await self.live.handle_async_request(request)
             body = await response.aread()
             if response.status_code == 200:

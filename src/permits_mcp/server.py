@@ -35,8 +35,9 @@ from .socrata import SocrataClient
 INSTRUCTIONS = """\
 US building permits from city open-data portals, normalized to one schema across cities.
 Start with list_cities to see which cities, statuses and fields exist (a city that doesn't publish
-something returns null or a warning, not a real zero). Use permit_stats for any count or total,
-search_permits to list permits, find_stale_permits for permits open too long, get_permit for one permit.
+something returns null or a warning, not a real zero). Use permit_stats for any count or total (for a
+question about right now, omit its date range so permits with no date are counted too), search_permits
+to list permits, find_stale_permits for permits open too long, get_permit for one permit.
 Each normalized status folds together several of a city's own statuses (list_cities shows which). For one
 of those, e.g. Chicago's SUSPENDED inside 'issued', filter with status_raw or group by 'status_raw'."""
 
@@ -207,23 +208,28 @@ def build_server(
                 "maps to), 'permit_type', 'month' or 'year'."
             ),
         ],
-        date_from: Annotated[date, Field(description="Inclusive start date, YYYY-MM-DD.")],
-        date_to: Annotated[date, Field(description="Inclusive end date, YYYY-MM-DD.")],
+        date_from: Annotated[
+            date | None,
+            Field(description="Inclusive start date, YYYY-MM-DD. Omit both dates to count every permit."),
+        ] = None,
+        date_to: Annotated[date | None, Field(description="Inclusive end date, YYYY-MM-DD.")] = None,
         date_field: DateFieldParam = "issued",
         status: StatusList = None,
         status_raw: RawStatusList = None,
         permit_type: TypeList = None,
     ) -> StatsResult:
-        """Count permits and sum their valuations in one city over a date range, grouped by status,
-        status_raw, permit_type, month or year. Aggregated by the city's portal, so counts are exact and
-        cover every matching permit, not a sample.
+        """Count permits and sum their valuations in one city, optionally over a date range, grouped by
+        status, status_raw, permit_type, month or year. Aggregated by the city's portal, so counts are
+        exact and cover every matching permit, not a sample.
 
         Use when: the question asks how many, how much, which is most common, or a trend over time. For a
         status the normalized ones fold together (e.g. Chicago's SUSPENDED is inside 'issued'), group by
         'status_raw' or filter with status_raw.
         Don't use: to list permits. Use search_permits.
-        The date range filters the issue date unless date_field='applied'. Optional status, status_raw and
-        permit_type filters narrow what is counted."""
+        Dates: the range filters the issue date unless date_field='applied', and can only count permits that
+        have that date. For a question about right now (e.g. how many are in review), omit both dates. With
+        a range, excluded_no_date_count says how many matching permits have no date and were left out.
+        Optional status, status_raw and permit_type filters narrow what is counted."""
         return await service.permit_stats(
             city,
             group_by,

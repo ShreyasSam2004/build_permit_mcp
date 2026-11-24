@@ -211,7 +211,7 @@ async def test_status_raw_groups_and_filter_agree(mcp_client: Client, city: str)
     filtered = await call(
         mcp_client, "permit_stats", city=city, group_by="status", status_raw=[value.lower()], **window
     )
-    assert filtered["warnings"] == []
+    assert not any("known to publish" in w for w in filtered["warnings"])  # lowercase is a known value
     assert filtered["total_count"] == group["count"]
     assert {g["key"] for g in filtered["groups"]} <= set(group["normalized_status"])
 
@@ -384,6 +384,38 @@ async def test_stats_by_type(mcp_client: Client) -> None:
     counts = [g["count"] for g in out["groups"]]
     assert "repair" in keys and counts == sorted(counts, reverse=True)
     assert "electrical" not in keys  # Chicago files trade work under express permits
+
+
+async def test_stats_without_dates_counts_undated_permits(mcp_client: Client) -> None:
+    """Run 1's sea-03 trap: 'how many are in review now' needs no date range, and a range can
+    only count permits that have the date. Undated permits must be counted or reported, never lost."""
+    in_review = {"city": "seattle", "status": ["in_review"]}
+    everything = await call(mcp_client, "permit_stats", group_by="status", **in_review)
+    assert everything["date_from"] is None and everything["excluded_no_date_count"] is None
+    listed = await call(mcp_client, "search_permits", limit=1, **in_review)
+    assert everything["total_count"] == listed["total_count"] > 0  # two independent paths agree
+
+    ranged = await call(
+        mcp_client, "permit_stats", group_by="status", date_field="applied",
+        date_from="1901-01-01", date_to="2099-12-31", **in_review,
+    )  # fmt: skip
+    undated = ranged["excluded_no_date_count"]
+    assert undated > 0  # Seattle leaves the application date blank on some of these
+    assert ranged["total_count"] + undated == everything["total_count"]
+    assert any(f"{undated:,} permits" in w and "without date_from and date_to" in w for w in ranged["warnings"])
+
+    by_year = await call(mcp_client, "permit_stats", group_by="year", date_field="applied", **in_review)
+    assert by_year["groups"][-1] == {**by_year["groups"][-1], "key": "(no date)", "count": undated}
+    assert by_year["total_count"] == everything["total_count"]
+    assert [g["key"] for g in by_year["groups"][:-1]] == sorted(g["key"] for g in by_year["groups"][:-1])
+
+
+async def test_stats_range_reports_zero_undated_when_none_are_missing(mcp_client: Client) -> None:
+    # Chicago publishes issued permits only, so every one has an issue date.
+    out = await call(mcp_client, "permit_stats", city="chicago", group_by="year", date_from="2023-01-01",
+                     date_to="2023-12-31")  # fmt: skip
+    assert out["excluded_no_date_count"] == 0
+    assert not any("no issued date" in w for w in out["warnings"])
 
 
 # ---- errors the agent can recover from ----------------------------------------------------

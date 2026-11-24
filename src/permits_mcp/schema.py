@@ -32,6 +32,7 @@ PERMIT_TYPES: tuple[PermitType, ...] = get_args(PermitType)
 DateField = Literal["issued", "applied"]
 GroupBy = Literal["status", "status_raw", "permit_type", "month", "year"]
 BLANK_RAW_STATUS = "(blank)"  # status_raw group key for records with no status value
+NO_DATE_KEY = "(no date)"  # month/year group key for records with no date (only when no date range is given)
 
 # Normalized fields a city config may leave unmapped (published as always-null).
 OPTIONAL_FIELDS = (
@@ -109,9 +110,14 @@ class StatsResult(BaseModel):
     city: str
     group_by: GroupBy
     date_field: DateField
-    date_from: date
-    date_to: date
+    date_from: date | None
+    date_to: date | None
     total_count: int
+    excluded_no_date_count: int | None = Field(
+        default=None,
+        description="With a date range: permits matching every other filter that have no date of this kind, so "
+        "the range can't include them and total_count leaves them out. Null without a date range.",
+    )
     groups: list[StatGroup]
     warnings: list[str] = Field(default_factory=list)
 
