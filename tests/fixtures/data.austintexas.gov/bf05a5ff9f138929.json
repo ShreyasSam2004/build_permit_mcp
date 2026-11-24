@@ -1,0 +1,77 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24limit=5&%24offset=0&%24order=issue_date+DESC%2C+permit_number+ASC&%24select=permit_number%2C+original_address1%2C+applieddate%2C+issue_date%2C+statusdate%2C+total_job_valuation%2C+description%2C+link%2C+status_current%2C+permittype%2C+work_class&%24where=%28status_current+IS+NOT+NULL+AND+upper%28status_current%29+IN+%28%27VOID%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-03-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-04-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_number": "2025-037813 EP",
+   "original_address1": "919 GENE JOHNSON ST",
+   "applieddate": "2025-03-30T00:00:00.000",
+   "issue_date": "2025-03-31T00:00:00.000",
+   "statusdate": "2025-08-08T00:00:00.000",
+   "description": "main electrical service upgrade\n\nVoiding due to additional electrical remodel permit on structure \n8/8/25 CM",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13492457"
+   },
+   "status_current": "VOID",
+   "permittype": "EP",
+   "work_class": "Upgrade"
+  },
+  {
+   "permit_number": "2025-036829 BP",
+   "original_address1": "4711 BANDERA RD",
+   "applieddate": "2025-03-27T00:00:00.000",
+   "issue_date": "2025-03-28T00:00:00.000",
+   "statusdate": "2026-02-09T00:00:00.000",
+   "total_job_valuation": "1",
+   "description": "Express - replace bath tub; replace toilet; replace sinks; replace faucets; replace sheetrock; replace windows; replace doors; replace floor; add insulation; replace some siding",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13491207"
+   },
+   "status_current": "VOID",
+   "permittype": "BP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2024-087373 EP",
+   "original_address1": "2804 RIVERCREST DR",
+   "applieddate": "2024-07-10T00:00:00.000",
+   "issue_date": "2025-03-27T00:00:00.000",
+   "statusdate": "2025-07-01T00:00:00.000",
+   "description": "Express: Replace windows like for like replace cabinetry and like for like plumbing fixtures interior non structural exploratory work no fixtures relocated shower/tub conversion",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13359351"
+   },
+   "status_current": "VOID",
+   "permittype": "EP",
+   "work_class": "Repair"
+  },
+  {
+   "permit_number": "2025-015356 PP",
+   "original_address1": "1316 KENWOOD AVE",
+   "applieddate": "2025-02-07T00:00:00.000",
+   "issue_date": "2025-03-27T00:00:00.000",
+   "statusdate": "2025-03-27T00:00:00.000",
+   "description": "Interior remodel to add master bath and uncovered deck 2 small projects.",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13466380"
+   },
+   "status_current": "VOID",
+   "permittype": "PP",
+   "work_class": "Auxiliary Water"
+  },
+  {
+   "permit_number": "2025-034740 MP",
+   "original_address1": "1107 W OLTORF ST",
+   "applieddate": "2025-03-24T00:00:00.000",
+   "issue_date": "2025-03-26T00:00:00.000",
+   "statusdate": "2025-07-30T00:00:00.000",
+   "description": "will install 2 supply vents one for laundry and one for a restroom",
+   "link": {
+    "url": "https://abc.austintexas.gov/web/permit/public-search-other?t_detail=1&t_selected_folderrsn=13488735"
+   },
+   "status_current": "VOID",
+   "permittype": "MP",
+   "work_class": "Repair"
+  }
+ ]
+}

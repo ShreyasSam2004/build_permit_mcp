@@ -30,7 +30,8 @@ PermitType = Literal[
 PERMIT_TYPES: tuple[PermitType, ...] = get_args(PermitType)
 
 DateField = Literal["issued", "applied"]
-GroupBy = Literal["status", "permit_type", "month", "year"]
+GroupBy = Literal["status", "status_raw", "permit_type", "month", "year"]
+BLANK_RAW_STATUS = "(blank)"  # status_raw group key for records with no status value
 
 # Normalized fields a city config may leave unmapped (published as always-null).
 OPTIONAL_FIELDS = (
@@ -99,6 +100,9 @@ class StatGroup(BaseModel):
     key: str
     count: int
     total_valuation_usd: float | None = Field(description="Sum of non-null valuations in this group; null if none.")
+    normalized_status: list[Status] | None = Field(
+        default=None, description="group_by='status_raw' only: the normalized status(es) these permits map to."
+    )
 
 
 class StatsResult(BaseModel):
@@ -125,6 +129,11 @@ class CityInfo(BaseModel):
     data_last_updated: datetime | None = Field(description="When the city last updated the dataset (UTC).")
     issued_date_range: DateRange | None
     statuses_available: list[Status]
+    status_raw_values: dict[Status, list[str]] = Field(
+        description="The city's own status values inside each normalized status; filter on them with status_raw. "
+        "Another column re-maps a few records (e.g. Chicago's milestone); permit_stats with "
+        "group_by='status_raw' gives the exact mapping with counts."
+    )
     permit_types_available: list[PermitType]
     fields_unavailable: list[str] = Field(description="Normalized fields this city never publishes; always null.")
     known_gaps: list[str]

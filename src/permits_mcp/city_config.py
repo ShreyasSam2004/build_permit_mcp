@@ -61,11 +61,27 @@ class TypeRule(Rule):
 
 
 class StatusRules(_Strict):
+    """The first column the rules mention is the city's own status column (``raw_column``): the one
+    whose values ``status_raw`` filters on, and the first part of every permit's ``status_raw``."""
+
     rules: list[StatusRule] = Field(min_length=1)
 
     @property
     def columns(self) -> list[str]:
         return _columns(self.rules)
+
+    @property
+    def raw_column(self) -> str:
+        return self.columns[0]
+
+    def raw_values(self) -> dict[Status, list[str]]:
+        """Values of ``raw_column`` that rules map to each status, in rule order. A value can appear
+        under several statuses when another column decides between them (e.g. Seattle 'Closed')."""
+        out: dict[Status, list[str]] = {}
+        for rule in self.rules:
+            values = out.setdefault(rule.then, [])
+            values.extend(v for v in rule.when.get(self.raw_column, ()) if v not in values)
+        return {status: values for status, values in out.items() if values}
 
 
 class TypeRules(_Strict):

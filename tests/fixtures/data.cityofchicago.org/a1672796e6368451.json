@@ -1,0 +1,160 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24group=permit_status%2C+permit_milestone&%24limit=50000&%24select=permit_status%2C+permit_milestone%2C+count%28%2A%29+as+n%2C+sum%28case%28reported_cost+%3E%3D+0%2C+reported_cost%29%29+as+v&%24where=issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272024-01-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-01-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "n": "3960",
+   "v": "266990364.55"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY ISSUED",
+   "n": "377",
+   "v": "2031932007"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "86",
+   "v": "1032919614"
+  },
+  {
+   "permit_status": "EXPIRED",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "98",
+   "v": "66147528"
+  },
+  {
+   "permit_status": "CANCELLED",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "1",
+   "v": "1028500"
+  },
+  {
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "11",
+   "v": "425215355"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "10",
+   "v": "6258500"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "10",
+   "v": "13320900"
+  },
+  {
+   "permit_status": "EXPIRED",
+   "permit_milestone": "INSPECTIONS",
+   "n": "1782",
+   "v": "339520696"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "CANCELLED",
+   "n": "128",
+   "v": "2675555"
+  },
+  {
+   "permit_status": "EXPIRED",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "23",
+   "v": "18634065"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "42",
+   "v": "8858495"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "STOP WORK",
+   "n": "12",
+   "v": "390550"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "n": "4099",
+   "v": "305543387.71"
+  },
+  {
+   "permit_status": "CANCELLED",
+   "permit_milestone": "COMPLETE",
+   "n": "1",
+   "v": "600000"
+  },
+  {
+   "permit_status": "EXPIRED",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "27",
+   "v": "23897998"
+  },
+  {
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "INSPECTIONS",
+   "n": "89",
+   "v": "100147009"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "EXPIRED",
+   "n": "77",
+   "v": "10387885"
+  },
+  {
+   "permit_status": "EXPIRED",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING",
+   "n": "2",
+   "v": "908000"
+  },
+  {
+   "permit_status": "PHASED PERMITTING",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "1",
+   "v": "5000000"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "33",
+   "v": "35828896"
+  },
+  {
+   "permit_status": "COMPLETE",
+   "permit_milestone": "COMPLETE",
+   "n": "19615",
+   "v": "3298777477.09"
+  },
+  {
+   "permit_status": "ACTIVE",
+   "permit_milestone": "INSPECTIONS",
+   "n": "1223",
+   "v": "521815252"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "n": "1649",
+   "v": "518568786"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "77",
+   "v": "83684543"
+  },
+  {
+   "permit_status": "CANCELLED",
+   "permit_milestone": "INSPECTIONS",
+   "n": "6",
+   "v": "2349259"
+  }
+ ]
+}

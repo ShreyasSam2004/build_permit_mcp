@@ -1,0 +1,9 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24select=count%28%2A%29+as+n&%24where=%28status_current+IS+NOT+NULL+AND+upper%28status_current%29+IN+%28%27VOID%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-03-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-04-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "n": "19"
+  }
+ ]
+}

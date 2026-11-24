@@ -1,0 +1,11 @@
+{
+ "request": "/resource/3syk-w9eu.json?%24group=status_current&%24limit=50000&%24select=status_current%2C+count%28%2A%29+as+n%2C+sum%28case%28total_job_valuation+%3E%3D+0%2C+total_job_valuation%29%29+as+v&%24where=%28status_current+IS+NOT+NULL+AND+upper%28status_current%29+IN+%28%27VOID%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272025-03-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-04-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "status_current": "VOID",
+   "n": "19",
+   "v": "5"
+  }
+ ]
+}

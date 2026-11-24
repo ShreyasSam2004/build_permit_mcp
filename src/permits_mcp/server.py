@@ -11,7 +11,7 @@ from typing import Annotated
 
 from mcp.server import MCPServer
 from mcp.types import ToolAnnotations
-from pydantic import Field
+from pydantic import Field, StringConstraints
 from pydantic.config import JsonValue
 from starlette.requests import Request
 from starlette.responses import JSONResponse, Response
@@ -36,7 +36,9 @@ INSTRUCTIONS = """\
 US building permits from city open-data portals, normalized to one schema across cities.
 Start with list_cities to see which cities, statuses and fields exist (a city that doesn't publish
 something returns null or a warning, not a real zero). Use permit_stats for any count or total,
-search_permits to list permits, find_stale_permits for permits open too long, get_permit for one permit."""
+search_permits to list permits, find_stale_permits for permits open too long, get_permit for one permit.
+Each normalized status folds together several of a city's own statuses (list_cities shows which). For one
+of those, e.g. Chicago's SUSPENDED inside 'issued', filter with status_raw or group by 'status_raw'."""
 
 READ_ONLY = ToolAnnotations(read_only_hint=True, open_world_hint=True)
 
@@ -45,7 +47,19 @@ DateTo = Annotated[date | None, Field(description="Inclusive end date, YYYY-MM-D
 StatusList = Annotated[
     list[Status] | None,
     Field(
-        min_length=1, description="Keep only these normalized statuses. 'Open' = ['applied', 'in_review', 'issued']."
+        min_length=1,
+        description="Keep only these normalized statuses. 'Open' = ['applied', 'in_review', 'issued']. Each "
+        "covers several of the city's own statuses; to pick one of those, use status_raw instead.",
+    ),
+]
+RawStatusList = Annotated[
+    list[Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=100)]] | None,
+    Field(
+        min_length=1,
+        max_length=50,
+        description="Keep only permits whose status in the city's own terms is one of these, ignoring case, e.g. "
+        "Chicago 'SUSPENDED' or Seattle 'Corrections Required'. list_cities gives each city's values; it is the "
+        "part of a permit's status_raw before ' / '.",
     ),
 ]
 TypeList = Annotated[
@@ -111,6 +125,7 @@ def build_server(
             ),
         ] = None,
         status: StatusList = None,
+        status_raw: RawStatusList = None,
         permit_type: TypeList = None,
         date_field: DateFieldParam = "issued",
         date_from: DateFrom = None,
@@ -127,11 +142,22 @@ def build_server(
         Don't use when: you need a count, total or breakdown (use permit_stats: exact, one call); you want
         permits still open after N days (use find_stale_permits); you already have a permit_id (use get_permit).
 
-        Notes: date_from/date_to filter the issue date unless date_field='applied'. Descriptions are cut to
+        Notes: status takes normalized statuses; status_raw takes the city's own (e.g. Chicago 'SUSPENDED').
+        date_from/date_to filter the issue date unless date_field='applied'. Descriptions are cut to
         200 characters; get_permit has the full text and raw source fields. If total_count > returned,
         narrow the filters or pass next_cursor back with the same arguments."""
         return await service.search_permits(
-            city, address, status, permit_type, date_field, date_from, date_to, min_valuation_usd, limit, cursor
+            city,
+            address=address,
+            status=status,
+            status_raw=status_raw,
+            permit_type=permit_type,
+            date_field=date_field,
+            date_from=date_from,
+            date_to=date_to,
+            min_valuation_usd=min_valuation_usd,
+            limit=limit,
+            cursor=cursor,
         )
 
     @mcp.tool(title="Get permit", annotations=READ_ONLY)
@@ -174,22 +200,40 @@ def build_server(
     @mcp.tool(title="Permit statistics", annotations=READ_ONLY)
     async def permit_stats(
         city: CityId,  # pyright: ignore[reportInvalidTypeForm]
-        group_by: Annotated[GroupBy, Field(description="'status', 'permit_type', 'month' or 'year'.")],
+        group_by: Annotated[
+            GroupBy,
+            Field(
+                description="'status', 'status_raw' (the city's own statuses, each with the normalized status it "
+                "maps to), 'permit_type', 'month' or 'year'."
+            ),
+        ],
         date_from: Annotated[date, Field(description="Inclusive start date, YYYY-MM-DD.")],
         date_to: Annotated[date, Field(description="Inclusive end date, YYYY-MM-DD.")],
         date_field: DateFieldParam = "issued",
         status: StatusList = None,
+        status_raw: RawStatusList = None,
         permit_type: TypeList = None,
     ) -> StatsResult:
         """Count permits and sum their valuations in one city over a date range, grouped by status,
-        permit_type, month or year. Aggregated by the city's portal, so counts are exact and cover every
-        matching permit, not a sample.
+        status_raw, permit_type, month or year. Aggregated by the city's portal, so counts are exact and
+        cover every matching permit, not a sample.
 
-        Use when: the question asks how many, how much, which is most common, or a trend over time.
+        Use when: the question asks how many, how much, which is most common, or a trend over time. For a
+        status the normalized ones fold together (e.g. Chicago's SUSPENDED is inside 'issued'), group by
+        'status_raw' or filter with status_raw.
         Don't use: to list permits. Use search_permits.
-        The date range filters the issue date unless date_field='applied'. Optional status and
+        The date range filters the issue date unless date_field='applied'. Optional status, status_raw and
         permit_type filters narrow what is counted."""
-        return await service.permit_stats(city, group_by, date_from, date_to, date_field, status, permit_type)
+        return await service.permit_stats(
+            city,
+            group_by,
+            date_from,
+            date_to,
+            date_field=date_field,
+            status=status,
+            permit_type=permit_type,
+            status_raw=status_raw,
+        )
 
     @mcp.custom_route("/healthz", methods=["GET"], include_in_schema=False)
     async def healthz(_: Request) -> Response:

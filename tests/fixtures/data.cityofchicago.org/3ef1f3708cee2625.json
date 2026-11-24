@@ -1,0 +1,68 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=5&%24offset=5&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28permit_status+IS+NOT+NULL+AND+upper%28permit_status%29+IN+%28%27SUSPENDED%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272024-01-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-01-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_": "101062785",
+   "street_number": "2653",
+   "street_direction": "W",
+   "street_name": "MEDILL AVE",
+   "application_start_date": "2024-12-04T00:00:00.000",
+   "issue_date": "2024-12-31T00:00:00.000",
+   "reported_cost": "575400",
+   "work_description": "SELF-CERT 2019 CBC: PROPOSED 2 STORY SFR W/BASEMENT, REAR DECK, 5' FRONT IRON/6' REAR WOOD FENCES, AND ATTACHED 2 CAR GARAGE W/ROOF DECK, PER PLANS.CONDITIONAL APPROVAL PER 14A-4-404.13., RELEASE OF FULL WRECKING PERMIT STILL PENDING. WRECKING APP. # 101060653",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - NEW CONSTRUCTION"
+  },
+  {
+   "permit_": "B200405302",
+   "street_number": "2720",
+   "street_direction": "N",
+   "street_name": "SHEFFIELD AVE",
+   "application_start_date": "2024-11-20T00:00:00.000",
+   "issue_date": "2024-12-31T00:00:00.000",
+   "work_description": "FIRE ALARM: MODIFICATION OF EXISTING SYSTEM. ASSOCIATED BUILDING PERMIT:101002490. AFFECTS: 17 DWELLING UNITS; 0 NON-RESIDENTIAL UNITS. HIGH-RISE BUILDING: YES.VOICE COMMUNICATION: YES. SPECIAL LOCKING: NO. MONITORING TYPE: SUPERVISING STATION. SPECIFIC LOCATION: FLOORS 1,2,3,4,5,6,7,8,9,10,11.",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200406802",
+   "street_number": "7411",
+   "street_direction": "S",
+   "street_name": "STONY ISLAND AVE",
+   "application_start_date": "2024-12-31T00:00:00.000",
+   "issue_date": "2024-12-31T00:00:00.000",
+   "work_description": "FIRE ALARM: NEW SYSTEM. ASSOCIATED BUILDING PERMIT:101048428. AFFECTS: 0 DWELLING UNITS; 1 NON-RESIDENTIAL UNITS. HIGH-RISE BUILDING: NO. VOICE COMMUNICATION: YES. SPECIAL LOCKING: NO. MONITORING TYPE: SUPERVISING STATION . SPECIFIC LOCATION: ELEVATOR RECALL.",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "B200408915",
+   "street_number": "6300",
+   "street_direction": "N",
+   "street_name": "RIDGE AVE",
+   "application_start_date": "2024-12-30T00:00:00.000",
+   "issue_date": "2024-12-31T00:00:00.000",
+   "work_description": "FIRE ALARM: MODIFICATION OF EXISTING SYSTEM. ASSOCIATED BUILDING PERMIT:101053360. AFFECTS: 0 DWELLING UNITS; 1 NON-RESIDENTIAL UNITS. HIGH-RISE BUILDING: NO. VOICE COMMUNICATION: YES. SPECIAL LOCKING: NO. MONITORING TYPE: SUPERVISING STATION . SPECIFIC LOCATION: 1ST FLOOR POOL HOUSE.",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "permit_type": "PERMIT – EXPRESS PERMIT PROGRAM"
+  },
+  {
+   "permit_": "101019910",
+   "street_number": "655",
+   "street_direction": "W",
+   "street_name": "IRVING PARK RD",
+   "application_start_date": "2023-06-08T00:00:00.000",
+   "issue_date": "2024-12-30T00:00:00.000",
+   "reported_cost": "800000",
+   "work_description": "SPR 2019 CBRC: INTERIOR ALTERATIONS TO ADDRESS OPEN VIOLATIONS FOR WORK ON 56TH FLOOR OF EXISTING. BUILDING. NO CHANGE TO OCCUPANCY. (OCCUPANCY GROUP: R-2, M, B; TYPE IIIA CONSTRUCTION)",
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "permit_type": "PERMIT - RENOVATION/ALTERATION"
+  }
+ ]
+}

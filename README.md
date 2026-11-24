@@ -50,11 +50,15 @@ claude mcp add permits -e SOCRATA_APP_TOKEN=<optional token> -- uv run --directo
 
 | Tool | Use it for |
 |---|---|
-| `list_cities` | Which cities exist, data freshness, which statuses, types and fields each city really publishes, known gaps |
-| `search_permits` | Listing permits by address, status, type, date range (issued or applied) or minimum valuation; cursor pagination |
+| `list_cities` | Which cities exist, data freshness, which statuses, types and fields each city really publishes (and which of the city's own statuses each normalized status includes), known gaps |
+| `search_permits` | Listing permits by address, status (normalized, or the city's own via `status_raw`), type, date range (issued or applied) or minimum valuation; cursor pagination |
 | `get_permit` | One permit's full record plus every raw source field |
 | `find_stale_permits` | Permits still open past N days, oldest first, with excluded-unknown counts |
-| `permit_stats` | Exact counts and valuation sums by status, type, month or year, aggregated by the portal |
+| `permit_stats` | Exact counts and valuation sums by status, the city's own status (`status_raw`), type, month or year, aggregated by the portal |
+
+Statuses are normalized across cities, so each one folds several of a city's own values together:
+Chicago's `issued` includes `ACTIVE`, `PHASED PERMITTING` and `SUSPENDED`. For a question about one
+of those, pass `status_raw=["SUSPENDED"]` (case-insensitive) or group by `status_raw`.
 
 Try asking: *"Which Chicago permits over $1M have been open more than 2 years?"*, *"How many
 Seattle applications are in plan review?"* or *"Compare new-construction permits in Austin and

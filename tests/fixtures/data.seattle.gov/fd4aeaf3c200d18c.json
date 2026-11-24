@@ -1,0 +1,114 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24group=statuscurrent%2C+permittypemapped&%24limit=50000&%24select=statuscurrent%2C+permittypemapped%2C+count%28%2A%29+as+n%2C+sum%28case%28estprojectcost+%3E%3D+0%2C+estprojectcost%29%29+as+v&%24where=applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-03-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-04-01T00%3A00%3A00%27",
+ "status": 200,
+ "body": [
+  {
+   "statuscurrent": "Application Completed",
+   "permittypemapped": "Building",
+   "n": "7",
+   "v": "1639351.0000"
+  },
+  {
+   "statuscurrent": "Completed",
+   "permittypemapped": "Grading",
+   "n": "1",
+   "v": "35000.0000"
+  },
+  {
+   "statuscurrent": "Inspections Completed",
+   "permittypemapped": "Building",
+   "n": "2",
+   "v": "1763528.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "n": "21",
+   "v": "7669043.0000"
+  },
+  {
+   "statuscurrent": "Expired",
+   "permittypemapped": "Demolition",
+   "n": "3",
+   "v": "1202200.0000"
+  },
+  {
+   "statuscurrent": "Awaiting Information",
+   "permittypemapped": "Building",
+   "n": "3",
+   "v": "982655.0000"
+  },
+  {
+   "statuscurrent": "Issued",
+   "permittypemapped": "Grading",
+   "n": "1",
+   "v": "20000.0000"
+  },
+  {
+   "statuscurrent": "Issued",
+   "permittypemapped": "Demolition",
+   "n": "10",
+   "v": "90470960.0000"
+  },
+  {
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Building",
+   "n": "15",
+   "v": "2976362.2400"
+  },
+  {
+   "statuscurrent": "Issued",
+   "permittypemapped": "Building",
+   "n": "101",
+   "v": "72832137.0000"
+  },
+  {
+   "statuscurrent": "Expired",
+   "permittypemapped": "Building",
+   "n": "48",
+   "v": "2789414.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Demolition",
+   "n": "5",
+   "v": "209197265.0000"
+  },
+  {
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Demolition",
+   "n": "1",
+   "v": "1000000.0000"
+  },
+  {
+   "statuscurrent": "Withdrawn",
+   "permittypemapped": "Demolition",
+   "n": "1",
+   "v": "824000.0000"
+  },
+  {
+   "statuscurrent": "Reviews In Process",
+   "permittypemapped": "Building",
+   "n": "2",
+   "v": "1088230.0000"
+  },
+  {
+   "statuscurrent": "Ready for Issuance",
+   "permittypemapped": "Building",
+   "n": "2",
+   "v": "6100000.0000"
+  },
+  {
+   "statuscurrent": "Completed",
+   "permittypemapped": "Demolition",
+   "n": "40",
+   "v": "23578766.8700"
+  },
+  {
+   "statuscurrent": "Completed",
+   "permittypemapped": "Building",
+   "n": "274",
+   "v": "67851932.0000"
+  }
+ ]
+}

@@ -77,6 +77,13 @@ def test_null_rows_survive_negation(cities: dict[str, CityConfig]) -> None:
     assert _selected(db, unknown) == {0}
 
 
+def test_raw_status_match_ignores_case_and_is_two_valued() -> None:
+    db, _rows = _table(["s"], {"s": ["SUSPENDED", "Suspended", "ACTIVE", None, "", "IT'S"]})
+    assert _selected(db, soql.in_ignoring_case("s", ["suspended"])) == {0, 1}
+    assert _selected(db, soql.in_ignoring_case("s", ["it's", "Active"])) == {2, 5}
+    assert _selected(db, f"NOT ({soql.in_ignoring_case('s', ['suspended'])})") == {2, 3, 4, 5}
+
+
 def test_quote_escapes_single_quotes() -> None:
     assert soql.quote("O'Brien") == "'O''Brien'"
     db = sqlite3.connect(":memory:")

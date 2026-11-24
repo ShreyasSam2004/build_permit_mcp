@@ -134,3 +134,11 @@ def test_where_combines_filters(chicago: CityAdapter) -> None:
     assert "issue_date >= '2025-01-01T00:00:00'" in where
     assert "reported_cost >= 1000000" in where
     assert "like '%LOREL%'" in where
+
+
+def test_where_raw_status_uses_the_city_status_column(chicago: CityAdapter) -> None:
+    assert chicago.where(Filters(raw_statuses=("suspended",))) == (
+        "permit_status IS NOT NULL AND upper(permit_status) IN ('SUSPENDED')"
+    )
+    both = chicago.where(Filters(statuses=("issued",), raw_statuses=("SUSPENDED",)))
+    assert both is not None and both.startswith("(") and " AND (permit_status IS NOT NULL AND upper(" in both

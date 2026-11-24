@@ -30,6 +30,16 @@ def test_chicago_keeps_the_en_dash(cities: dict[str, CityConfig]) -> None:
     assert "PERMIT – EXPRESS PERMIT PROGRAM" in values
 
 
+def test_raw_status_column_is_each_citys_own_status(cities: dict[str, CityConfig]) -> None:
+    columns = {city_id: config.status.raw_column for city_id, config in cities.items()}
+    assert columns == {"austin": "status_current", "chicago": "permit_status", "seattle": "statuscurrent"}
+    chicago = cities["chicago"].status.raw_values()
+    assert chicago["issued"] == ["ACTIVE", "PHASED PERMITTING", "SUSPENDED"]
+    assert "unknown" not in chicago  # Chicago's unknowns are blanks, not a value
+    seattle = cities["seattle"].status.raw_values()
+    assert "Closed" in seattle["finaled"] and "Closed" in seattle["cancelled"]  # permit type decides
+
+
 def test_chicago_unavailable_fields(cities: dict[str, CityConfig]) -> None:
     assert cities["chicago"].unavailable_fields() == ["last_activity_date"]
 

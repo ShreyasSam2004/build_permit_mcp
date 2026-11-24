@@ -19,6 +19,7 @@ from . import soql
 from .adapter import CityAdapter, Filters, NoPossibleMatch
 from .city_config import CityConfig
 from .schema import (
+    BLANK_RAW_STATUS,
     OPEN_STATUSES,
     PERMIT_TYPES,
     STATUSES,
@@ -120,6 +121,31 @@ class PermitService:
         return warnings
 
     @staticmethod
+    def _raw_status_warnings(adapter: CityAdapter, values: Sequence[str] | None) -> list[str]:
+        """Flag status_raw values the city isn't known to publish (a typo, or a whole status_raw string)."""
+        cfg = adapter.config
+        column = cfg.status.raw_column
+        known = list(dict.fromkeys(v for vs in cfg.status.raw_values().values() for v in vs))
+        known_upper = {v.upper() for v in known}
+        warnings: list[str] = []
+        for value in values or ():
+            if value.upper() in known_upper:
+                continue
+            if " / " in value:
+                first = value.split(" / ", 1)[0]
+                warnings.append(
+                    f"status_raw '{value}' looks like a whole status_raw string. status_raw matches {cfg.name}'s "
+                    f"own status column ({column}) only, the part before ' / ': use '{first}'."
+                )
+            else:
+                warnings.append(
+                    f"'{value}' isn't a status {cfg.name} is known to publish, so it may match nothing. "
+                    f"Known values: {', '.join(known)}. permit_stats with group_by='status_raw' lists the "
+                    "values actually present."
+                )
+        return warnings
+
+    @staticmethod
     def _no_match_warning(adapter: CityAdapter, what: str) -> str | None:
         if what in ("status", "permit_type"):
             return None  # _gap_warnings already named each value the city never publishes
@@ -162,6 +188,7 @@ class PermitService:
             )
         status_targets = {r.then for r in cfg.status.rules} | {"unknown"}
         type_targets = {r.then for r in cfg.permit_type.rules} | {"unknown"}
+        raw_values = cfg.status.raw_values()
         info = CityInfo(
             id=cfg.id,
             name=cfg.name,
@@ -170,6 +197,7 @@ class PermitService:
             data_last_updated=updated,
             issued_date_range=date_range,
             statuses_available=[s for s in STATUSES if s in status_targets],
+            status_raw_values={s: raw_values[s] for s in STATUSES if s in raw_values},
             permit_types_available=[t for t in PERMIT_TYPES if t in type_targets],
             fields_unavailable=cfg.unavailable_fields(),
             known_gaps=list(cfg.known_gaps),
@@ -190,12 +218,14 @@ class PermitService:
         min_valuation_usd: float | None = None,
         limit: int = 25,
         cursor: str | None = None,
+        status_raw: Sequence[str] | None = None,
     ) -> SearchResult:
         adapter = self._adapter(city)
         cfg = adapter.config
         given = _canonical(
             address=address.strip() if address and address.strip() else None,
             status=status,
+            status_raw=status_raw,
             permit_type=permit_type,
             date_field=date_field,
             date_from=date_from,
@@ -207,6 +237,7 @@ class PermitService:
         self._check_range(filters.date_from, filters.date_to)
         date_col = self._date_column(adapter, filters.date_field)
         warnings = self._gap_warnings(adapter, filters.statuses, filters.permit_types)
+        warnings += self._raw_status_warnings(adapter, filters.raw_statuses)
         try:
             where = adapter.where(filters)
         except NoPossibleMatch as exc:
@@ -410,6 +441,7 @@ class PermitService:
         date_field: DateField = "issued",
         status: Sequence[Status] | None = None,
         permit_type: Sequence[PermitType] | None = None,
+        status_raw: Sequence[str] | None = None,
     ) -> StatsResult:
         adapter = self._adapter(city)
         cfg = adapter.config
@@ -417,14 +449,17 @@ class PermitService:
         date_col = self._date_column(adapter, date_field)
         filters = Filters(
             statuses=tuple(status) if status else None,
+            raw_statuses=tuple(dict.fromkeys(status_raw)) if status_raw else None,
             permit_types=tuple(permit_type) if permit_type else None,
             date_field=date_field,
             date_from=date_from,
             date_to=date_to,
         )
+        warnings = self._gap_warnings(adapter, filters.statuses, filters.permit_types)
+        warnings += self._raw_status_warnings(adapter, filters.raw_statuses)
         result = StatsResult(
             city=cfg.id, group_by=group_by, date_field=date_field, date_from=date_from, date_to=date_to,
-            total_count=0, groups=[], warnings=self._gap_warnings(adapter, filters.statuses, filters.permit_types),
+            total_count=0, groups=[], warnings=warnings,
         )  # fmt: skip
         try:
             where = adapter.where(filters)
@@ -434,8 +469,9 @@ class PermitService:
 
         val = cfg.fields.valuation_usd
         agg = "count(*) as n" + (f", sum(case({val} >= 0, {val})) as v" if val else "")
-        if group_by in ("status", "permit_type"):
-            cols = cfg.status.columns if group_by == "status" else cfg.permit_type.columns
+        if group_by in ("status", "status_raw", "permit_type"):
+            # status_raw groups by every status column too, so each raw value's normalized status is exact.
+            cols = cfg.permit_type.columns if group_by == "permit_type" else cfg.status.columns
             select, group = f"{', '.join(cols)}, {agg}", ", ".join(cols)
         else:
             trunc = "date_trunc_ym" if group_by == "month" else "date_trunc_y"
@@ -446,9 +482,14 @@ class PermitService:
         rows = await self._query(adapter, params)
 
         buckets: dict[str, list[Any]] = {}
+        maps_to: dict[str, set[Status]] = {}
         for row in rows:
             if group_by == "status":
                 key = adapter.classify_status(row)
+            elif group_by == "status_raw":
+                raw = row.get(cfg.status.raw_column)
+                key = str(raw) if raw not in (None, "") else BLANK_RAW_STATUS
+                maps_to.setdefault(key, set()).add(adapter.classify_status(row))
             elif group_by == "permit_type":
                 key = adapter.classify_type(row)
             else:
@@ -465,7 +506,15 @@ class PermitService:
             keys = sorted(buckets)
         else:
             keys = sorted(buckets, key=lambda k: (-buckets[k][0], k))
-        result.groups = [StatGroup(key=k, count=buckets[k][0], total_valuation_usd=_round(buckets[k][1])) for k in keys]
+        result.groups = [
+            StatGroup(
+                key=k,
+                count=buckets[k][0],
+                total_valuation_usd=_round(buckets[k][1]),
+                normalized_status=[s for s in STATUSES if s in maps_to[k]] if k in maps_to else None,
+            )
+            for k in keys
+        ]
         result.total_count = sum(g.count for g in result.groups)
         if group_by == "status" and "unknown" in buckets and buckets["unknown"][0]:
             result.warnings.append(
@@ -499,6 +548,7 @@ def _canonical(**kwargs: Any) -> dict[str, Any]:
     out: dict[str, Any] = {
         "address": None,
         "status": None,
+        "status_raw": None,
         "permit_type": None,
         "date_field": "issued",
         "date_from": None,
@@ -520,6 +570,7 @@ def _filters(d: dict[str, Any]) -> Filters:
     return Filters(
         address=d.get("address"),
         statuses=tuple(d["status"]) if d.get("status") else None,
+        raw_statuses=tuple(d["status_raw"]) if d.get("status_raw") else None,
         permit_types=tuple(d["permit_type"]) if d.get("permit_type") else None,
         date_field=d.get("date_field") or "issued",
         date_from=date.fromisoformat(d["date_from"]) if d.get("date_from") else None,

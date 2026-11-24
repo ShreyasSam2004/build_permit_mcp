@@ -2,7 +2,13 @@
 
 A read-only MCP server that gives agents one normalized building-permit schema across US cities' Socrata portals. It exposes five task-shaped tools, and an eval measures whether agents answer more accurately with it than with a generic Socrata MCP server.
 
-Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done. Phase 4: questions, ground truth, harness and grader built; the 3-question pilot is next (it needs `ANTHROPIC_API_KEY` and the pinned baseline installed).** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
+Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done. Phase 4: the pilot (3/3 both arms) and the first full run are done; `status_raw` was added after it, so the next run measures that change.** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
+
+First full run (2026-11-24, `eval/results/runs/20261124T191239Z`, 30 questions × 2 arms × 1 rep, $7.24):
+- **Accuracy tied at 28/30** (95% CI 79%–98% for both). permits cost $0.082 per question against the baseline's $0.160, on about half the input tokens; tool calls and latency were the same.
+- **Every failure was read in its transcript and labelled in `eval/results/failure_notes.toml`.** permits: chi-06 (it can't reach Chicago's raw `SUSPENDED`, folded into `issued`) and aus-08 (it read "issued permits" as the status `issued`). Baseline: chi-07 (counted `ACTIVE` only as open) and sea-07 (the key's issue-date fallback isn't stated in the question: 4978 + 36 − 10 = 5004).
+- **Both baseline failures rest on conventions the server shares with the answer key.** So the honest reading is that the server wins on cost, not accuracy.
+- **Changed after the run: `status_raw` (for chi-06).** `search_permits` and `permit_stats` filter on a city's own status, ignoring case; `permit_stats` groups by it, giving each value's normalized status; and `list_cities` lists the values inside each normalized status. Chicago 2024 `SUSPENDED` is 5,912 via the server, matching the key. This is a change made after seeing results, so it gets its own run rather than rewriting this one.
 
 Phase 4 notes (2026-11-23):
 - **30 questions with ground truth for all of them** (`eval/questions.toml`); `eval/ground_truth.py` fails the snapshot on tied labels, a cross-city winner within 10%, or empty id lists. Grader self-check: all 30 reference answers pass; empty, non-answers and near misses (±1, ×1.01, a dropped id, the next month) all fail.
@@ -236,6 +242,7 @@ search_permits(
     city: CityId,
     address: str | None = None,              # "121 N LaSalle St"; normalized + substring match
     status: list[Status] | None = None,      # "open" = ["applied", "in_review", "issued"]
+    status_raw: list[str] | None = None,     # the city's own status, any case, e.g. ["SUSPENDED"]  ADDED AFTER RUN 1
     permit_type: list[PermitType] | None = None,
     date_field: Literal["issued", "applied"] = "issued",   # PROPOSED ADDITION
     date_from: date | None = None,
@@ -284,10 +291,11 @@ permit_stats(
     date_to: date,
     date_field: Literal["issued", "applied"] = "issued",   # PROPOSED ADDITION
     status: list[Status] | None = None,
+    status_raw: list[str] | None = None,     # ADDED AFTER RUN 1; also group_by="status_raw"
     permit_type: list[PermitType] | None = None,
 )
 ```
-Returns `groups: [{key, count, total_valuation_usd}]` plus the overall `total_count`. This is a single SoQL request using `$select=<raw group cols>, count(*), sum(<valuation>)` and `$group`. Month and year grouping use `date_trunc_ym` / `date_trunc_y`. Normalized keys (status, type) are re-bucketed in Python from the few raw groups.
+Returns `groups: [{key, count, total_valuation_usd}]` plus the overall `total_count`. With `group_by="status_raw"` each group also carries `normalized_status`, the status(es) that raw value maps to (Chicago `COMPLETE` maps to finaled, expired or cancelled depending on the milestone). This is a single SoQL request using `$select=<raw group cols>, count(*), sum(<valuation>)` and `$group`. Month and year grouping use `date_trunc_ym` / `date_trunc_y`. Normalized keys (status, type) are re-bucketed in Python from the few raw groups.
 > **Use when:** the question is "how many", "how much" or "which is most common". **Don't use** to list permits.
 
 ### Error contract (each error says how to recover)

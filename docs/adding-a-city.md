@@ -47,6 +47,11 @@ Rules over several columns handle cases a flat lookup can't. For example, Chicag
 `COMPLETE` combined with milestone `CANCELLED` is a cancellation. Put the more specific rules
 first.
 
+The first column named in `[status].rules` is the city's own status column. Agents filter on its
+values with `status_raw` (e.g. Chicago's `SUSPENDED`, which the normalized `issued` folds in), and
+`list_cities` lists them under each normalized status. So make the first rule name the main status
+column: Chicago's `permit_status`, not `permit_milestone`. A test pins this column for each city.
+
 A non-blank raw value that matches no rule becomes `unknown` and is logged as a WARNING
 (`"unmapped raw value -> unknown"`). It is never dropped.
 

@@ -1,0 +1,5 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24limit=1&%24offset=0&%24order=issue_date+DESC%2C+permit_+ASC&%24select=permit_%2C+street_number%2C+street_direction%2C+street_name%2C+application_start_date%2C+issue_date%2C+reported_cost%2C+work_description%2C+permit_status%2C+permit_milestone%2C+permit_type&%24where=%28permit_status+IS+NOT+NULL+AND+upper%28permit_status%29+IN+%28%27SUSPENDID%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272024-01-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-01-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": []
+}

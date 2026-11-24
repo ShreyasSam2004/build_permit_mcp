@@ -22,6 +22,7 @@ pytestmark = pytest.mark.anyio
 TOOLS = ["list_cities", "search_permits", "get_permit", "find_stale_permits", "permit_stats"]
 CITIES = ["austin", "chicago", "seattle"]
 JUNE_2025 = {"date_from": "2025-06-01", "date_to": "2025-06-30"}
+MARCH_2025 = {"date_from": "2025-03-01", "date_to": "2025-03-31"}
 STATUSES = ["applied", "in_review", "issued", "finaled", "expired", "cancelled", "unknown"]
 TYPES = [
     "new_construction", "addition_alteration", "repair", "demolition", "electrical",
@@ -62,6 +63,9 @@ async def test_tool_list_is_fixed_documented_and_read_only(mcp_client: Client) -
         if tool.name != "list_cities":
             assert "Don't use" in tool.description
             assert tool.input_schema["properties"]["city"]["enum"] == CITIES
+    params = {t.name: t.input_schema["properties"] for t in tools}
+    assert "status_raw" in params["search_permits"] and "status_raw" in params["permit_stats"]
+    assert "status_raw" in params["permit_stats"]["group_by"]["enum"]
 
 
 # ---- list_cities --------------------------------------------------------------------------
@@ -166,6 +170,81 @@ async def test_no_unmapped_values_in_recorded_month(
             assert out["total_count"] > 0
     unmapped = [r.__dict__.get("raw_value") for r in caplog.records if r.getMessage().startswith("unmapped")]
     assert unmapped == []
+
+
+# ---- status_raw: a city's own statuses inside the normalized ones ---------------------------
+
+# Per city, one of its own statuses that a normalized status folds together with others, the
+# normalized status it maps to, and a window (recorded separately from WINDOWS, so these agree).
+RAW_CASES: dict[str, tuple[str, str, dict[str, str]]] = {
+    "chicago": ("SUSPENDED", "issued", {"date_field": "issued", "date_from": "2024-01-01", "date_to": "2024-12-31"}),
+    "seattle": ("Corrections Required", "in_review", {"date_field": "applied", **MARCH_2025}),
+    "austin": ("VOID", "cancelled", {"date_field": "issued", **MARCH_2025}),
+}
+
+
+async def test_list_cities_shows_raw_statuses_inside_each_status(mcp_client: Client) -> None:
+    by_id = {c["id"]: c for c in (await call(mcp_client, "list_cities"))["cities"]}
+    assert by_id["chicago"]["status_raw_values"]["issued"] == ["ACTIVE", "PHASED PERMITTING", "SUSPENDED"]
+    assert "Suspended" in by_id["austin"]["status_raw_values"]["issued"]
+    assert "Corrections Required" in by_id["seattle"]["status_raw_values"]["in_review"]
+    for city in by_id.values():
+        assert set(city["status_raw_values"]) <= set(city["statuses_available"])
+
+
+@pytest.mark.parametrize("city", CITIES)
+async def test_status_raw_groups_and_filter_agree(mcp_client: Client, city: str) -> None:
+    """Grouping by a city's own status (classified in Python) and filtering on it (compiled to SoQL,
+    ignoring case) must agree, and the raw groups must add up to the normalized breakdown."""
+    value, status, window = RAW_CASES[city]
+    raw = await call(mcp_client, "permit_stats", city=city, group_by="status_raw", **window)
+    normalized = await call(mcp_client, "permit_stats", city=city, group_by="status", **window)
+    assert raw["total_count"] == normalized["total_count"] > 0
+    assert all(g["normalized_status"] is None for g in normalized["groups"])
+    for g in raw["groups"]:
+        assert g["normalized_status"], g
+        if g["key"] == "(blank)":
+            assert g["normalized_status"] == ["unknown"]
+    group = next(g for g in raw["groups"] if g["key"] == value)
+    assert status in group["normalized_status"] and group["count"] > 0
+
+    filtered = await call(
+        mcp_client, "permit_stats", city=city, group_by="status", status_raw=[value.lower()], **window
+    )
+    assert filtered["warnings"] == []
+    assert filtered["total_count"] == group["count"]
+    assert {g["key"] for g in filtered["groups"]} <= set(group["normalized_status"])
+
+    found = await call(mcp_client, "search_permits", city=city, status_raw=[value], limit=5, **window)
+    assert found["total_count"] == group["count"]
+    assert found["permits"] and all(p["status_raw"].split(" / ")[0] == value for p in found["permits"])
+
+
+async def test_status_raw_survives_pagination(mcp_client: Client) -> None:
+    value, _, window = RAW_CASES["chicago"]
+    page1 = await call(mcp_client, "search_permits", city="chicago", status_raw=[value], limit=5, **window)
+    page2 = await call(mcp_client, "search_permits", city="chicago", cursor=page1["next_cursor"], limit=5)
+    assert page2["total_count"] == page1["total_count"] > 5
+    assert page2["permits"] and all(p["status_raw"].startswith(value) for p in page2["permits"])
+    assert not {p["permit_id"] for p in page1["permits"]} & {p["permit_id"] for p in page2["permits"]}
+
+
+async def test_status_raw_mistakes_are_explained(mcp_client: Client) -> None:
+    window = RAW_CASES["chicago"][2]
+    whole = await call(
+        mcp_client, "permit_stats", city="chicago", group_by="status", status_raw=["SUSPENDED / INSPECTIONS"], **window
+    )
+    assert whole["total_count"] == 0
+    assert "use 'SUSPENDED'" in whole["warnings"][0]
+    typo = await call(mcp_client, "search_permits", city="chicago", status_raw=["SUSPENDID"], limit=1, **window)
+    assert typo["total_count"] == 0
+    assert "isn't a status Chicago, IL is known to publish" in typo["warnings"][0]
+    assert "SUSPENDED" in typo["warnings"][0]
+
+
+async def test_blank_status_raw_is_rejected(mcp_client: Client) -> None:
+    message = await call_error(mcp_client, "search_permits", city="chicago", status_raw=["  "])
+    assert "status_raw" in message and "at least 1 character" in message
 
 
 async def test_seattle_application_lifecycle(mcp_client: Client) -> None:

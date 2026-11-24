@@ -1,0 +1,71 @@
+{
+ "request": "/resource/76t5-zqzr.json?%24limit=5&%24offset=0&%24order=applieddate+DESC%2C+permitnum+ASC&%24select=permitnum%2C+originaladdress1%2C+applieddate%2C+issueddate%2C+estprojectcost%2C+description%2C+link%2C+statuscurrent%2C+permittypemapped%2C+permittypedesc&%24where=%28statuscurrent+IS+NOT+NULL+AND+upper%28statuscurrent%29+IN+%28%27CORRECTIONS+REQUIRED%27%29%29+AND+%28applieddate+IS+NOT+NULL+AND+applieddate+%3E%3D+%271901-01-01T00%3A00%3A00%27+AND+applieddate+%3E%3D+%272025-03-01T00%3A00%3A00%27+AND+applieddate+%3C+%272025-04-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permitnum": "7059131-CN",
+   "originaladdress1": "325 EASTLAKE AVE E",
+   "applieddate": "2025-03-28T00:00:00.000",
+   "estprojectcost": "31140.0000",
+   "description": "Construct alteration at level 4 exterior wall of existing parking structure  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7059131-CN"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7065013-CN",
+   "originaladdress1": "2420 WESTLAKE AVE N",
+   "applieddate": "2025-03-28T00:00:00.000",
+   "estprojectcost": "393655.0000",
+   "description": "(Establish use as a floating home  per the land use code.) Construct a one-family dwelling maintaining an existing float structure  per plans.",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7065013-CN"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "6955238-CN",
+   "originaladdress1": "2801 M L KING JR WAY S",
+   "applieddate": "2025-03-27T00:00:00.000",
+   "estprojectcost": "600000.0000",
+   "description": "Construct addition and alterations to existing a commercial building (MLK Market and Gas)  occupy per plan. Mechanical Included.  (no longer sub alt)",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6955238-CN"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  },
+  {
+   "permitnum": "7061992-CN",
+   "originaladdress1": "9651 BEACON AVE S",
+   "applieddate": "2025-03-27T00:00:00.000",
+   "estprojectcost": "399548.0000",
+   "description": "Establish use as community farm  per land use code.  Construct new banquet hall  occupy per plan [existing barn constructed w/o permit]",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7061992-CN"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "New"
+  },
+  {
+   "permitnum": "7068770-CN",
+   "originaladdress1": "2409 7TH AVE W",
+   "applieddate": "2025-03-27T00:00:00.000",
+   "estprojectcost": "186754.0000",
+   "description": "Allow detached accessory dwelling unit (DADU) to existing single-family residence  per land use code.  Construct west one-family dwelling  per plan",
+   "link": {
+    "url": "https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=7068770-CN"
+   },
+   "statuscurrent": "Corrections Required",
+   "permittypemapped": "Building",
+   "permittypedesc": "Addition/Alteration"
+  }
+ ]
+}

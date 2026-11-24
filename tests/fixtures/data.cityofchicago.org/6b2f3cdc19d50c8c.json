@@ -1,0 +1,42 @@
+{
+ "request": "/resource/ydr8-5enu.json?%24group=permit_status%2C+permit_milestone&%24limit=50000&%24select=permit_status%2C+permit_milestone%2C+count%28%2A%29+as+n%2C+sum%28case%28reported_cost+%3E%3D+0%2C+reported_cost%29%29+as+v&%24where=%28permit_status+IS+NOT+NULL+AND+upper%28permit_status%29+IN+%28%27SUSPENDED%27%29%29+AND+%28issue_date+IS+NOT+NULL+AND+issue_date+%3E%3D+%272024-01-01T00%3A00%3A00%27+AND+issue_date+%3C+%272025-01-01T00%3A00%3A00%27%29",
+ "status": 200,
+ "body": [
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "PERMIT ISSUED (FEE DUE)",
+   "n": "42",
+   "v": "8858495"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "STOP WORK",
+   "n": "12",
+   "v": "390550"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "SUSPENDED",
+   "n": "4099",
+   "v": "305543387.71"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "CERTIFICATE OF OCCUPANCY PENDING (TEMPORARY OR PARTIAL OCCUPANCY APPROVED)",
+   "n": "33",
+   "v": "35828896"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS",
+   "n": "1649",
+   "v": "518568786"
+  },
+  {
+   "permit_status": "SUSPENDED",
+   "permit_milestone": "INSPECTIONS (CERTIFICATE OF OCCUPANCY REQUIRED)",
+   "n": "77",
+   "v": "83684543"
+  }
+ ]
+}

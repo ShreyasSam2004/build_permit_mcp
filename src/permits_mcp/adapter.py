@@ -42,6 +42,7 @@ class NoPossibleMatch(Exception):
 class Filters:
     address: str | None = None
     statuses: tuple[Status, ...] | None = None
+    raw_statuses: tuple[str, ...] | None = None  # values of the city's own status column, any case
     permit_types: tuple[PermitType, ...] | None = None
     date_field: DateField = "issued"
     date_from: date | None = None
@@ -179,6 +180,8 @@ class CityAdapter:
             if pred is None:
                 raise NoPossibleMatch("status")
             parts.append(pred)
+        if filters.raw_statuses:
+            parts.append(soql.in_ignoring_case(self.config.status.raw_column, filters.raw_statuses))
         if filters.permit_types:
             pred = self.type_predicate(filters.permit_types)
             if pred is None:

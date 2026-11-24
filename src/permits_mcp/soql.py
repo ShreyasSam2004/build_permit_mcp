@@ -57,6 +57,11 @@ def rule_predicate(rule: MappingRule) -> str:
     return " AND ".join(f"({t})" for t in tests)
 
 
+def in_ignoring_case(column: str, values: Iterable[str]) -> str:
+    """``column`` equals one of ``values``, ignoring case; two-valued like rule predicates."""
+    return f"{column} IS NOT NULL AND upper({column}) IN ({', '.join(quote(v.upper()) for v in values)})"
+
+
 def rules_predicate(rules: Sequence[MappingRule], targets: Iterable[str], unknown: str) -> str | None:
     """Predicate selecting rows whose first-matching rule maps into ``targets``.
 
