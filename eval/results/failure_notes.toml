@@ -16,3 +16,7 @@ note = "Counted ACTIVE only (319); the key also counts SUSPENDED (238) and PHASE
 ["sea-07/baseline"]
 class = "key convention not in question"
 note = "Literal application date; the key uses issue date for 36 undated permits and drops 10 dated 1900 (4978 + 36 - 10)"
+
+["sea-07/permits"]
+class = "key convention not in question"
+note = "Got the key's 4,996 from find_stale_permits, then dropped the 36 it dates by issue date (literal 'application date'); named 4,996 too"

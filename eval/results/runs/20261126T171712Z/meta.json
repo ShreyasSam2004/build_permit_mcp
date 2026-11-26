@@ -1,0 +1,70 @@
+{
+ "run_id": "20261126T171712Z",
+ "created": "2026-11-26T17:17:54+00:00",
+ "model": "claude-opus-5-5",
+ "effort": "high",
+ "today": "2026-11-26",
+ "arms": [
+  "permits"
+ ],
+ "reps": 1,
+ "question_ids": [
+  "chi-01",
+  "chi-02",
+  "chi-03",
+  "chi-04",
+  "chi-05",
+  "chi-06",
+  "chi-07",
+  "chi-08",
+  "chi-09",
+  "sea-01",
+  "sea-02",
+  "sea-03",
+  "sea-04",
+  "sea-05",
+  "sea-06",
+  "sea-07",
+  "sea-08",
+  "sea-09",
+  "aus-01",
+  "aus-02",
+  "aus-03",
+  "aus-04",
+  "aus-05",
+  "aus-06",
+  "aus-07",
+  "aus-08",
+  "aus-09",
+  "x-01",
+  "x-02",
+  "x-03"
+ ],
+ "pilot": false,
+ "ground_truth": {
+  "file": "2026-11-26T171721Z.json",
+  "computed_at": "2026-11-26T17:17:21+00:00"
+ },
+ "limits": {
+  "max_tool_calls": 20,
+  "max_tokens": 16000,
+  "max_tool_result_chars": 100000,
+  "trial_timeout_s": 900.0
+ },
+ "baseline": "opengov-mcp-server@0.1.1",
+ "prices_per_mtok": {
+  "claude-opus-5-5": {
+   "input": 4.0,
+   "output": 20.0,
+   "cache_write": 5.0,
+   "cache_read": 0.2
+  }
+ },
+ "git": {
+  "commit": "1504df9625acf79f9effb286e234f26fded46431",
+  "dirty": false
+ },
+ "system_prompts": {
+  "permits": "You answer questions about building permits in US cities using only the tools provided. Look the data up with the tools; never answer from memory or estimate. Today's date is 2026-11-26.\n\nWhen you are done, end your reply with one line in exactly this form:\nFINAL ANSWER: <answer>\n\nWrite the answer as:\n- a count: an integer without commas, e.g. 1234\n- a dollar amount: a plain number without $ or commas, e.g. 1234567.89\n- a list of permit numbers: the numbers separated by commas\n- a month: YYYY-MM\n- a city: its name\nIf the data needed to answer is not published, write: FINAL ANSWER: UNAVAILABLE"
+ }
+}

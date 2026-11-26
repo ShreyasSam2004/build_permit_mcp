@@ -1,0 +1,472 @@
+[
+ {
+  "name": "list_cities",
+  "description": "List the cities this server covers, with data freshness, which statuses, permit types and fields\n        each city actually publishes, and its known data gaps.\n\n        Use when: starting a task, picking a city id, or before trusting a zero or null result (the city may\n        simply not publish that data).\n        Don't use: to get permit data. Use search_permits, get_permit, find_stale_permits or permit_stats.",
+  "input_schema": {
+   "type": "object",
+   "properties": {},
+   "title": "list_citiesArguments"
+  }
+ },
+ {
+  "name": "search_permits",
+  "description": "Find individual building permits in one city, newest first. Returns up to `limit` normalized\n        records plus total_count of all matches.\n\n        Use when: you need specific permits or a short list (e.g. permits at an address, recent new\n        construction over $1M).\n        Don't use when: you need a count, total or breakdown (use permit_stats: exact, one call); you want\n        permits still open after N days (use find_stale_permits); you already have a permit_id (use get_permit).\n\n        Notes: status takes normalized statuses; status_raw takes the city's own (e.g. Chicago 'SUSPENDED').\n        date_from/date_to filter the issue date unless date_field='applied'. Descriptions are cut to\n        200 characters; get_permit has the full text and raw source fields. If total_count > returned,\n        narrow the filters or pass next_cursor back with the same arguments.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "city": {
+     "description": "City id: one of austin, chicago, seattle. Call list_cities for coverage.",
+     "enum": [
+      "austin",
+      "chicago",
+      "seattle"
+     ],
+     "title": "City",
+     "type": "string"
+    },
+    "address": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Street address or part of one, e.g. '1404 N Lorel Ave' or 'LOREL'. Case-insensitive substring match; words like North/Street are abbreviated automatically.",
+     "title": "Address"
+    },
+    "status": {
+     "anyOf": [
+      {
+       "items": {
+        "enum": [
+         "applied",
+         "in_review",
+         "issued",
+         "finaled",
+         "expired",
+         "cancelled",
+         "unknown"
+        ],
+        "type": "string"
+       },
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only these normalized statuses. 'Open' = ['applied', 'in_review', 'issued']. Each covers several of the city's own statuses; to pick one of those, use status_raw instead.",
+     "title": "Status"
+    },
+    "status_raw": {
+     "anyOf": [
+      {
+       "items": {
+        "maxLength": 100,
+        "minLength": 1,
+        "type": "string"
+       },
+       "maxItems": 50,
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only permits whose status in the city's own terms is one of these, ignoring case, e.g. Chicago 'SUSPENDED' or Seattle 'Corrections Required'. list_cities gives each city's values; it is the part of a permit's status_raw before ' / '.",
+     "title": "Status Raw"
+    },
+    "permit_type": {
+     "anyOf": [
+      {
+       "items": {
+        "enum": [
+         "new_construction",
+         "addition_alteration",
+         "repair",
+         "demolition",
+         "electrical",
+         "mechanical",
+         "plumbing",
+         "sign",
+         "site_work",
+         "other",
+         "unknown"
+        ],
+        "type": "string"
+       },
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only these normalized permit types.",
+     "title": "Permit Type"
+    },
+    "date_field": {
+     "default": "issued",
+     "description": "Which date the date range filters (and results sort by): 'issued' (default) or 'applied'.",
+     "enum": [
+      "issued",
+      "applied"
+     ],
+     "title": "Date Field",
+     "type": "string"
+    },
+    "date_from": {
+     "anyOf": [
+      {
+       "format": "date",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Inclusive start date, YYYY-MM-DD.",
+     "title": "Date From"
+    },
+    "date_to": {
+     "anyOf": [
+      {
+       "format": "date",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Inclusive end date, YYYY-MM-DD.",
+     "title": "Date To"
+    },
+    "min_valuation_usd": {
+     "anyOf": [
+      {
+       "minimum": 0,
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep permits whose reported valuation is at least this many US dollars. Permits with no published valuation are excluded.",
+     "title": "Min Valuation Usd"
+    },
+    "limit": {
+     "default": 25,
+     "description": "Records per page (max 50).",
+     "maximum": 50,
+     "minimum": 1,
+     "title": "Limit",
+     "type": "integer"
+    },
+    "cursor": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "next_cursor from a previous call. Pass it back with the same other arguments.",
+     "title": "Cursor"
+    }
+   },
+   "required": [
+    "city"
+   ],
+   "title": "search_permitsArguments"
+  }
+ },
+ {
+  "name": "get_permit",
+  "description": "Get one permit's full normalized record plus every raw field the city publishes for it.\n\n        Use when: you have a permit_id (from a search result or the user) and need full details, or want\n        to check a normalized value against the source.\n        Don't use: to discover permits. Use search_permits.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "city": {
+     "description": "City id: one of austin, chicago, seattle. Call list_cities for coverage.",
+     "enum": [
+      "austin",
+      "chicago",
+      "seattle"
+     ],
+     "title": "City",
+     "type": "string"
+    },
+    "permit_id": {
+     "description": "The permit's id, as in search results.",
+     "minLength": 1,
+     "title": "Permit Id",
+     "type": "string"
+    }
+   },
+   "required": [
+    "city",
+    "permit_id"
+   ],
+   "title": "get_permitArguments"
+  }
+ },
+ {
+  "name": "find_stale_permits",
+  "description": "Find permits still open (status applied, in_review or issued) for longer than a threshold,\n        oldest first, with total_count of all matches.\n\n        Age counts from the application date, or from the issue date when there is none; each record\n        gives open_since, open_since_basis and days_open.\n        Use when: the question is about permits open too long, lingering, stalled or never closed out.\n        Don't use when: you want closed, expired or cancelled permits (use search_permits with status), or\n        only counts by status (use permit_stats).\n        Always check excluded_unknown_status_count: permits whose status is unknown can't be classified as\n        open and are excluded, so mention them in your answer.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "city": {
+     "description": "City id: one of austin, chicago, seattle. Call list_cities for coverage.",
+     "enum": [
+      "austin",
+      "chicago",
+      "seattle"
+     ],
+     "title": "City",
+     "type": "string"
+    },
+    "open_longer_than_days": {
+     "description": "Minimum days open, e.g. 730 for 'more than 2 years'.",
+     "maximum": 36500,
+     "minimum": 1,
+     "title": "Open Longer Than Days",
+     "type": "integer"
+    },
+    "permit_type": {
+     "anyOf": [
+      {
+       "items": {
+        "enum": [
+         "new_construction",
+         "addition_alteration",
+         "repair",
+         "demolition",
+         "electrical",
+         "mechanical",
+         "plumbing",
+         "sign",
+         "site_work",
+         "other",
+         "unknown"
+        ],
+        "type": "string"
+       },
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only these normalized permit types.",
+     "title": "Permit Type"
+    },
+    "min_valuation_usd": {
+     "anyOf": [
+      {
+       "minimum": 0,
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep permits whose reported valuation is at least this many US dollars. Permits with no published valuation are excluded.",
+     "title": "Min Valuation Usd"
+    },
+    "limit": {
+     "default": 25,
+     "description": "Records per page (max 50).",
+     "maximum": 50,
+     "minimum": 1,
+     "title": "Limit",
+     "type": "integer"
+    },
+    "cursor": {
+     "anyOf": [
+      {
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "next_cursor from a previous call. Pass it back with the same other arguments.",
+     "title": "Cursor"
+    }
+   },
+   "required": [
+    "city",
+    "open_longer_than_days"
+   ],
+   "title": "find_stale_permitsArguments"
+  }
+ },
+ {
+  "name": "permit_stats",
+  "description": "Count permits and sum their valuations in one city, optionally over a date range, grouped by\n        status, status_raw, permit_type, month or year. Aggregated by the city's portal, so counts are\n        exact and cover every matching permit, not a sample.\n\n        Use when: the question asks how many, how much, which is most common, or a trend over time. For a\n        status the normalized ones fold together (e.g. Chicago's SUSPENDED is inside 'issued'), group by\n        'status_raw' or filter with status_raw.\n        Don't use: to list permits. Use search_permits.\n        Dates: the range filters the issue date unless date_field='applied', and can only count permits that\n        have that date. For a question about right now (e.g. how many are in review), omit both dates. With\n        a range, excluded_no_date_count says how many matching permits have no date and were left out.\n        Optional status, status_raw and permit_type filters narrow what is counted.",
+  "input_schema": {
+   "type": "object",
+   "properties": {
+    "city": {
+     "description": "City id: one of austin, chicago, seattle. Call list_cities for coverage.",
+     "enum": [
+      "austin",
+      "chicago",
+      "seattle"
+     ],
+     "title": "City",
+     "type": "string"
+    },
+    "group_by": {
+     "description": "'status', 'status_raw' (the city's own statuses, each with the normalized status it maps to), 'permit_type', 'month' or 'year'.",
+     "enum": [
+      "status",
+      "status_raw",
+      "permit_type",
+      "month",
+      "year"
+     ],
+     "title": "Group By",
+     "type": "string"
+    },
+    "date_from": {
+     "anyOf": [
+      {
+       "format": "date",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Inclusive start date, YYYY-MM-DD. Omit both dates to count every permit.",
+     "title": "Date From"
+    },
+    "date_to": {
+     "anyOf": [
+      {
+       "format": "date",
+       "type": "string"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Inclusive end date, YYYY-MM-DD.",
+     "title": "Date To"
+    },
+    "date_field": {
+     "default": "issued",
+     "description": "Which date the date range filters (and results sort by): 'issued' (default) or 'applied'.",
+     "enum": [
+      "issued",
+      "applied"
+     ],
+     "title": "Date Field",
+     "type": "string"
+    },
+    "status": {
+     "anyOf": [
+      {
+       "items": {
+        "enum": [
+         "applied",
+         "in_review",
+         "issued",
+         "finaled",
+         "expired",
+         "cancelled",
+         "unknown"
+        ],
+        "type": "string"
+       },
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only these normalized statuses. 'Open' = ['applied', 'in_review', 'issued']. Each covers several of the city's own statuses; to pick one of those, use status_raw instead.",
+     "title": "Status"
+    },
+    "status_raw": {
+     "anyOf": [
+      {
+       "items": {
+        "maxLength": 100,
+        "minLength": 1,
+        "type": "string"
+       },
+       "maxItems": 50,
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only permits whose status in the city's own terms is one of these, ignoring case, e.g. Chicago 'SUSPENDED' or Seattle 'Corrections Required'. list_cities gives each city's values; it is the part of a permit's status_raw before ' / '.",
+     "title": "Status Raw"
+    },
+    "permit_type": {
+     "anyOf": [
+      {
+       "items": {
+        "enum": [
+         "new_construction",
+         "addition_alteration",
+         "repair",
+         "demolition",
+         "electrical",
+         "mechanical",
+         "plumbing",
+         "sign",
+         "site_work",
+         "other",
+         "unknown"
+        ],
+        "type": "string"
+       },
+       "minItems": 1,
+       "type": "array"
+      },
+      {
+       "type": "null"
+      }
+     ],
+     "default": null,
+     "description": "Keep only these normalized permit types.",
+     "title": "Permit Type"
+    }
+   },
+   "required": [
+    "city",
+    "group_by"
+   ],
+   "title": "permit_statsArguments"
+  }
+ }
+]

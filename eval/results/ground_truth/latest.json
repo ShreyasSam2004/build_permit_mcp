@@ -1,9 +1,9 @@
 {
- "computed_at": "2026-11-24T19:12:49+00:00",
+ "computed_at": "2026-11-26T17:17:21+00:00",
  "city_dates": {
-  "chicago": "2026-11-24",
-  "seattle": "2026-11-24",
-  "austin": "2026-11-24"
+  "chicago": "2026-11-26",
+  "seattle": "2026-11-26",
+  "austin": "2026-11-26"
  },
  "questions": {
   "chi-01": {
@@ -132,12 +132,12 @@
      },
      "rows": [
       {
-       "n": "5912"
+       "n": "5919"
       }
      ]
     }
    ],
-   "expected": 5912
+   "expected": 5919
   },
   "chi-07": {
    "answer_type": "integer",
@@ -147,7 +147,7 @@
      "city": "chicago",
      "params": {
       "$select": "count(*) as n",
-      "$where": "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '2024-11-24T00:00:00') OR (application_start_date IS NULL AND issue_date < '2024-11-24T00:00:00'))"
+      "$where": "reported_cost >= 1000000 AND permit_status IN ('ACTIVE', 'PHASED PERMITTING', 'SUSPENDED') AND (permit_milestone IS NULL OR permit_milestone NOT IN ('CANCELLED', 'DENIED', 'EXPIRED')) AND ((application_start_date IS NOT NULL AND application_start_date < '2024-11-26T00:00:00') OR (application_start_date IS NULL AND issue_date < '2024-11-26T00:00:00'))"
      },
      "rows": [
       {
@@ -232,12 +232,12 @@
      },
      "rows": [
       {
-       "n": "5154"
+       "n": "5142"
       }
      ]
     }
    ],
-   "expected": 5154
+   "expected": 5142
   },
   "sea-04": {
    "answer_type": "integer",
@@ -304,16 +304,16 @@
      "city": "seattle",
      "params": {
       "$select": "count(*) as n",
-      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-24T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-24T00:00:00'))"
+      "$where": "statuscurrent IN ('Initiated', 'Ready for Intake', 'Scheduled', 'Scheduled and Submitted', 'Pending', 'Additional Info Requested', 'Application Completed', 'Reviews In Process', 'Corrections Required', 'Corrections Submitted', 'Awaiting Information', 'Reviews Completed', 'Ready for Issuance', 'Issued', 'Phase Issued') AND ((applieddate >= '1901-01-01T00:00:00' AND applieddate < '2024-11-26T00:00:00') OR ((applieddate IS NULL OR applieddate < '1901-01-01T00:00:00') AND issueddate >= '1901-01-01T00:00:00' AND issueddate < '2024-11-26T00:00:00'))"
      },
      "rows": [
       {
-       "n": "5004"
+       "n": "4996"
       }
      ]
     }
    ],
-   "expected": 5004
+   "expected": 4996
   },
   "sea-08": {
    "answer_type": "integer",
@@ -411,12 +411,12 @@
      },
      "rows": [
       {
-       "n": "692"
+       "n": "688"
       }
      ]
     }
    ],
-   "expected": 692
+   "expected": 688
   },
   "aus-04": {
    "answer_type": "number",
@@ -445,16 +445,16 @@
      "city": "austin",
      "params": {
       "$select": "count(*) as n",
-      "$where": "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '2023-11-25T00:00:00') OR (applieddate IS NULL AND issue_date < '2023-11-25T00:00:00'))"
+      "$where": "total_job_valuation >= 1000000 AND status_current IN ('Active', 'On Hold', 'Suspended', 'Inactive Pending Revision', 'Inactive Contractor') AND ((applieddate IS NOT NULL AND applieddate < '2023-11-27T00:00:00') OR (applieddate IS NULL AND issue_date < '2023-11-27T00:00:00'))"
      },
      "rows": [
       {
-       "n": "464"
+       "n": "462"
       }
      ]
     }
    ],
-   "expected": 464
+   "expected": 462
   },
   "aus-06": {
    "answer_type": "label",

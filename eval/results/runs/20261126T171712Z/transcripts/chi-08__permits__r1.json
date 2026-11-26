@@ -1,0 +1,289 @@
+{
+ "key": "chi-08__permits__r1",
+ "question_id": "chi-08",
+ "arm": "permits",
+ "rep": 1,
+ "question": "How many building permits has Chicago issued for 121 N LaSalle St (City Hall) since January 1, 2015?",
+ "tools": {
+  "names": [
+   "list_cities",
+   "search_permits",
+   "get_permit",
+   "find_stale_permits",
+   "permit_stats"
+  ],
+  "sha256": "7e77b75061cd672f825be9c67b7da6769a78fd38f5b5b2370379c66e8e3ec19b"
+ },
+ "system": "You answer questions about building permits in US cities using only the tools provided. Look the data up with the tools; never answer from memory or estimate. Today's date is 2026-11-26.\n\nWhen you are done, end your reply with one line in exactly this form:\nFINAL ANSWER: <answer>\n\nWrite the answer as:\n- a count: an integer without commas, e.g. 1234\n- a dollar amount: a plain number without $ or commas, e.g. 1234567.89\n- a list of permit numbers: the numbers separated by commas\n- a month: YYYY-MM\n- a city: its name\nIf the data needed to answer is not published, write: FINAL ANSWER: UNAVAILABLE",
+ "turns": [
+  {
+   "role": "user",
+   "content": "How many building permits has Chicago issued for 121 N LaSalle St (City Hall) since January 1, 2015?"
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 1.541,
+   "retries": 0,
+   "usage": {
+    "input": 4,
+    "output": 128,
+    "cache_write": 4679,
+    "cache_read": 0
+   },
+   "content": [
+    {
+     "id": "toolu_017BdnHsdVbFx19g3rc3dCGs",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "chicago",
+      "address": "121 N LaSalle",
+      "date_from": "2015-01-01",
+      "limit": 50
+     },
+     "name": "search_permits",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "search_permits",
+     "input": {
+      "city": "chicago",
+      "address": "121 N LaSalle",
+      "date_from": "2015-01-01",
+      "limit": 50
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_017BdnHsdVbFx19g3rc3dCGs",
+     "content": "{\n  \"total_count\": 0,\n  \"returned\": 0,\n  \"next_cursor\": null,\n  \"hint\": \"No permits matched address '121 N LaSalle'. Addresses are matched as substrings of strings like '1404 N LOREL AVE'. Retry with only the street name (no number, direction or suffix); some names are split differently (e.g. 'LA SALLE' vs 'LASALLE').\",\n  \"warnings\": [],\n  \"city\": \"chicago\",\n  \"permits\": []\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 2.293,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 251,
+    "cache_write": 297,
+    "cache_read": 4679
+   },
+   "content": [
+    {
+     "id": "toolu_016gGMFtqBFR25MVKccVaWgU",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "chicago",
+      "address": "121 N LA SALLE",
+      "date_from": "2015-01-01",
+      "limit": 50
+     },
+     "name": "search_permits",
+     "type": "tool_use"
+    },
+    {
+     "id": "toolu_015L4wQWbxv2WSx6HYFhAnie",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "chicago",
+      "address": "LASALLE",
+      "date_from": "2015-01-01",
+      "limit": 10
+     },
+     "name": "search_permits",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "search_permits",
+     "input": {
+      "city": "chicago",
+      "address": "121 N LA SALLE",
+      "date_from": "2015-01-01",
+      "limit": 50
+     }
+    },
+    {
+     "name": "search_permits",
+     "input": {
+      "city": "chicago",
+      "address": "LASALLE",
+      "date_from": "2015-01-01",
+      "limit": 10
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_016gGMFtqBFR25MVKccVaWgU",
+     "content": "{\n  \"total_count\": 52,\n  \"returned\": 50,\n  \"next_cursor\": \"c1.eyJjIjoiY2hpY2FnbyIsImYiOnsiYWRkcmVzcyI6IjEyMSBOIExBIFNBTExFIiwiZGF0ZV9maWVsZCI6Imlzc3VlZCIsImRhdGVfZnJvbSI6IjIwMTUtMDEtMDEiLCJkYXRlX3RvIjpudWxsLCJtaW5fdmFsdWF0aW9uX3VzZCI6bnVsbCwicGVybWl0X3R5cGUiOm51bGwsInN0YXR1cyI6bnVsbCwic3RhdHVzX3JhdyI6bnVsbH0sIm8iOjUwLCJ0Ijoic2VhcmNoX3Blcm1pdHMifQ\",\n  \"hint\": \"Showing 1-50 of 52. To narrow, add status, permit_type, min_valuation_usd. For counts or totals use permit_stats. For the next page, repeat the call with cursor=next_cursor.\",\n  \"warnings\": [],\n  \"city\": \"chicago\",\n  \"permits\": [\n    {\n      \"permit_id\": \"101075873\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"issued\",\n      \"status_raw\": \"ACTIVE / INSPECTIONS\",\n      \"applied_date\": \"2025-12-03\",\n      \"issued_date\": \"2026-02-19\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 25000.0,\n      \"description\": \"SPR 2019 CBRC: STRUCTURAL REPAIRS TO THE EXISTING SUB-BASEMENT FLOOR STRUCTURE AT CITY HALL (121 N LASALLE ST) TO RESTORE STRUCTURAL CAPACITY OF AN EXISTING STEEL BEAM AS PER PLANS. WORK INCLUDES INS…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=101075873\"\n    },\n    {\n      \"permit_id\": \"101004851\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"issued\",\n      \"status_raw\": \"PHASED PERMITTING / INSPECTIONS\",\n      \"applied_date\": \"2023-02-15\",\n      \"issued_date\": \"2023-02-15\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 200000.0,\n      \"description\": \"SELF-CERT 2019 CBRC: NONSTRUCTRUAL INTERIOR DEMOLITION, INCLUDING REMOVAL OF ELECTRICAL SYSTEMS ON THE 1ST FLOOR SPACE 103. NO CHANGE TO DEMISING WALLS. (OCCUPANCY GROUP B; TYPE 1A CONSTRUCTION)\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=101004851\"\n    },\n    {\n      \"permit_id\": \"B100894374\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-10-06\",\n      \"issued_date\": \"2020-11-24\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD  OCT-DEC 2020 FOR WORK COMPLETED BY AT&T AT 121 N LA SALE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN ATT_ 708-465-2229\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100894374\"\n    },\n    {\n      \"permit_id\": \"100888468\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-08-31\",\n      \"issued_date\": \"2020-10-03\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 100000.0,\n      \"description\": \"SPR 2019 CBRCEXTERIOR FACADE REPAIR TO INCLUDE REPAIR/REPLACING OF LINTELS IN THE COURT YARD ON THE 11TH FLOOR AS PER PLANS. (OCCUPANCY GROUP B TYPE 1A CONSTRUCTION)\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100888468\"\n    },\n    {\n      \"permit_id\": \"100886770\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-08-27\",\n      \"issued_date\": \"2020-09-30\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 50000.0,\n      \"description\": \"SPR 2019 CBRC: INSTALLATION OF 2 NEW STRUCTURAL SUPPORT COLUMNS IN BASEMENT AS PER PLANS. (OCCUPANCY GROUP B TYPE 1A CONSTRUCTION)\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100886770\"\n    },\n    {\n      \"permit_id\": \"100887756\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-08-27\",\n      \"issued_date\": \"2020-09-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 50000.0,\n      \"description\": \"SPR 2019 CDRC: INSTALLATION OF 2 NEW STRUCTURAL SUPPORT COLUMNS IN BASEMENT AS PER PLANS. LASALLE ST. SIDE (OCCUPANCY GROUP B TYPE 1A CONSTRUCTION)\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100887756\"\n    },\n    {\n      \"permit_id\": \"B100880165\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-06-30\",\n      \"issued_date\": \"2020-07-16\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JULY-SEPT 2020 FOR WORK COMPLETED BY AT&T AT 121 N LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100880165\"\n    },\n    {\n      \"permit_id\": \"B100871718\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-05-06\",\n      \"issued_date\": \"2020-05-07\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"INSTALLATION OF ONE WAY & TWO-WAY FA SYSTEM PER SECT.#13-196-204. B,1-3,3M,4-12 FLS. CK#651211;$2,250.00.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100871718\"\n    },\n    {\n      \"permit_id\": \"B100869859\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-04-06\",\n      \"issued_date\": \"2020-04-16\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL 1-JUNE 30 2020 FOR WORK  COMPLETED BY AT&T AT 121 N LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100869859\"\n    },\n    {\n      \"permit_id\": \"B100862589\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2020-02-12\",\n      \"issued_date\": \"2020-02-22\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN-MARCH 2020 FOR WORK COMPLETED BY AT&T AT 121 N LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100862589\"\n    },\n    {\n      \"permit_id\": \"B100849845\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-11-07\",\n      \"issued_date\": \"2019-11-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF OCT-DEC 2019 FOR WORK COMPLETED BY AT&T AT 121 N LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100849845\"\n    },\n    {\n      \"permit_id\": \"B100837473\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-08-23\",\n      \"issued_date\": \"2019-08-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 2000.0,\n      \"description\": \"ADD THREE (3) NEW NETWORKS A TOTAL OF TWELVE (12) CIRCUITS\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100837473\"\n    },\n    {\n      \"permit_id\": \"B100837475\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-08-23\",\n      \"issued_date\": \"2019-08-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 3500.0,\n      \"description\": \"REPLACING OLD FIXTURES WITH NEW LED\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100837475\"\n    },\n    {\n      \"permit_id\": \"B100837477\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-08-23\",\n      \"issued_date\": \"2019-08-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 3800.0,\n      \"description\": \"ADDING ONE (1) NEW NETWORK AND REPLACING OLD FIXTURES WITH NEW LED\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100837477\"\n    },\n    {\n      \"permit_id\": \"B100828606\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-07-02\",\n      \"issued_date\": \"2019-07-10\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JULY-SEPT 2019 FOR WORK COMPLETED BY AT&T AT 121 N LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100828606\"\n    },\n    {\n      \"permit_id\": \"100827408\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - ELEVATOR EQUIPMENT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2019-06-26\",\n      \"issued_date\": \"2019-07-03\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 7800.0,\n      \"description\": \"REPLACE HOIST ROPES ON ONE (1) 2500LB.CAP, 12 FLOORS, GEARLESS TRACTION ON PASSENGER ELEVATOR #12. PURSUANT TO THE SCOPE OF WORK SUBMITTED. EV003591\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100827408\"\n    },\n    {\n      \"permit_id\": \"B100820064\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-05-15\",\n      \"issued_date\": \"2019-05-17\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL-JUNE 2018 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100820064\"\n    },\n    {\n      \"permit_id\": \"100812328\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - ELEVATOR EQUIPMENT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2019-04-03\",\n      \"issued_date\": \"2019-04-03\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 160000.0,\n      \"description\": \"MODERNIZATION OF ONE(1) 2100LB CAPACITY, 3 FLOOR, HYDRAULIC, PASSENGER ELEVATOR, PURSUANT TO THE SCOPE OF WORK SUBMITTED.(EV003591)PEDWAY #15\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100812328\"\n    },\n    {\n      \"permit_id\": \"B100805229\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-02-18\",\n      \"issued_date\": \"2019-03-08\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN-MARCH 2019 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100805229\"\n    },\n    {\n      \"permit_id\": \"100796022\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2019-02-04\",\n      \"issued_date\": \"2019-02-04\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 35000.0,\n      \"description\": \"[SELF-CERTIFICATION PROJECT] ALTERTATIONS TO THE EXISTING 9TH FLOOR IN CITY HALL FOR A NEW GENDER NEUTRAL TOILET ROOM AS PER PLANS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100796022\"\n    },\n    {\n      \"permit_id\": \"B100787952\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2018-10-13\",\n      \"issued_date\": \"2018-12-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF OCT.-DEC. 2018 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE. ANY QUESTIONS PLEASE CALL TIM MCGURIE(SUPERVISING ELECTRICIAN ATT) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100787952\"\n    },\n    {\n      \"permit_id\": \"100773606\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2018-08-08\",\n      \"issued_date\": \"2018-08-08\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 500000.0,\n      \"description\": \"EXTERIOR RENOVATION IN THE COURTYARD - REMOVE ALL WINDOWS ALONG ELEVATOR SHAFTS ON BOTH THE SOUTH AND NORTH ELEVATIONS AND REPLACE WITH GLAZED CMU'S AS PER PLANS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100773606\"\n    },\n    {\n      \"permit_id\": \"100774765\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2018-07-27\",\n      \"issued_date\": \"2018-07-27\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 50000.0,\n      \"description\": \"REMOVE WINDOW OPENINGS OF THE ELEVATOR SHAFTS LOCATED IN THE INTERIOR COURTYARD AND REPLACE WITH HISTORICALLY APPROPRIATE BRICK IN FILL.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100774765\"\n    },\n    {\n      \"permit_id\": \"100770882\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - ELEVATOR EQUIPMENT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2018-07-03\",\n      \"issued_date\": \"2018-07-03\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1607002.0,\n      \"description\": \"MODERNIZATION OF FOURTEEN (14) GEARLESS TRACTION PASSENGER ELEVATORS; ELEVATOR #1 2500LB.CAP, 13-FLOORS. ELEVATORS #2-#7 & #9-#14 2500LB.CAP, 12-FLOORS. ELEVATOR #8 4000LB.CAP, 15-FLOORS. TO INCLUDE…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100770882\"\n    },\n    {\n      \"permit_id\": \"B100756623\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2018-04-12\",\n      \"issued_date\": \"2018-06-21\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL-JUNE 2018 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100756623\"\n    },\n    {\n      \"permit_id\": \"B100746922\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2018-02-09\",\n      \"issued_date\": \"2018-03-22\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN.-MARCH 2018 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIASN AT&T) 312=220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100746922\"\n    },\n    {\n      \"permit_id\": \"B100729434\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-10-04\",\n      \"issued_date\": \"2017-11-02\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF OCT.-DEC. 2017 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100729434\"\n    },\n    {\n      \"permit_id\": \"100723577\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - ELEVATOR EQUIPMENT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2017-08-30\",\n      \"issued_date\": \"2017-09-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 5000.0,\n      \"description\": \"REPLACE HOIST ROPES ON ONE (1) 3500LB.CAP, 12-FLOOR PASSENGER ELEVATOR #14. PURSUANT TO THE SCOPE OF WORK SUBMITTED.EV003591\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100723577\"\n    },\n    {\n      \"permit_id\": \"B100717007\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-07-25\",\n      \"issued_date\": \"2017-09-05\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JULY-SEPT. 2017 FOR WORK COMPLETED BT AT&T AT 121 N. LA SALE ST. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100717007\"\n    },\n    {\n      \"permit_id\": \"B100707631\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-05-25\",\n      \"issued_date\": \"2017-08-31\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL-JUNE 2017 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE ST. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100707631\"\n    },\n    {\n      \"permit_id\": \"100708377\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-06-07\",\n      \"issued_date\": \"2017-06-14\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 100000.0,\n      \"description\": \"EMERGENCY EXTERIOR FACADE REPAIRS TO THE LA SALLE ST. ELEVATION AS PER PLANS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100708377\"\n    },\n    {\n      \"permit_id\": \"B100690381\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-02-11\",\n      \"issued_date\": \"2017-04-18\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN.-MARCH 2017 FOR WORK COMPLETED BY AT&T AT 121 N. LA SALLE ST. ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100690381\"\n    },\n    {\n      \"permit_id\": \"100695588\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2017-03-31\",\n      \"issued_date\": \"2017-04-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"EXTERIOR FACADE REPAIRS AS PER PLANS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100695588\"\n    },\n    {\n      \"permit_id\": \"100689908\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2017-02-08\",\n      \"issued_date\": \"2017-02-08\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1777150.0,\n      \"description\": \"ERECT PIPE SCAFFOLDING ON 4TH FLOOR BALCONIES, LA SALLE ST, WASHINGTON & RANDOLPH. PERFORM EMERGENCY MASONRY REPAIRS AS NEEDED ON ALL FLOORS FOR EACH OF THE 3 ELEVATIONS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100689908\"\n    },\n    {\n      \"permit_id\": \"100689683\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - SCAFFOLDING\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2017-02-07\",\n      \"issued_date\": \"2017-02-07\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"ERECT 8 SWING STAGE SCAFFOLDS FROM 2/3/2017 TO 2/2/2018.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100689683\"\n    },\n    {\n      \"permit_id\": \"B100676219\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2016-10-22\",\n      \"issued_date\": \"2016-12-22\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF OCT.-DEC. 2016 FOR WORK COMPLETED BY AT&T AT CHICAGO CITY HALL ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100676219\"\n    },\n    {\n      \"permit_id\": \"B100663652\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2016-08-06\",\n      \"issued_date\": \"2016-10-18\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JULY-SEPT. 2016 FOR WORK COMPLETED BY AT&T AT CHICAGO CITY HALL  ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&T) 312-220-2408\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100663652\"\n    },\n    {\n      \"permit_id\": \"100668250\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2016-09-06\",\n      \"issued_date\": \"2016-09-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 100000.0,\n      \"description\": \"EMERGENCY EXTERIOR FACADE REPAIRS, GRIDING, TUCKPOINTING AND REPAIR\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100668250\"\n    },\n    {\n      \"permit_id\": \"100668254\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - SCAFFOLDING\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2016-09-06\",\n      \"issued_date\": \"2016-09-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"ERECT 6 SWING STAGE SCAFFOLDS FROM 9/7/2016 TO 9/7/2017.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100668254\"\n    },\n    {\n      \"permit_id\": \"B100645340\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2016-04-17\",\n      \"issued_date\": \"2016-07-19\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL-JUNE 2016 FOR WORK COMPLETED BY AT&T CUSTOMER- CITY OF CHICAGO CUST. TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGURE(SUPERVISING ELECTRICIAN…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100645340\"\n    },\n    {\n      \"permit_id\": \"100658645\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2016-07-07\",\n      \"issued_date\": \"2016-07-07\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"REVISION TO PERMIT # 100258331 (ORIGINAL) 100655076 (REINSTATEMENT) TO CHANGE GC TO LEOPARDO COMPANIES INC.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100658645\"\n    },\n    {\n      \"permit_id\": \"100655076\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - REINSTATE REVOKED PMT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2016-06-14\",\n      \"issued_date\": \"2016-06-14\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"REINSTATE PERMIT 100258331\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100655076\"\n    },\n    {\n      \"permit_id\": \"100648724\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2016-05-06\",\n      \"issued_date\": \"2016-05-06\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"REPLACEMENT OF EXISTING CHILLER WITH TWO CARRIER 350 TON CHILLERS, SELF CONTAINED, WATER COOLED, R134A, LOCATED IN THE MECHANICAL PENTHOUSE. REPLACEMENT OF EXISTING COOLING TOWER WITH ONE B.A.C. MODE…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100648724\"\n    },\n    {\n      \"permit_id\": \"B100633371\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2016-01-30\",\n      \"issued_date\": \"2016-02-26\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN.-MARCH 2016 FOR WORK COMPLETED BY AT&T CUSTOMER- CITY OF CHICAGO CUST. TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIA…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100633371\"\n    },\n    {\n      \"permit_id\": \"B100098542\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2006-02-28\",\n      \"issued_date\": \"2016-01-28\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 500.0,\n      \"description\": \"MONTHLY MAINTENANCE   MARCH 2006\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100098542\"\n    },\n    {\n      \"permit_id\": \"B100621558\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2015-10-31\",\n      \"issued_date\": \"2015-12-29\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF OCT.-DEC. 2015 FOR WORK COMPLETED BY AT&T CUSTOMER- CITY OF CHICAGO CUST. TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100621558\"\n    },\n    {\n      \"permit_id\": \"100628169\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT - EASY PERMIT PROCESS\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2015-12-17\",\n      \"issued_date\": \"2015-12-17\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"FURNISH AND INSTALL THREE DAIKIN HEAT PUMP UNITS, SELF CONTAINED, WATER COOLER, R410A, LOCATED IN THE BASEMENT SERVER ROOMS.\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100628169\"\n    },\n    {\n      \"permit_id\": \"B100612482\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2015-09-02\",\n      \"issued_date\": \"2015-11-24\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JULY-SEPT. 2015 FOR WORK COMPLETED BY AT&T CUSTOMER- CITY OF CHICAGO CUST. TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIA…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100612482\"\n    },\n    {\n      \"permit_id\": \"100610206\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"other\",\n      \"permit_type_raw\": \"PERMIT - ELEVATOR EQUIPMENT\",\n      \"status\": \"unknown\",\n      \"status_raw\": null,\n      \"applied_date\": \"2015-08-19\",\n      \"issued_date\": \"2015-08-26\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 2795.0,\n      \"description\": \"REPLACE CONTROL VALVE SYSTEM ON 3-STOP, 2100LB.CAP, CITY HALL # 15 PEDWAY HYDRAULIC PASSENGER ELEVATOR. PURSUANT TO SCOPE OF WORK SUBMITTED. EV003591\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100610206\"\n    },\n    {\n      \"permit_id\": \"B100599268\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2015-06-10\",\n      \"issued_date\": \"2015-07-09\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF APRIL-JUNE 2015 FOR WORK COMPLETED BY AT&T CUSTOMER CITY OF CHICAGO-CUST.TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100599268\"\n    }\n  ]\n}",
+     "is_error": false
+    },
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_015L4wQWbxv2WSx6HYFhAnie",
+     "content": "{\n  \"total_count\": 0,\n  \"returned\": 0,\n  \"next_cursor\": null,\n  \"hint\": \"No permits matched address 'LASALLE'. Addresses are matched as substrings of strings like '1404 N LOREL AVE'. Retry with only the street name (no number, direction or suffix); some names are split differently (e.g. 'LA SALLE' vs 'LASALLE').\",\n  \"warnings\": [],\n  \"city\": \"chicago\",\n  \"permits\": []\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 4.074,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 505,
+    "cache_write": 17792,
+    "cache_read": 4976
+   },
+   "content": [
+    {
+     "signature": "CAQSvAYKEAgUGAI4AUIIdGhpbmtpbmcSDOf26uLT1ycyikNvmxoM+b01HwGeOhFFN1NEIjCXgHQrRufhBrkxXlWXrS1jyiUxz7JbMBKWy+7JOmHCbybPeD51KcKV1+6qJKzWA4wq2QXLbRTwhLlXBxvkElGQWXd6567XBY9wfqheYR635huYkNnUkzF/hUBKNrPQGNrQeLUhRAPNq2Eif8wv1MOpR7azPJydoxxHia7xpua0vBfFRorwBKQMfO4Fw1LwYQRHqmWaQGXZ5xHzIQQtiWlrWtyKGHUFeecsYMwoKlvW1G9aJ+JZ40idpme/TGQN5sE/BqaumCyUPA+VsW5HSmG8LwhvQqK+oLCxnp/LFv6HdponISXkUGkOusUQ1l3Fm4RteNw8ZJsTia9EA71HZ1hSdH0ACfav66JxLnh0ruB4KjMDFiwRA0bmsihL9f9rxA33M1NrLYmW5S2bZO48FCmlwJopcGiwF7bgaZGmyzopEuYQuH01ssoqv5ZWqM0E4nwLFzVec63PwjnX4Ny6PpyTDSOlkgOzZFcfC4RC/GQzgqjnfL3+loWbEOwt98Kj8tp1FuOmHpDc+jZ2rWk2g5KmJdZ6rMWCrUNsBbAklSVejVta1rkfILcb74/VjBJrzSdz00VhPeuWJKlCpZx5/WVwSnzm8DrIDKN1Gg2VAa0Jb5qoEE6Q9neMoHehLjVDhPbJoK4nNnjbyvgAUT7BCjPqBs/pZ3QluA2Z2qeClShYD5+Im1KxifihzJ488uYAf/c6w9nCVcACIajyxEFshQwiMausHTnnSu9dgq1RtHhtkCttNr6mImOc8B3oeE1fc8gMcDmHX64CXpHM/+s/Qm64/t7Cw79Cexv0SDwWtJAPYIJDB/oaQvrkAaOTsGRxfqs4SKprQEyXBZgmewrA2XEbwj6HEIvnyNMjWyWVqOvui5JwHrBHBCWG38DUpwqhIJUPC39/WlgpVQ6RL4nasGluJAQfh07roJsGtZhXCmrbFy53/UG2nllANAgO1cpPZi4yQHJuqOgi6MYxaN+8Oo3Z+Pt35oFoPRJ1RwMfnkaedcHUl/CJOc5r3nC4+8ICxPv61ED6rHodNSMAj9QYAQ==",
+     "thinking": "I'm counting 52 total, and checking whether the \"121 N LA SALLE\" search term could also be matching longer addresses like \"1121 N LA SALLE\". So far every result shows \"121 N LA SALLE ST\". I still need to load the next page to see the remaining two.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01VXedSracT4uv3X8Pw9Fvof",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "chicago",
+      "address": "121 N LA SALLE",
+      "date_from": "2015-01-01",
+      "limit": 50,
+      "cursor": "c1.eyJjIjoiY2hpY2FnbyIsImYiOnsiYWRkcmVzcyI6IjEyMSBOIExBIFNBTExFIiwiZGF0ZV9maWVsZCI6Imlzc3VlZCIsImRhdGVfZnJvbSI6IjIwMTUtMDEtMDEiLCJkYXRlX3RvIjpudWxsLCJtaW5fdmFsdWF0aW9uX3VzZCI6bnVsbCwicGVybWl0X3R5cGUiOm51bGwsInN0YXR1cyI6bnVsbCwic3RhdHVzX3JhdyI6bnVsbH0sIm8iOjUwLCJ0Ijoic2VhcmNoX3Blcm1pdHMifQ"
+     },
+     "name": "search_permits",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "search_permits",
+     "input": {
+      "city": "chicago",
+      "address": "121 N LA SALLE",
+      "date_from": "2015-01-01",
+      "limit": 50,
+      "cursor": "c1.eyJjIjoiY2hpY2FnbyIsImYiOnsiYWRkcmVzcyI6IjEyMSBOIExBIFNBTExFIiwiZGF0ZV9maWVsZCI6Imlzc3VlZCIsImRhdGVfZnJvbSI6IjIwMTUtMDEtMDEiLCJkYXRlX3RvIjpudWxsLCJtaW5fdmFsdWF0aW9uX3VzZCI6bnVsbCwicGVybWl0X3R5cGUiOm51bGwsInN0YXR1cyI6bnVsbCwic3RhdHVzX3JhdyI6bnVsbH0sIm8iOjUwLCJ0Ijoic2VhcmNoX3Blcm1pdHMifQ"
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01VXedSracT4uv3X8Pw9Fvof",
+     "content": "{\n  \"total_count\": 52,\n  \"returned\": 2,\n  \"next_cursor\": null,\n  \"hint\": null,\n  \"warnings\": [],\n  \"city\": \"chicago\",\n  \"permits\": [\n    {\n      \"permit_id\": \"100586957\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"PERMIT - RENOVATION/ALTERATION\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2015-03-25\",\n      \"issued_date\": \"2015-03-26\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 1.0,\n      \"description\": \"INSTALL (2) 250 TON CHILLERS & ASSOCIATED PUMPS & ELECTRICAL IN BASEMENT\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=100586957\"\n    },\n    {\n      \"permit_id\": \"B100581874\",\n      \"city\": \"chicago\",\n      \"address\": \"121 N LA SALLE ST\",\n      \"permit_type\": \"repair\",\n      \"permit_type_raw\": \"PERMIT – EXPRESS PERMIT PROGRAM\",\n      \"status\": \"finaled\",\n      \"status_raw\": \"COMPLETE / COMPLETE\",\n      \"applied_date\": \"2015-02-18\",\n      \"issued_date\": \"2015-03-10\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 250.0,\n      \"description\": \"MONTHLY MAINTENANCE PERMIT FOR THE PERIOD OF JAN-MAR 2015 FOR WORK COMPLETED BY AT&T CUSTOMER-CITY OF CHICAGO CUST.TELE#-312-744-4000 ANY QUESTIONS PLEASE CALL TIM MCGUIRE(SUPERVISING ELECTRICIAN AT&…\",\n      \"source_url\": \"https://data.cityofchicago.org/resource/ydr8-5enu.json?permit_=B100581874\"\n    }\n  ]\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "end_turn",
+   "latency_s": 5.43,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 478,
+    "cache_write": 1251,
+    "cache_read": 22768
+   },
+   "content": [
+    {
+     "signature": "CAQS9wYKEAgUGAI4AUIIdGhpbmtpbmcSDL1ud0W22k17nGAvGhoMEvrQylZod5BLBKHuIjCd0oJylUbx5fgra8QM22gAVVKXBCBME4VmzmnoQH6E0gkAIOHrRa6dHxUeOOWtcC0qlAZxz7qwhPMEf8TBY1jD1m6z8N/QxLeHzA4LCsoZAOeK2b/XKI9em6ljiGxZlYhlrqn53cKwnyLn4b/t7S5X5A7ktLD6cl2dOQTcdBgU7BCoOu/cF5YG5/RIzAu5e2+x/1xADy5+DSSc6WXFivtAQzLfpVI/QMmSZ9urkh8QgEOl2yXrgu7ylQJB98ZFvUg1kyi64SpgrzxLTtTtcSX9YprHZ2BLAYrCOTlIne8mLv2aq3QN8l74Dw+6VVxvcc6p0kH5HAro9xzpWe6E27EukrL+TAlQ9VhSpsA7n9N2zsiEGwjzivBn0GFsBqcxVT0UGUlndB4htDLIXj84cMXnwyrjIUIu6O6DVnE6KPLO0iGxDMBoZGs1t/IZwXIte+8l66ecRZjRdHa604XFtfS5Pc3tktovwcYuTWhg5L8pmjVU4pOQO7drRH7hY3k1EAte5JsIt4Orvq5j7HeUeTBM+VdRQZ3a7uVIjMPIJcz9his+CIjTUzRYmJ94OwAtF5U9jBwrbQSIaN4IBlHWiT0Y8OKk8b4Z2TKHYaD9V3ygJLb5EAtOoM6Q9KRX65aqlEvZjODdx9LquBoP7oIoonQ8/Sy9EwM02reNyGxKtMCNQXiKXxjackn4oHwaYJ5IxLojeKFPa3icdtLGRk5Ifr8pIveJ4PbIuR+jDwiIdeUiV1CtwmylnZWJ1XXxXGgesacnfhfPQWSN247mKcTPZu42i4j3NY7ppL8ivymPH9I1CXxIAjYnA6yRbmQH9k2z3iaSCtDtS9zYajM3csDLLAL7MNa6Ac3Fq0Ohtq6oDjMiXlk+Bq+YNrm/MERakr4Fwwx2tO5NCDuUbLU+U7TIsQRKBLTZxcu7fzxfmfVieNBk3WCAsXS0ZfcOjPqKnfAtr/QyEXNa12tPEoY3ONBNProm0a7A67AVyMYU3lf4++KXWU98OTl/psY8VZ8iUvElfNfWyluPNumgR5okPHpnN7A28JL3Qqt3IdI6mefTjeRetVHS2tEvievqNLWLpl8xPNgjnGL41YZbz+sL15Be9Ejsqp3IHefpMRgB",
+     "thinking": "All 52 of them are at 121 N La Salle St, and every issued date falls in 2015 or later, so the count is 52. One record has an applied date in 2006 but was issued in 2016, which I'll keep in mind. Chicago writes the street name as \"LA SALLE,\" so that's how I'll match it.\n\n",
+     "type": "thinking"
+    },
+    {
+     "text": "Chicago has issued **52** permits for 121 N LaSalle St (City Hall) since January 1, 2015. The issue dates run from March 2015 to February 2026.\n\n- **Address spelling:** Chicago's records write the street as \"121 N LA SALLE ST\", with a space. A search for \"LaSalle\" as one word finds nothing. I checked all 52 records, and every one is at 121 N La Salle St, not a nearby address.\n- **One old application:** Permit B100098542 was applied for in February 2006 but issued in January 2016, so it counts toward permits issued since 2015.\n- **What the permits are for:** Most are quarterly AT&T maintenance permits. The rest are renovations and alterations (facade and structural repairs, a gender-neutral restroom), elevator work (including updating 14 elevators in 2018), chiller and cooling tower replacements, and scaffolding.\n- **Statuses:** 13 permits have no status in Chicago's data, mostly elevator, scaffolding and easy-permit records. They were still issued, so they're included in the count. Two are still active: a 2023 interior demolition permit and a 2026 structural repair in the sub-basement.\n\nFINAL ANSWER: 52",
+     "type": "text"
+    }
+   ]
+  }
+ ],
+ "outcome": {
+  "key": "chi-08__permits__r1",
+  "question_id": "chi-08",
+  "arm": "permits",
+  "rep": 1,
+  "started_at": "2026-11-26T17:18:16+00:00",
+  "status": "answered",
+  "final_answer": "52",
+  "budget_exhausted": false,
+  "tool_calls": 4,
+  "tool_errors": 0,
+  "tool_results_truncated": 0,
+  "api_calls": 4,
+  "api_retries": 0,
+  "usage": {
+   "input": 10,
+   "output": 1362,
+   "cache_write": 24019,
+   "cache_read": 32423
+  },
+  "cost_usd": 0.15386,
+  "model_latency_s": 13.34,
+  "tool_latency_s": 88.76,
+  "wall_s": 73.17,
+  "transcript": "transcripts/chi-08__permits__r1.json"
+ },
+ "tool_stats": [
+  {
+   "name": "search_permits",
+   "latency_s": 1.682,
+   "is_error": false,
+   "chars": 378,
+   "truncated": false
+  },
+  {
+   "name": "search_permits",
+   "latency_s": 30.894,
+   "is_error": false,
+   "chars": 34113,
+   "truncated": false
+  },
+  {
+   "name": "search_permits",
+   "latency_s": 31.778,
+   "is_error": false,
+   "chars": 372,
+   "truncated": false
+  },
+  {
+   "name": "search_permits",
+   "latency_s": 24.409,
+   "is_error": false,
+   "chars": 1469,
+   "truncated": false
+  }
+ ]
+}

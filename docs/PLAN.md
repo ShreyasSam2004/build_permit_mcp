@@ -2,7 +2,7 @@
 
 A read-only MCP server that gives agents one normalized building-permit schema across US cities' Socrata portals. It exposes five task-shaped tools, and an eval measures whether agents answer more accurately with it than with a generic Socrata MCP server.
 
-Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done. Phase 4: the pilot (3/3 both arms) and the first full run are done; `status_raw` was added after it, so the next run measures that change.** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
+Status: **Phase 1 approved 2026-11-23 (all section-10 decisions accepted). Phases 2 and 3 done. Phase 4: the pilot (3/3 both arms), the first full run (both arms) and a permits-only rerun after the `status_raw` and undated-count fixes are done. Next: reword sea-07 and aus-08, then a head-to-head with 3 reps.** Every "Why" line is the one-sentence defense for an interview. The repo tree below reflects the code as built.
 
 First full run (2026-11-24, `eval/results/runs/20261124T191239Z`, 30 questions × 2 arms × 1 rep, $7.24):
 - **Accuracy tied at 28/30** (95% CI 79%–98% for both). permits cost $0.082 per question against the baseline's $0.160, on about half the input tokens; tool calls and latency were the same.
@@ -10,6 +10,10 @@ First full run (2026-11-24, `eval/results/runs/20261124T191239Z`, 30 questions �
 - **Both baseline failures rest on conventions the server shares with the answer key.** So the honest reading is that the server wins on cost, not accuracy.
 - **Fixed after the run: `permit_stats` no longer loses undated permits.** It required a date range, and a range can't match a blank date, so "how many Seattle applications are in review" came out 4,644 instead of 5,154. The range is now optional (no range counts everything: 5,154 live, matching the key), and with a range `excluded_no_date_count` plus a warning report what it left out (510). Month/year groups without a range put undated and placeholder dates under `(no date)`.
 - **Changed after the run: `status_raw` (for chi-06).** `search_permits` and `permit_stats` filter on a city's own status, ignoring case; `permit_stats` groups by it, giving each value's normalized status; and `list_cities` lists the values inside each normalized status. Chicago 2024 `SUSPENDED` is 5,912 via the server, matching the key. This is a change made after seeing results, so it gets its own run rather than rewriting this one.
+
+Run 2 (2026-11-26, `eval/results/runs/20261126T171712Z`, permits arm only on `1504df9`, $2.32):
+- **Still 28/30, both fixes used as intended.** chi-06 now passes in one call (`group_by="status_raw"`, `status_raw=["SUSPENDED"]`: 5,919); sea-03 counted with no date range (5,142). Mean cost $0.082 → $0.077, tool calls 2.6 → 2.3, latency 18s → 14s: the ~1,100 extra tokens of descriptions didn't raise cost. One trial each, so read these as "no worse".
+- **sea-07 flipped to a failure for the same wording reason as the baseline in run 1.** The agent got the key's 4,996 from `find_stale_permits`, then read "after their application date" literally and dropped the 36 permits the tool dates by issue date (4,960, naming 4,996 as the alternative). aus-08 failed as in run 1. Both are question fixes, to be recorded as changes made after seeing results.
 
 Phase 4 notes (2026-11-23):
 - **30 questions with ground truth for all of them** (`eval/questions.toml`); `eval/ground_truth.py` fails the snapshot on tied labels, a cross-city winner within 10%, or empty id lists. Grader self-check: all 30 reference answers pass; empty, non-answers and near misses (±1, ×1.01, a dropped id, the next month) all fail.

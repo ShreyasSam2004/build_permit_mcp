@@ -1,0 +1,351 @@
+{
+ "key": "sea-07__permits__r1",
+ "question_id": "sea-07",
+ "arm": "permits",
+ "rep": 1,
+ "question": "How many Seattle permits are still open (applied for, in review, or issued but not yet completed) more than 730 days after their application date?",
+ "tools": {
+  "names": [
+   "list_cities",
+   "search_permits",
+   "get_permit",
+   "find_stale_permits",
+   "permit_stats"
+  ],
+  "sha256": "7e77b75061cd672f825be9c67b7da6769a78fd38f5b5b2370379c66e8e3ec19b"
+ },
+ "system": "You answer questions about building permits in US cities using only the tools provided. Look the data up with the tools; never answer from memory or estimate. Today's date is 2026-11-26.\n\nWhen you are done, end your reply with one line in exactly this form:\nFINAL ANSWER: <answer>\n\nWrite the answer as:\n- a count: an integer without commas, e.g. 1234\n- a dollar amount: a plain number without $ or commas, e.g. 1234567.89\n- a list of permit numbers: the numbers separated by commas\n- a month: YYYY-MM\n- a city: its name\nIf the data needed to answer is not published, write: FINAL ANSWER: UNAVAILABLE",
+ "turns": [
+  {
+   "role": "user",
+   "content": "How many Seattle permits are still open (applied for, in review, or issued but not yet completed) more than 730 days after their application date?"
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 2.142,
+   "retries": 0,
+   "usage": {
+    "input": 4,
+    "output": 186,
+    "cache_write": 4681,
+    "cache_read": 0
+   },
+   "content": [
+    {
+     "signature": "CAQSrQYKEAgUGAI4AUIIdGhpbmtpbmcSDMXQompgIm8GH83LNxoM6qME3zJFNWVDRa9cIjDuBQsUNpPqCZRQ8/q1d5GtLEgW3uAl38qfWItwYONcbjPLcDtrbZKFGLGPlNLDDc4qygXu9HYDXBfUPbrXWsvqlut3/y4WyNRG4Fjf+y82l+rnVwL0Vvo60x50Psp1BVYNICcvjc3b1eH5FwRtRTWbbHE0gZPo6Kzi84PkjLJIffoDuFT+9wInY9sKeB05YOOO7mdIHooJYx7i/2r1kfER+3CcDs1M8tQT3Y8VmyxF3fNp8v1sFMV0IWNehUiSsDnh2wtQi8OoLq+4BsKP1xWqrenM/m8N7weeeFbUrbAP8MTRB4Gx5ptKN3pP0libgcZNCpvo6Trh6sSGsgSW5aXwKiqHdPf3Hmj9D+0z0Pj6ob/UQ0VemxaBAC/BjvnrwKayS0af2xeLRVwc7DLEpLioFyQAOvaVdCNDV91ZQQBxbaXk+fNX4jw+1TAFX20vuJ5ZsDSjWHvKE3o4bawSaQBPeSQncXLldf6n+hljtbkrO6der6T6CqDdSHRh9cwnDfIsDRl61SbIEPbNiE82VWUL5k2c9jWC30pyUIKh8ERSZDUygQxrm4tuYmlPkdV+GKSHt/VFSlFTMzosQW0Qes8kebV+nZr1+5nh26dd/CeVnz4v7elVtKFrMYjUNFhFWCUA+A22ayzje5a9PeRfjn/lJBuHk+t/2T3FBg9wg7D8lOHpeBkLFwlySLYomjJREcM3ZGbsncHAqvmfGYbbWEw1f7ob0rySDUHPzF1sSYc8ZceJwJUksgJPezY6JNc9o66vOqFKMQkTqwZ0QdRJSC7zSD5D7AkIo0CAdLXwODOIvFKbR/uuQM27IjjNncI9Cy4IUSYi+sx8w/r7jkFxthp9DaueR9uTQ5rIlT59uRqMiumURTVQMI7ZZWJi89LxyIJIHMIIOvKNvXneN7hDNswF8XqvtlTwXMU0Sk3jmZLIZMH8fTpkLvcLJF5E33xvdGxrIDhdvZqPaMlXHWW7APvRKGsY8rr8TzbIN5WCXF+0Zzv1ZPcTpzEce/8NxfsYAQ==",
+     "thinking": "I'm going to call find_stale_permits for Seattle with a 730-day threshold. The age is measured from the application date, falling back to the issue date when there's no application date. I might also call list_cities.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_0125BPDZ97NQiYtqbhC5Xi2B",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "seattle",
+      "open_longer_than_days": 730,
+      "limit": 50
+     },
+     "name": "find_stale_permits",
+     "type": "tool_use"
+    },
+    {
+     "id": "toolu_01BLvoTHDLBAEDVZntMPEMFG",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {},
+     "name": "list_cities",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "find_stale_permits",
+     "input": {
+      "city": "seattle",
+      "open_longer_than_days": 730,
+      "limit": 50
+     }
+    },
+    {
+     "name": "list_cities",
+     "input": {}
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_0125BPDZ97NQiYtqbhC5Xi2B",
+     "content": "{\n  \"total_count\": 4996,\n  \"returned\": 50,\n  \"next_cursor\": \"c1.eyJjIjoic2VhdHRsZSIsImYiOnsiYWRkcmVzcyI6bnVsbCwiZGF0ZV9maWVsZCI6Imlzc3VlZCIsImRhdGVfZnJvbSI6bnVsbCwiZGF0ZV90byI6bnVsbCwibWluX3ZhbHVhdGlvbl91c2QiOm51bGwsIm9wZW5fbG9uZ2VyX3RoYW5fZGF5cyI6NzMwLCJwZXJtaXRfdHlwZSI6bnVsbCwic3RhdHVzIjpudWxsLCJzdGF0dXNfcmF3IjpudWxsfSwibyI6NTAsInQiOiJmaW5kX3N0YWxlX3Blcm1pdHMifQ\",\n  \"hint\": \"Showing 1-50 of 4,996. To narrow, add permit_type, min_valuation_usd. For counts or totals use permit_stats. For the next page, repeat the call with cursor=next_cursor.\",\n  \"warnings\": [],\n  \"city\": \"seattle\",\n  \"as_of\": \"2026-11-26\",\n  \"open_longer_than_days\": 730,\n  \"excluded_unknown_status_count\": 0,\n  \"permits\": [\n    {\n      \"permit_id\": \"6118168-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"1811 S LANE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"1990-09-21\",\n      \"issued_date\": \"2005-05-02\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 49401.0,\n      \"description\": \"ESTABLISH USE AS SINGLE FAMILY RESIDENCE CONSTRUCT SINGLE FAMILY DWELLING  PER PLANS\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6118168-CN\",\n      \"open_since\": \"1990-09-21\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 13215\n    },\n    {\n      \"permit_id\": \"6103866-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"117 N 48TH ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"1998-10-05\",\n      \"issued_date\": \"2004-12-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 196963.0,\n      \"description\": \"Construct 2nd and 3rd story addition to single family residence. Add roof deck and seismic upgrade  all per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6103866-CN\",\n      \"open_since\": \"1998-10-05\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 10279\n    },\n    {\n      \"permit_id\": \"6075460-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"115 N 47TH ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"1999-10-19\",\n      \"issued_date\": \"2004-04-09\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 45000.0,\n      \"description\": \"INTERIOR NON STRUCTURAL ALTERATIONS TO EXISTING  SINGLE FAMILY RESIDENCE  SUBJECT TO FIELD INSPECTION (STFI)\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075460-CN\",\n      \"open_since\": \"1999-10-19\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 9900\n    },\n    {\n      \"permit_id\": \"6125390-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"7940 10TH AVE SW\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2002-05-28\",\n      \"issued_date\": \"2005-07-12\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 26393.0,\n      \"description\": \"CONSTRUCT ADDITION AND PERFORM ALTERATIONS AND CONSTRUCT AND ESTABLISH USE AS ADU ALL PER PLAN\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6125390-CN\",\n      \"open_since\": \"2002-05-28\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8948\n    },\n    {\n      \"permit_id\": \"6079388-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"9708 RENTON AVE S\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"Building / New\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2003-06-24\",\n      \"issued_date\": \"2004-05-19\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 225642.0,\n      \"description\": \"ESTABLISH USE AND OCCUPY AS SINGLE FAMILY RESIDENC NEW CONSTRUCTION OF A 3-STORY + BSMT SINGLE FAMILY WITH ATTACHED GARAGE PER PLAN\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079388-CN\",\n      \"open_since\": \"2003-06-24\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8556\n    },\n    {\n      \"permit_id\": \"6079627-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"3731 SUNNYSIDE AVE N\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2003-08-08\",\n      \"issued_date\": \"2004-05-19\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 350443.0,\n      \"description\": \"CONSTRUCT 2nd & 3rd  FLOORS  ALTER EXISTING MAIN FLOOR  BASEMENT  & FOUNDATION TO COMPLETE WORK  ESTABLISH ACCESSORY DWELLING UNIT & CLEAR CASE #232062 PER PLAN.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079627-CN\",\n      \"open_since\": \"2003-08-08\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8511\n    },\n    {\n      \"permit_id\": \"6070631-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"9504 PHINNEY AVE N\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"Building / New\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2003-11-07\",\n      \"issued_date\": \"2005-08-26\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 198744.0,\n      \"description\": \"Demolish existing single family residence. Establish use as single family residence. Construct a one family dwelling with attached garage per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6070631-CN\",\n      \"open_since\": \"2003-11-07\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8420\n    },\n    {\n      \"permit_id\": \"6075453-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"3416 45TH AVE SW\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2003-11-25\",\n      \"issued_date\": \"2003-11-25\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 100000.0,\n      \"description\": \"CONSTRUCT DECKS ADDITIONS AND REPLACE ROOF AND ALTER INTERIOR OF SINGLE FAMILY RESIDENCE  PER PLOT PLAN & SUBJECT TO FIELD INSPECTION\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075453-CN\",\n      \"open_since\": \"2003-11-25\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8402\n    },\n    {\n      \"permit_id\": \"6076533-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"3751 SW 100TH ST\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"Building / New\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2004-01-12\",\n      \"issued_date\": \"2005-10-20\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 101000.0,\n      \"description\": \"DEMOLISH EXISTING GARAGE  ESTABLISH USE AS SINGLE FAMILY RESIDENCE  CONSTRUCT NEW ONE FAMILY DWELLING  PER PLANS\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6076533-CN\",\n      \"open_since\": \"2004-01-12\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8354\n    },\n    {\n      \"permit_id\": \"6089958-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"726 N 66TH ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2004-06-30\",\n      \"issued_date\": \"2004-08-24\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 175000.0,\n      \"description\": \"CONSTRUCT 2 STORY ADDITION & INTERIOR ALTERATIONS TO AN EXISTING SINGLE FAMILY RESIDENCE AND CREATE AN ATTACHED ACESSORY DWELLING UNIT  PER PLAN\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089958-CN\",\n      \"open_since\": \"2004-06-30\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8184\n    },\n    {\n      \"permit_id\": \"6089951-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"3801 46TH AVE SW\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2004-08-10\",\n      \"issued_date\": \"2004-08-30\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 80000.0,\n      \"description\": \"Interior alterations to existing single family residence per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089951-CN\",\n      \"open_since\": \"2004-08-10\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8143\n    },\n    {\n      \"permit_id\": \"6100756-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"1702 PALM AVE SW\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2004-08-10\",\n      \"issued_date\": \"2004-10-27\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 200000.0,\n      \"description\": \"CONST. 2 STORY + BSTM AND DECK ADDITIONS  ALTER EXIST. SINGLE FAMIY DWELLING  PER PLANS\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100756-CN\",\n      \"open_since\": \"2004-08-10\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 8143\n    },\n    {\n      \"permit_id\": \"6101212-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"1123 24TH AVE S\",\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"Building / New\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Application Completed / Building\",\n      \"applied_date\": \"2005-04-26\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 208219.0,\n      \"description\": \"ESTABLISH USE AS TOWNHOUSES & CONSTRUCT NEW TOWNHOUSE/DUPLEX STRUCTURE WITH ACCESSORY PARKING PER PLAN (review and processing under PTS 2404980).\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101212-CN\",\n      \"open_since\": \"2005-04-26\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7884\n    },\n    {\n      \"permit_id\": \"6099834-CN\",\n      \"city\": \"seattle\",\n      \"address\": null,\n      \"permit_type\": \"new_construction\",\n      \"permit_type_raw\": \"Building / New\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2005-05-17\",\n      \"issued_date\": \"2006-06-23\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 628598.0,\n      \"description\": \"ESTABLISH A STANDARD PLAN FOR BUILDING TYPE #2 FOR THE SYLVAN HEIGHTS DEVELOPMENT PROJECT  4-UNIT & 3-STORY TOWNHOUSE WITH ATTACHED GARAGES  PER PLAN - NO CONSTRUCTION/OCCUPANCY THIS PERMIT.  STRUCTU…\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6099834-CN\",\n      \"open_since\": \"2005-05-17\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7863\n    },\n    {\n      \"permit_id\": \"6101784-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"4014 S DAKOTA ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-05-30\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"DEMOLISH SINGLE FAMILY RESIDENCE\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101784-DM\",\n      \"open_since\": \"2005-05-30\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7850\n    },\n    {\n      \"permit_id\": \"6101648-CN\",\n      \"city\": \"seattle\",\n      \"address\": null,\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Application Completed / Building\",\n      \"applied_date\": \"2005-06-27\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 664.0,\n      \"description\": \"CONSTRUCT NORTHEAST ADDITION AND REMOVE PORTION OF BUILDING TO THE EXISTING WAREHOUSE BUILDING ALL PER PLAN (BUILDING ID #2)\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101648-CN\",\n      \"open_since\": \"2005-06-27\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7822\n    },\n    {\n      \"permit_id\": \"6101127-CN\",\n      \"city\": \"seattle\",\n      \"address\": null,\n      \"permit_type\": \"unknown\",\n      \"permit_type_raw\": \"Building\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Application Completed / Building\",\n      \"applied_date\": \"2005-07-05\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"application not needed\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6101127-CN\",\n      \"open_since\": \"2005-07-05\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7814\n    },\n    {\n      \"permit_id\": \"6069244-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"3482 W BLAINE ST\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews In Process / Building\",\n      \"applied_date\": \"2005-08-19\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 20000.0,\n      \"description\": \"demo estg garage and provide required off-street parking;  Interior removal of non-load bearing walls of existing single family residence subject to field inspection (stfi) and per plot plan\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6069244-CN\",\n      \"open_since\": \"2005-08-19\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7769\n    },\n    {\n      \"permit_id\": \"6100939-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"6557 42ND AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition / Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-08-30\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"DEMO EXISTING DUPLEX  (STFI)  PER PLAN.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100939-DM\",\n      \"open_since\": \"2005-08-30\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7758\n    },\n    {\n      \"permit_id\": \"6100951-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"611 22ND AVE\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-09-07\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"DEMOLISH TWO EXISTING SINGLE FAMILY RESIDENCES.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6100951-DM\",\n      \"open_since\": \"2005-09-07\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7750\n    },\n    {\n      \"permit_id\": \"6071686-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"5327 47TH AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition / Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2005-09-08\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"Demolish existing single family residence  per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6071686-DM\",\n      \"open_since\": \"2005-09-08\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7749\n    },\n    {\n      \"permit_id\": \"6072937-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"9737 PALATINE AVE N\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition / Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2005-09-20\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"Demolish existing single family residence  per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6072937-DM\",\n      \"open_since\": \"2005-09-20\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7737\n    },\n    {\n      \"permit_id\": \"6076108-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"7023 27TH AVE NW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2005-10-17\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"demolish existing single family dwelling for 6071938 permit to construct new sfr\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6076108-DM\",\n      \"open_since\": \"2005-10-17\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7710\n    },\n    {\n      \"permit_id\": \"6075156-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"5950 41ST AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2005-10-18\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing house and detached garage.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6075156-DM\",\n      \"open_since\": \"2005-10-18\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7709\n    },\n    {\n      \"permit_id\": \"6074962-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"3320 31ST AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-11-07\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demo existing single family residence.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6074962-DM\",\n      \"open_since\": \"2005-11-07\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7689\n    },\n    {\n      \"permit_id\": \"6079839-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"3812 INTERLAKE AVE N\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-11-21\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6079839-DM\",\n      \"open_since\": \"2005-11-21\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7675\n    },\n    {\n      \"permit_id\": \"6080220-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"8027 BEACON AVE S\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-12-01\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6080220-DM\",\n      \"open_since\": \"2005-12-01\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7665\n    },\n    {\n      \"permit_id\": \"6080785-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"6521 CHAPIN PL N\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Building\",\n      \"applied_date\": \"2005-12-01\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 7800.0,\n      \"description\": \"Finish and final the work of permit #741623 from cover inspection approved at single family dwelling  subject to field inspection.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6080785-CN\",\n      \"open_since\": \"2005-12-01\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7665\n    },\n    {\n      \"permit_id\": \"6081646-BK\",\n      \"city\": \"seattle\",\n      \"address\": \"1420 5TH AVE\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Tenant Improvment\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Corrections Required / Building\",\n      \"applied_date\": \"2005-12-09\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"Blanket Permit for interior non-structural alterations to the 44th floor US Bank Center\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6081646-BK\",\n      \"open_since\": \"2005-12-09\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7657\n    },\n    {\n      \"permit_id\": \"6082189-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"1200 SHENANDOAH DR E\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2005-12-14\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single-family dwelling per plot plan subject to field inspection (stfi).\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6082189-DM\",\n      \"open_since\": \"2005-12-14\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7652\n    },\n    {\n      \"permit_id\": \"6082459-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"4318 GREENWOOD AVE N\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2005-12-16\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing one family dwelling and detached garage. Per plan and subject to field inspection (STFI).\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6082459-DM\",\n      \"open_since\": \"2005-12-16\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7650\n    },\n    {\n      \"permit_id\": \"6083344-BK\",\n      \"city\": \"seattle\",\n      \"address\": \"701 5TH AVE\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Tenant Improvment\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Corrections Required / Building\",\n      \"applied_date\": \"2005-12-28\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": 0.0,\n      \"description\": \"Blanket Permit for interior non-structural alterations to the 62nd floor Heller Ehrman\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6083344-BK\",\n      \"open_since\": \"2005-12-28\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7638\n    },\n    {\n      \"permit_id\": \"6084347-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"8418 DELRIDGE WAY SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-01-06\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing detached garage and establish parking space accessory to existing single family residence. All per plot plan and subject to field inspection (stfi)\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084347-DM\",\n      \"open_since\": \"2006-01-06\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7629\n    },\n    {\n      \"permit_id\": \"6084804-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"5440 40TH AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2006-01-12\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence for construction of new single family residence.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084804-DM\",\n      \"open_since\": \"2006-01-12\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7623\n    },\n    {\n      \"permit_id\": \"6085014-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"185 34TH AVE E\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-01-13\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6085014-DM\",\n      \"open_since\": \"2006-01-13\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7622\n    },\n    {\n      \"permit_id\": \"6086760-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"2304 50TH AVE SW\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-01-31\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish single family residence per plan.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6086760-DM\",\n      \"open_since\": \"2006-01-31\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7604\n    },\n    {\n      \"permit_id\": \"6088139-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"1205 S LUCILE ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-02-14\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish single family residence.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6088139-DM\",\n      \"open_since\": \"2006-02-14\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7590\n    },\n    {\n      \"permit_id\": \"6089242-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"11034 PHINNEY AVE N\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-02-23\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"demo existing one family dwelling. (STFI)  Tracking under A/P #6084935.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089242-DM\",\n      \"open_since\": \"2006-02-23\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7581\n    },\n    {\n      \"permit_id\": \"6066181-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"1614 26TH AVE\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2006-03-01\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"demo exising sfr\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6066181-DM\",\n      \"open_since\": \"2006-03-01\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7575\n    },\n    {\n      \"permit_id\": \"6090249-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"10725 SAND POINT WAY NE\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-03-06\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demo Existing SFR\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6090249-DM\",\n      \"open_since\": \"2006-03-06\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7570\n    },\n    {\n      \"permit_id\": \"6091863-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"418 BELLEVUE AVE E\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2006-03-17\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Complete demolition of structure started without prior demolition permit approval.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6091863-DM\",\n      \"open_since\": \"2006-03-17\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7559\n    },\n    {\n      \"permit_id\": \"6084628-CN\",\n      \"city\": \"seattle\",\n      \"address\": \"7156 30TH AVE SW\",\n      \"permit_type\": \"addition_alteration\",\n      \"permit_type_raw\": \"Building / Addition/Alteration\",\n      \"status\": \"issued\",\n      \"status_raw\": \"Issued / Building\",\n      \"applied_date\": \"2006-03-21\",\n      \"issued_date\": \"2006-06-26\",\n      \"last_activity_date\": null,\n      \"valuation_usd\": 170338.0,\n      \"description\": \"Construct new detached accessory garage and raise existing house to 2nd-floor level for construct new 1st-floor addition under at existing single family dwelliing use  per plans.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6084628-CN\",\n      \"open_since\": \"2006-03-21\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7555\n    },\n    {\n      \"permit_id\": \"6092532-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"4051 NE 57TH ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-03-23\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing sfr\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6092532-DM\",\n      \"open_since\": \"2006-03-23\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7553\n    },\n    {\n      \"permit_id\": \"6092715-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"8512 1ST AVE NE\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-03-24\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish one single family dwelling per STFI/PP\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6092715-DM\",\n      \"open_since\": \"2006-03-24\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7552\n    },\n    {\n      \"permit_id\": \"6089090-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"2161 N 122ND ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Ready for Issuance / Demolition\",\n      \"applied_date\": \"2006-03-29\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence  subject to field inspection  pending short plat 3003616\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6089090-DM\",\n      \"open_since\": \"2006-03-29\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7547\n    },\n    {\n      \"permit_id\": \"6093779-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"753 N 80TH ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-04-04\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demo existing one family dwelling and detached garage. (STFI)\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6093779-DM\",\n      \"open_since\": \"2006-04-04\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7541\n    },\n    {\n      \"permit_id\": \"6094173-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"3828 WALLINGFORD AVE N\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-04-06\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demo.exist. detached storage shed  per plans\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6094173-DM\",\n      \"open_since\": \"2006-04-06\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7539\n    },\n    {\n      \"permit_id\": \"6097643-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"11754 LAKESIDE AVE NE\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-05-08\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence subject to field inspection.\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6097643-DM\",\n      \"open_since\": \"2006-05-08\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7507\n    },\n    {\n      \"permit_id\": \"6095276-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"1839 24TH AVE E\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-05-16\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family down to foundation\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6095276-DM\",\n      \"open_since\": \"2006-05-16\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7499\n    },\n    {\n      \"permit_id\": \"6078840-DM\",\n      \"city\": \"seattle\",\n      \"address\": \"1410 N 55TH ST\",\n      \"permit_type\": \"demolition\",\n      \"permit_type_raw\": \"Demolition\",\n      \"status\": \"in_review\",\n      \"status_raw\": \"Reviews Completed / Demolition\",\n      \"applied_date\": \"2006-06-14\",\n      \"issued_date\": null,\n      \"last_activity_date\": null,\n      \"valuation_usd\": null,\n      \"description\": \"Demolish existing single family residence\",\n      \"source_url\": \"https://services.seattle.gov/portal/customize/LinkToRecord.aspx?altId=6078840-DM\",\n      \"open_since\": \"2006-06-14\",\n      \"open_since_basis\": \"applied\",\n      \"days_open\": 7470\n    }\n  ]\n}",
+     "is_error": false
+    },
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01BLvoTHDLBAEDVZntMPEMFG",
+     "content": "{\n  \"cities\": [\n    {\n      \"id\": \"austin\",\n      \"name\": \"Austin, TX\",\n      \"portal_url\": \"https://data.austintexas.gov/d/3syk-w9eu\",\n      \"dataset_id\": \"3syk-w9eu\",\n      \"data_last_updated\": \"2026-11-26T13:16:02Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"1921-09-20\",\n        \"latest\": \"2026-11-25\"\n      },\n      \"statuses_available\": [\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"status_raw_values\": {\n        \"issued\": [\n          \"Active\",\n          \"On Hold\",\n          \"Suspended\",\n          \"Inactive Pending Revision\",\n          \"Inactive Contractor\"\n        ],\n        \"finaled\": [\n          \"Final\"\n        ],\n        \"expired\": [\n          \"Expired\",\n          \"Expired - License\"\n        ],\n        \"cancelled\": [\n          \"VOID\",\n          \"Withdrawn\",\n          \"Cancelled\",\n          \"Cancelled - Contractor Required\",\n          \"Cancelled - New Permit Required\",\n          \"Aborted\",\n          \"Revoked\",\n          \"Denied but Closed\",\n          \"Rejected\"\n        ],\n        \"unknown\": [\n          \"Pending\",\n          \"Pending Permit\",\n          \"Re Review\",\n          \"Closed\",\n          \"New Permit Required\",\n          \"Application Incomplete\",\n          \"Awaiting Upload\"\n        ]\n      },\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"electrical\",\n        \"mechanical\",\n        \"plumbing\",\n        \"site_work\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [],\n      \"known_gaps\": [\n        \"Only issued permits are published; there are no 'applied' or 'in_review' records.\",\n        \"Includes electrical, mechanical, plumbing and driveway/sidewalk permits as well as building permits.\",\n        \"last_activity_date is when the status or expiry date last changed (source column 'statusdate').\",\n        \"Valuation is published for about half of permits; it is applicant-reported and includes obvious errors (e.g. $1 and $8,100,000,000); passed through as published.\",\n        \"A few small legacy statuses whose meaning conflicts with the record's dates (Pending, Pending Permit, Re Review, Closed, ...) normalize to 'unknown'.\",\n        \"About 5,500 building permits have no work class; their permit_type is 'unknown'.\",\n        \"Records go back to the 1970s, with a handful of odd earlier dates (e.g. 1921).\"\n      ]\n    },\n    {\n      \"id\": \"chicago\",\n      \"name\": \"Chicago, IL\",\n      \"portal_url\": \"https://data.cityofchicago.org/d/ydr8-5enu\",\n      \"dataset_id\": \"ydr8-5enu\",\n      \"data_last_updated\": \"2026-11-26T13:09:17Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"2006-01-03\",\n        \"latest\": \"2026-11-25\"\n      },\n      \"statuses_available\": [\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"status_raw_values\": {\n        \"issued\": [\n          \"ACTIVE\",\n          \"PHASED PERMITTING\",\n          \"SUSPENDED\"\n        ],\n        \"finaled\": [\n          \"COMPLETE\"\n        ],\n        \"expired\": [\n          \"EXPIRED\"\n        ],\n        \"cancelled\": [\n          \"CANCELLED\",\n          \"REVOKED\"\n        ]\n      },\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"sign\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [\n        \"last_activity_date\"\n      ],\n      \"known_gaps\": [\n        \"Only issued permits are published; there are no 'applied' or 'in_review' records.\",\n        \"permit_status is blank on ~35% of records (mostly issued before 2024); these normalize to 'unknown'.\",\n        \"No last-activity date is published; last_activity_date is always null.\",\n        \"Electrical, HVAC and plumbing work is filed under Express/Easy permits, which normalize to 'repair'; Chicago never reports 'electrical', 'mechanical' or 'plumbing'.\",\n        \"Valuations are applicant-reported and include obvious data-entry errors (e.g. $6,666,666,666 for a boiler replacement); they are passed through as published.\",\n        \"Issue dates start in 2006.\"\n      ]\n    },\n    {\n      \"id\": \"seattle\",\n      \"name\": \"Seattle, WA\",\n      \"portal_url\": \"https://data.seattle.gov/d/76t5-zqzr\",\n      \"dataset_id\": \"76t5-zqzr\",\n      \"data_last_updated\": \"2026-11-26T02:10:16Z\",\n      \"issued_date_range\": {\n        \"earliest\": \"1986-07-03\",\n        \"latest\": \"2026-11-24\"\n      },\n      \"statuses_available\": [\n        \"applied\",\n        \"in_review\",\n        \"issued\",\n        \"finaled\",\n        \"expired\",\n        \"cancelled\",\n        \"unknown\"\n      ],\n      \"status_raw_values\": {\n        \"applied\": [\n          \"Initiated\",\n          \"Ready for Intake\",\n          \"Scheduled\",\n          \"Scheduled and Submitted\",\n          \"Pending\",\n          \"Additional Info Requested\"\n        ],\n        \"in_review\": [\n          \"Application Completed\",\n          \"Reviews In Process\",\n          \"Corrections Required\",\n          \"Corrections Submitted\",\n          \"Awaiting Information\",\n          \"Reviews Completed\",\n          \"Ready for Issuance\"\n        ],\n        \"issued\": [\n          \"Issued\",\n          \"Phase Issued\"\n        ],\n        \"finaled\": [\n          \"Closed\",\n          \"Completed\",\n          \"Inspections Completed\",\n          \"Approved to Occupy\"\n        ],\n        \"expired\": [\n          \"Expired\"\n        ],\n        \"cancelled\": [\n          \"Closed\",\n          \"Withdrawn\",\n          \"Canceled\",\n          \"Denied\"\n        ],\n        \"unknown\": [\n          \"Active\"\n        ]\n      },\n      \"permit_types_available\": [\n        \"new_construction\",\n        \"addition_alteration\",\n        \"repair\",\n        \"demolition\",\n        \"site_work\",\n        \"other\",\n        \"unknown\"\n      ],\n      \"fields_unavailable\": [\n        \"last_activity_date\"\n      ],\n      \"known_gaps\": [\n        \"Covers the full lifecycle: applications ('applied'), plan review ('in_review'), issued and closed permits.\",\n        \"No last-activity date is published; last_activity_date is always null.\",\n        \"'Closed' means two things in the source data: mostly an application closed without a permit (-> cancelled), but for demolitions usually a completed permit (-> finaled). Check status_raw when it matters.\",\n        \"268 records with status 'Active' have no application, issue or completion date; their status is 'unknown'.\",\n        \"About 3,650 'Building' permits have no subtype; their permit_type is 'unknown'.\",\n        \"Electrical, mechanical and plumbing trade permits are in a separate Seattle dataset and are not included.\",\n        \"Environmental-critical-area and shoreline exemption requests are included and normalize to permit_type 'other'.\"\n      ]\n    }\n  ],\n  \"warnings\": []\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 3.053,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 319,
+    "cache_write": 18108,
+    "cache_read": 4681
+   },
+   "content": [
+    {
+     "signature": "CAQS6ggKEAgUGAI4AUIIdGhpbmtpbmcSDHpef8oQuc4qh1nvVBoMJyT2ic2UThrwGBS5IjA4V4IR4SHAgf1PFqH9yDXgc7LeNpVjlnEOci2LLCi3OSl0SnB6YrmYfEk52MzVCokqhwhzHsMd19E2H61eOSUNU6/6MP1BHIirCj4l9cKZ53pNncLGRlisdEMf3fjdqmbmv2znfwqEP7YgbOdef9nnLdDZWFMlOvwvema/ufUbA/2GMo2YHuyxg8xHhHjj/LBNA5O1mfHfjGNm/hQsXAmd/06BJBpAosu4gYY8fndwvb7/GxmZEXRU9WVrqsPfam7rpIYaSZLE0ccjM3/gAXfJgsc+SWZmZBKqZ6ugIMIgeqNT4qbIDkt++ozyKc5ORZibqmXKMwepAheBZ9A+knz311Dx8oxRjuWEuLZtka841f0bzdOjn6xsaOyDvIs+UqwT4nvpYCqhUqEQtuKQzSWwNyhuKtZP7VrVGW+72JPot1oNvYTE2G2B+bqzS5EMUXO3MzcgU55jhOtV5qYFKkgtezjA+h2jILN1Gi7criqgQuO+vKh5YiOvD+WczxF2Yd5ACmNF6J5mL+3s7BBP3ou53o6WUewcXZYLyBSeCVlzZrsKXTwCl46fj3UA7/9iW3yIYzI2WMWLwkQM8HMja30BUebPrwIf1na92gWVe+Ek/9qn9kdwgiiY2WYgeGF6AI3ofojdJAj3TEvbCJuDdJPChQSTMuFZNSUyL9dyrszVPK/14oY00NDw3b/0BqoFPiH/GhOS0qiRdT5kfpeYE2tJx/+AEZ0Yx89nxN5NIlJx8HIt/koP/LByGfwIht1MzI/a4otMg3VlaMBgPl8yc1eDa5L+6z+jwLXURCBxjESg0sEZ0Nfbt2GCS9uq/xQoNVQygAHpPANFvM/16mLPllLxB7SMbAuChuiuVEOwrb9pqZWF0xZSgMZWUCLTF/d3zR7Ks6Ze+0eWy7+FGhp3hkwZmvtexOukSTuN+792Yfy3yEvEli0IU9DShtvYDJIewRxfq61saJnYB3CqF/42Rx9PVL3W5z3xZeAh+9H8FKXNK9KZb5+d7+cMewu5oyOlItfn8wq2j8wFfp8eLVPLezbN/4ZfncctI0lvZjRXfBDyWQWAVtxxwWD3+LGIlQSgPgFeNSoSXRaObh5Fp8alEn2qM/MV0EJ15WiQHlBHh1qbpJEYLX+rHKEePnc/9sJ4O882AghCMhFqx85JPgwG996m58mHi/kvhzZhAiuZwhfZO99kgrLFEiZrgcj6fzOfwjfEzk6832hE2XYmhxyHcEEJkVh8P1utFhbQx9eq7a1VRoOiFUseq17jA3xLyxETy7EdkfvWU5y3f5N/6wUCzT9Aok0zROcKv7twFJZOO6fyG4N59mfbwi3ynJwvMonjs/AA5EQ4BQdaK6bByXUji3nJsmn68L8hVGy205BMdLeQMxlhtwZBsuAhnV8Rhy0SB2Xp+ald4Z1V+r9qT3Bm3iuIPfiDjBx/FQzithgB",
+     "thinking": "I'm getting a total of 4996, though some of those might be counted by issue date instead of application date, which would be hard to verify without paging through many results. I'll check whether any open permits are missing an applied date, using a grouped permit stats query with the applied date field.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01JNgMv7KCSWkj94buY5QJa6",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ],
+      "date_field": "applied",
+      "date_from": "1900-01-01",
+      "date_to": "2024-11-25"
+     },
+     "name": "permit_stats",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "permit_stats",
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ],
+      "date_field": "applied",
+      "date_from": "1900-01-01",
+      "date_to": "2024-11-25"
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01JNgMv7KCSWkj94buY5QJa6",
+     "content": "{\n  \"city\": \"seattle\",\n  \"group_by\": \"status\",\n  \"date_field\": \"applied\",\n  \"date_from\": \"1900-01-01\",\n  \"date_to\": \"2024-11-25\",\n  \"total_count\": 4960,\n  \"excluded_no_date_count\": 13576,\n  \"groups\": [\n    {\n      \"key\": \"issued\",\n      \"count\": 2758,\n      \"total_valuation_usd\": 7703917335.95,\n      \"normalized_status\": null\n    },\n    {\n      \"key\": \"in_review\",\n      \"count\": 2192,\n      \"total_valuation_usd\": 9486740135.32,\n      \"normalized_status\": null\n    },\n    {\n      \"key\": \"applied\",\n      \"count\": 10,\n      \"total_valuation_usd\": 157361786.0,\n      \"normalized_status\": null\n    }\n  ],\n  \"warnings\": [\n    \"13,576 permits match every other filter but have no applied date, so no date range can include them. If the question isn't about a date range (e.g. how many are in review now), call again without date_from and date_to to count them too.\"\n  ]\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "tool_use",
+   "latency_s": 4.488,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 501,
+    "cache_write": 668,
+    "cache_read": 22789
+   },
+   "content": [
+    {
+     "signature": "CAQSxAkKEAgUGAI4AUIIdGhpbmtpbmcSDEaE2t2p+LAA+rtkeRoMcA5YpsB87/ry7GiBIjCUaotCIgdRRR7wU0szrHrQAlh/PRTiRGg81w6O3NCahT3raspME26+oLjDEbETT4Mq4Qhzjmt6NzgYzq2wX8eeiENgniNGO8dEjB6nt/aaPt3cVBKHrRXGLtOTHe0koaQGwZ013Iu6zObDyge0XC6C2t9qYX/0SrmGENQk6U9zla08q0Sx1p6AHz3vsl146vpp+Tyco7qKueJ0qeY/EQPy+3tfCBAAHjb9m6cWAAbdfdrsw7CHK/tlbc+SVuQbJBqifgWEbzP6wh5A+Ob3W1KkAaCNW0UA7d34n2uCC1FTHMTNi3V0fk6iGK9mYCvS37NUeVDxLzU5P/kVLa6pxohpCD/hMeNj6BDJk47JXaY0G7FXAm/mEm/7Y07WDr1DfQQeZl2tdffljTSMSt6ac5oISMoDU+DDtWDrEY8bJLAu1WNJdcFuR42RY6ozIgCwNaZhjL9SzYg/i9IRiACCuT51azntwyCpSz9DSf+cwexD6pzchVGfvlFtH/zrSarC7R5heDgGvjWhsLzcBvNGpAll+ASrAit5PyjLnxQd7l1PUpIG06tDW0UGmLGPCMjpEgxZ6bo0ucLC86G/zo3B34X5+AHS+Xb0fO4M/TZtjN7f6rfkBZN6Ou15Hk0lwA9icS25DZ/68bZAjTc4Jz0k85hahecR8LUSjI4Ufob6KysvqGxRBh6eAWOcGXQ54Nw24HE93ZV4AJhsRV/4kURlrS3R/htFnS8tPU+wNBCMF9sBMjVNx/jutnk2562/KpZobkCGDjxHgcCkjymP+fIAxu0Y6PFD6lc4X1NggzTYEeMEYpwtFmhHU3X+Tu/IX7pnnZ+va/QombiJ0exCDWxwFjxMsSXUu0b9k4Pmc2s01r1eWG2WOqp6RQYqK1IjPJY9fmXBcZ9aBO/lL/ylMeQoI6wxmLC8xH8RwglcVN4Io5TAvMEIPh4XBOa/cTyQtD95+NT/sX6oilW7Kpxzqa1DByAjPDQJcZY4on1LNlNd5MqTx8ZLgslLCIs2VoWYTLnB40LZd9NhbY2PsfzAavvWvAjPn1iXwi0eXC4HUxqomwnFl2RXGB0hn1/Ivid7EHCF0XGbOPZwTWcYg9CibtSzbGrQWBCs0Z46pY1Ql1NEMhaImmpcaBrKy2ITPYRhBL3R+KHrY8OznXV1WsdstQH5lVKPu5A+1L1C7vE2TtJewrzUAnTQ4SJchsTsW7i6p5OjnzfyIsbHOCoAiC8PoyvyxIk4Hk+ndM7ahBph0JLlE4idjcKupFP3fq4a6wdKFFOOOpHu48jIBii6FsAlDurfYVlwECyc52X8Mkt3n2LSdt6kWMKFB/eiDFFDOBRife8Sad8vd/Y2oKbdOpfZ6rMN0BbEG+Grgmc+hmF5BXdd87cAZJTEx4oTVkhP2ZMJNRPEGzhvQPzzm0YYYb+y/WZw3kx7rDv78EAgOd2WiUKi3MtRI5l8Eq05m5xLIS+qm7BiKa+5l4sBT4dCMXSYH2liKTZpxb2//elU1HI3MLnSWoNIWmnw/43Ho+AdyMQTxBhZJYy1fobRm5uiXzr+cYvBZv9Nu8uUCRgB",
+     "thinking": "I'm checking whether the cutoff should be strictly more than 730 days or at least 730, since the stale count comes out 36 higher than mine and the 13,576 figure for permits with no applied date looks too large to trust yet.\n\nI'm going to test whether the tool counts permits applied exactly on 2024-11-26 by rerunning it with that date as the cutoff.\n\n",
+     "type": "thinking"
+    },
+    {
+     "id": "toolu_01ENosNkv7KM3ksNWhKFuTcg",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ],
+      "date_field": "applied",
+      "date_from": "2024-11-26",
+      "date_to": "2024-11-26"
+     },
+     "name": "permit_stats",
+     "type": "tool_use"
+    },
+    {
+     "id": "toolu_01GhDSo2ibTFnz852W3AYb3n",
+     "caller": {
+      "type": "direct"
+     },
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ]
+     },
+     "name": "permit_stats",
+     "type": "tool_use"
+    }
+   ]
+  },
+  {
+   "role": "user",
+   "tool_calls": [
+    {
+     "name": "permit_stats",
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ],
+      "date_field": "applied",
+      "date_from": "2024-11-26",
+      "date_to": "2024-11-26"
+     }
+    },
+    {
+     "name": "permit_stats",
+     "input": {
+      "city": "seattle",
+      "group_by": "status",
+      "status": [
+       "applied",
+       "in_review",
+       "issued"
+      ]
+     }
+    }
+   ],
+   "content": [
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01ENosNkv7KM3ksNWhKFuTcg",
+     "content": "{\n  \"city\": \"seattle\",\n  \"group_by\": \"status\",\n  \"date_field\": \"applied\",\n  \"date_from\": \"2024-11-26\",\n  \"date_to\": \"2024-11-26\",\n  \"total_count\": 2,\n  \"excluded_no_date_count\": 13576,\n  \"groups\": [\n    {\n      \"key\": \"issued\",\n      \"count\": 2,\n      \"total_valuation_usd\": 225000.0,\n      \"normalized_status\": null\n    }\n  ],\n  \"warnings\": [\n    \"13,576 permits match every other filter but have no applied date, so no date range can include them. If the question isn't about a date range (e.g. how many are in review now), call again without date_from and date_to to count them too.\"\n  ]\n}",
+     "is_error": false
+    },
+    {
+     "type": "tool_result",
+     "tool_use_id": "toolu_01GhDSo2ibTFnz852W3AYb3n",
+     "content": "{\n  \"city\": \"seattle\",\n  \"group_by\": \"status\",\n  \"date_field\": \"issued\",\n  \"date_from\": null,\n  \"date_to\": null,\n  \"total_count\": 26065,\n  \"excluded_no_date_count\": null,\n  \"groups\": [\n    {\n      \"key\": \"applied\",\n      \"count\": 12777,\n      \"total_valuation_usd\": 98684576324.37,\n      \"normalized_status\": null\n    },\n    {\n      \"key\": \"issued\",\n      \"count\": 8146,\n      \"total_valuation_usd\": 11262536504.05,\n      \"normalized_status\": null\n    },\n    {\n      \"key\": \"in_review\",\n      \"count\": 5142,\n      \"total_valuation_usd\": 13386985104.05,\n      \"normalized_status\": null\n    }\n  ],\n  \"warnings\": []\n}",
+     "is_error": false
+    }
+   ]
+  },
+  {
+   "role": "assistant",
+   "stop_reason": "end_turn",
+   "latency_s": 11.181,
+   "retries": 0,
+   "usage": {
+    "input": 2,
+    "output": 1104,
+    "cache_write": 1052,
+    "cache_read": 23457
+   },
+   "content": [
+    {
+     "signature": "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",
+     "thinking": "The stale-permit tool returns 4,996, which counts permits with no applied date but an issue date more than 730 days ago. The question asks about the gap after the application date, though, and that's a stricter measure. I'm weighing whether the intended answer is just the tool's total, since the question seems built around that tool.\n\nI'm weighing whether the question's \"after their application date\" wording should be read strictly, which would give 4,960, or loosely, matching the tool's 4,996 total, since the tool falls back to the issue date when there's no application date. The tool's \"open_since_basis\" field exists to tell those cases apart, so a careful answer might need to name both figures.\n\nI'm now leaning toward answering 4,960 by application date, since the question says \"after their application date\" and the tool falls back to issue date for 36 permits. I can't easily filter those out of the stale list, so I'm going by the inference that the difference comes from those issue-date-basis records.\n\n",
+     "type": "thinking"
+    },
+    {
+     "text": "I counted **4,960** Seattle permits that are still open and were applied for more than 730 days ago, meaning on or before 2024-11-25.\n\n- **How I counted:** \"Still open\" covers the statuses applied, in review and issued. The count is exact, not a sample: 2,758 are issued but not finished, 2,192 are in review, and 10 are applied.\n- **The stale-permit search returns 4,996, which is 36 more.** That search measures from the application date, but uses the issue date when a permit has no application date. The 36 are most likely those permits: they were issued more than 730 days ago and have no application date. I didn't check them one by one, but the counts point that way. Since you asked about time since the application date, I left them out. If you'd rather include them, the answer is 4,996.\n- **Permits not counted:** 13,576 open Seattle permits have no application date at all, so they can't be measured from it. No permits were dropped for having an unknown status.\n- **Exactly 730 days:** 2 issued permits were applied for exactly 730 days ago (2024-11-26). They aren't counted because they are not more than 730 days old.\n\nFINAL ANSWER: 4960",
+     "type": "text"
+    }
+   ]
+  }
+ ],
+ "outcome": {
+  "key": "sea-07__permits__r1",
+  "question_id": "sea-07",
+  "arm": "permits",
+  "rep": 1,
+  "started_at": "2026-11-26T17:18:49+00:00",
+  "status": "answered",
+  "final_answer": "4960",
+  "budget_exhausted": false,
+  "tool_calls": 5,
+  "tool_errors": 0,
+  "tool_results_truncated": 0,
+  "api_calls": 4,
+  "api_retries": 0,
+  "usage": {
+   "input": 10,
+   "output": 2110,
+   "cache_write": 24509,
+   "cache_read": 50927
+  },
+  "cost_usd": 0.17497,
+  "model_latency_s": 20.86,
+  "tool_latency_s": 4.8,
+  "wall_s": 25.27,
+  "transcript": "transcripts/sea-07__permits__r1.json"
+ },
+ "tool_stats": [
+  {
+   "name": "list_cities",
+   "latency_s": 1.748,
+   "is_error": false,
+   "chars": 6800,
+   "truncated": false
+  },
+  {
+   "name": "find_stale_permits",
+   "latency_s": 1.912,
+   "is_error": false,
+   "chars": 36096,
+   "truncated": false
+  },
+  {
+   "name": "permit_stats",
+   "latency_s": 0.399,
+   "is_error": false,
+   "chars": 869,
+   "truncated": false
+  },
+  {
+   "name": "permit_stats",
+   "latency_s": 0.337,
+   "is_error": false,
+   "chars": 592,
+   "truncated": false
+  },
+  {
+   "name": "permit_stats",
+   "latency_s": 0.404,
+   "is_error": false,
+   "chars": 614,
+   "truncated": false
+  }
+ ]
+}
